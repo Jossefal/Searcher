@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a3158d8f4aa1946905d71d31fdfa70, type: 3}
+  m_Name: AreasChooser
+  m_EditorClassIdentifier: 
+  areas:
+  - {fileID: 7504889239671408734, guid: 7febba69c219d3d4fbe3792222f68903, type: 3}
+  - {fileID: 7504889239671408734, guid: 133250c591308d341a4100001ca485a5, type: 3}
+  chances:
+  - 80
+  - 20
+  chooseType: 0
+  spawnBatteries: 1
+  batteryAreas:
+  - {fileID: 7504889239671408734, guid: e6a51107c1ee5e34baeff12e08a67840, type: 3}
+  minAreasBetweenBatteries: 10
+  maxAreasBetweenBatteries: 16
+  spawnSpacemans: 1
+  spacemanAreas:
+  - {fileID: 7504889239671408734, guid: 3fc4f52883718814aab51f1bffccbfc1, type: 3}
+  minAreasBetweenSpacemans: 2
+  maxAreasBetweenSpacemans: 3
