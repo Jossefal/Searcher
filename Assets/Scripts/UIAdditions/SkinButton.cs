@@ -4,16 +4,16 @@ using UnityEngine.UI;
 public class SkinButton : MonoBehaviour
 {
     public int skinIndex;
-    public Sprite skinIcon;
+    public SkinsContainer skinsContainer;
+    public SkinsMenu skinsMenu;
     public Image selectedImage;
 
-    private SkinsMenu skinsMenu;
     private Button buttonComponent;
 
     private void Awake()
     {
         buttonComponent = GetComponent<Button>();
-        skinsMenu = GameObject.FindWithTag("SkinsMenu").GetComponent<SkinsMenu>();
+        GetComponent<Image>().sprite = skinsContainer.GetSkin(skinIndex);
     }
 
     public void ChangeSkin()

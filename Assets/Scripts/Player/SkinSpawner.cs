@@ -3,10 +3,11 @@
 public class SkinSpawner : MonoBehaviour
 {
     public SkinsContainer skinsContainer;
+    public SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
-        Instantiate(skinsContainer.GetCurrentSkin(), transform.position, Quaternion.identity, transform.parent);
+        spriteRenderer.sprite = skinsContainer.GetCurrentSkin();
         Destroy(gameObject);
     }
 }

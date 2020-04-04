@@ -3,10 +3,15 @@
 [CreateAssetMenu(fileName = "NewSkinsContainer", menuName = "SkinsContainer")]
 public class SkinsContainer : ScriptableObject
 {
-    public GameObject[] skins;
+    public Sprite[] skins;
 
-    public GameObject GetCurrentSkin()
+    public Sprite GetCurrentSkin()
     {
         return skins[PlayerPrefs.GetInt(Prefs.SKIN_INDEX_PREF, 0)];
+    }
+
+    public Sprite GetSkin(int index)
+    {
+        return skins[index];
     }
 }

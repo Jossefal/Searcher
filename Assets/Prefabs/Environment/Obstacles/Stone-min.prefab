@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5686641769904129621}
   - component: {fileID: 5686641769904129620}
   - component: {fileID: 5686641769904129619}
+  - component: {fileID: -1142216095860733254}
   m_Layer: 12
   m_Name: Stone-min
   m_TagString: Untagged
@@ -114,3 +115,21 @@ MonoBehaviour:
   deathEffect: {fileID: 8607219435144908305, guid: fdf9d2f452752914d870c2be6af167b6,
     type: 3}
   deathAfterDealingDamage: 1
+--- !u!114 &-1142216095860733254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686641769904129623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ada4ea937f8c824ba5d6bd5d80dde8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 0, y: 0, z: 30}
+  rndRadius: {x: 0, y: 0, z: 10}
+  isRndSpeed: 1
+  isRndRotation: 1
+  isRndDirection: 1
+  rotatingTypeSelection: 1

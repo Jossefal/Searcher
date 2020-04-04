@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: SkinsContainer
   m_EditorClassIdentifier: 
   skins:
-  - {fileID: 3893808784054290511, guid: cd228788789fb254c8e9d0a5520b5bd3, type: 3}
-  - {fileID: 3893808784054290511, guid: bf7d20efbe0fa814fb15a9344efadc1e, type: 3}
+  - {fileID: 21300000, guid: a84dc4f8b699b4743add9a4eb7e4e133, type: 3}
+  - {fileID: 21300000, guid: 5db50fea1dae2a44d98bb58aa562a5d3, type: 3}
+  - {fileID: 21300000, guid: 5b1b1f9c9793fe24fa5cbcdd058c42b5, type: 3}
+  - {fileID: 21300000, guid: 12bae94be15ebf24db6f2c7c1f32d490, type: 3}
+  - {fileID: 21300000, guid: de26b0bc0cbcff3488a5c3b881f7adee, type: 3}
+  - {fileID: 21300000, guid: d97df9278976a0643bfcbe5dbc8f07d7, type: 3}
+  - {fileID: 21300000, guid: b975809d083c7324188476b01b65b31d, type: 3}
+  - {fileID: 21300000, guid: f47d866c754b30e499782926b3bb1a60, type: 3}

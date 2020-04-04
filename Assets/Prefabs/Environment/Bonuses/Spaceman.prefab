@@ -67,9 +67,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1475438659
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0fbf22e200726e64eba5e6310a80d18e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a46f95a05dbc0de4788f0fa65751115f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,9 +90,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6692435511983111629}
   - component: {fileID: 3372509657809994497}
-  - component: {fileID: 4099184559809062684}
   - component: {fileID: 9036451398415654219}
   - component: {fileID: 6935816187790232396}
+  - component: {fileID: 4099184559809062684}
   m_Layer: 17
   m_Name: Spaceman
   m_TagString: Untagged
@@ -136,23 +136,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4099184559809062684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6692435511983111624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ada4ea937f8c824ba5d6bd5d80dde8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 25}
-  rndRadius: {x: 0, y: 0, z: 5}
-  isRndSpeed: 1
-  isRndRotation: 1
-  rotatingTypeSelection: 0
 --- !u!70 &9036451398415654219
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -166,8 +149,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.028116584, y: -0.057377458}
-  m_Size: {x: 0.6244961, y: 1.0495043}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.55, y: 0.85}
   m_Direction: 0
 --- !u!114 &6935816187790232396
 MonoBehaviour:
@@ -182,3 +165,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionName: SpacemanScale
+--- !u!114 &4099184559809062684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692435511983111624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ada4ea937f8c824ba5d6bd5d80dde8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 0, y: 0, z: 30}
+  rndRadius: {x: 0, y: 0, z: 10}
+  isRndSpeed: 1
+  isRndRotation: 1
+  isRndDirection: 1
+  rotatingTypeSelection: 0

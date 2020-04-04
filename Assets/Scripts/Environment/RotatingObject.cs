@@ -12,6 +12,8 @@ public class RotatingObject : MonoBehaviour
     public Vector3 rndRadius;
     public bool isRndSpeed;
     public bool isRndRotation;
+
+    public bool isRndDirection;
     public RotatingType rotatingTypeSelection;
 
     private Rigidbody2D rb;
@@ -29,6 +31,9 @@ public class RotatingObject : MonoBehaviour
 
         if(isRndRotation)
             transform.rotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
+
+        if(isRndDirection)
+            speed *= Random.value > 0.5f ? 1 : -1;
     }
 
     private void FixedUpdate()
