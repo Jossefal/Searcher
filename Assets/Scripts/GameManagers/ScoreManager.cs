@@ -3,66 +3,37 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Transform ship;
-    public Text scoreText;
-    // public float oneScorePointCost;
+    public int recordScore
+    {
+        get => _safeRecordScore.GetValue();
+    }
+    public int currentScore
+    {
+        get => _safeCurrentScore.GetValue();
+    }
 
-    private float recordScore;
-    private float currentScore;
-    // private float lastPosY;
+    [SerializeField] private Text scoreText = null;
+    private SafeInt _safeRecordScore;
+    private SafeInt _safeCurrentScore;
 
     private void Awake()
     {
-        recordScore = PlayerPrefs.GetFloat(Prefs.RECORD_PREF, 0f);
+        _safeRecordScore = new SafeInt(PlayerPrefs.GetInt(Prefs.RECORD_PREF, (int)PlayerPrefs.GetFloat(Prefs.RECORD_PREF, 0f)));
+        _safeCurrentScore = new SafeInt(0);
     }
-
-    // private void Start()
-    // {
-    //     lastPosY = ship.position.y;
-    // }
-
-    // private void Update()
-    // {
-    //     if (ship.position.y > lastPosY + oneScorePointCost)
-    //     {
-    //         lastPosY = ship.position.y;
-    //         currentScore++;
-    //         scoreText.text = Converter.ConvertToString(currentScore);
-    //     }
-    // }
 
     public void AddPoint()
     {
-        currentScore++;
-        scoreText.text = Converter.ConvertToString(currentScore);
-    }
-
-    public void SetScore(float newScore)
-    {
-        currentScore = newScore;
-    }
-
-    public float GetScore()
-    {
-        return currentScore;
-    }
-
-    public float GetRecord()
-    {
-        return recordScore;
-    }
-
-    public void SendNewScore(float newScore)
-    {
-        if (newScore > recordScore)
-        {
-            PlayerPrefs.SetFloat(Prefs.RECORD_PREF, newScore);
-            recordScore = newScore;
-        }
+        _safeCurrentScore++;
+        scoreText.text = Converter.ConvertToString(_safeCurrentScore.GetValue());
     }
 
     public void SendScore()
     {
-        SendNewScore(currentScore);
+        if (_safeCurrentScore > _safeRecordScore)
+        {
+            _safeRecordScore = _safeCurrentScore;
+            PlayerPrefs.SetInt(Prefs.RECORD_PREF, _safeRecordScore.GetValue());
+        }
     }
 }

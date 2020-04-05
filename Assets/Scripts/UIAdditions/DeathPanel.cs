@@ -12,7 +12,7 @@ public class DeathPanel : MonoBehaviour
     public void Open()
     {
         onOpen.Invoke();
-        scoreText.text = Converter.ConvertToString(scoreManager.GetScore());
+        scoreText.text = Converter.ConvertToString(scoreManager.currentScore);
         gameObject.SetActive(true);
     }
 
