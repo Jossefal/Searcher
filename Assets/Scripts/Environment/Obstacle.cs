@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class Obstacle : MonoBehaviour
 {
-    public float damage;
-    public GameObject deathEffect;
-    public bool deathAfterDealingDamage;
+    [SerializeField] private float damage;
+    [SerializeField] private GameObject deathEffect;
+    [SerializeField] private bool deathAfterDealingDamage;
 
-    protected virtual void OnTriggerEnter2D(Collider2D coll)
+    private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Ship")
         {
@@ -17,7 +19,7 @@ public class Obstacle : MonoBehaviour
         }
     }
 
-    public void Death()
+    private void Death()
     {
         Instantiate(deathEffect, transform.position, deathEffect.transform.rotation);
         gameObject.SetActive(false);

@@ -1,41 +1,51 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+#pragma warning disable 649
+
 public class StatsController : MonoBehaviour
 {
-    public float damage;
-    public float maxHp;
-    public bool isDamagable = true;
-    [SerializeField] protected UnityEvent onDamaged = null;
-    [SerializeField] protected UnityEvent onDeath = null;
+    [HideInInspector] public bool isGodMod { get; private set; }
+    [HideInInspector] public bool isStunned { get; private set; }
 
-    protected float currentHp;
-    
+    [SerializeField] private float maxHp;
+    [SerializeField] private bool isDamagable = true;
+    [SerializeField] private UnityEvent onStunStart;
+    [SerializeField] private UnityEvent onStunEnd;
+    [SerializeField] private UnityEvent onGameOver;
+
+    private float currentHp;
+    private bool isGameOver;
 
     private void Awake()
     {
+        ApplyOptions();
         RestoreHP();
     }
 
-    public virtual void ReceiveDamage(float damage)
+    public void ReceiveDamage(float damage)
     {
-        if (!isDamagable)
+        if (isGodMod || !isDamagable)
             return;
 
         currentHp -= Mathf.Clamp(damage, 0, currentHp);
-        onDamaged.Invoke();
         if (currentHp == 0)
             Death();
     }
 
-    public virtual void Death()
+    public void GameOver()
     {
-        onDeath.Invoke();
+        if (isGameOver)
+            return;
+
+        isGameOver = true;
+        onGameOver.Invoke();
     }
 
-    public void SetMaxHp(float newHp)
+    private void Death()
     {
-        maxHp = Mathf.Abs(newHp);
+        GameOver();
+        Destroy(gameObject);
     }
 
     public void RestoreHP()
@@ -43,18 +53,20 @@ public class StatsController : MonoBehaviour
         currentHp = maxHp;
     }
 
-    public void SetCurrentHp(float newHp)
+    public void Stun()
     {
-        currentHp = Mathf.Clamp(newHp, 0, maxHp);
+        isStunned = true;
+        onStunStart.Invoke();
     }
 
-    public float GetCurrentHp()
+    public void StopStun()
     {
-        return currentHp;
+        isStunned = false;
+        onStunEnd.Invoke();
     }
 
-    public float GetCurrentPercentOfHp()
+    private void ApplyOptions()
     {
-        return currentHp / maxHp;
+        isGodMod = Prefs.GetBoolPref("IsGodMode", false);
     }
 }

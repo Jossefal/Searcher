@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class Spawner : MonoBehaviour
 {
-    public GameObject spawnObject;
-    public float xRadius;
-    public float yRadius;
+    [SerializeField] protected GameObject spawnObject;
+    [SerializeField] protected float xRadius;
+    [SerializeField] protected float yRadius;
 
     private void Start()
     {

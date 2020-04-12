@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+#pragma warning disable 649
+
 public class ScrollObject : UIScroller
 {
-    public Vector2 openedPos;
-    public Vector2 closedPos;
-    public bool isOpening;
-
+    [SerializeField] private Vector2 openedPos;
+    [SerializeField] private Vector2 closedPos;
+    [SerializeField] private bool isOpening;
     [SerializeField] protected UnityEvent onOpenEnd = null;
     [SerializeField] protected UnityEvent onCloseEnd = null;
 

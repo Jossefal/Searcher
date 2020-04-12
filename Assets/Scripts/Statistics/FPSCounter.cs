@@ -2,10 +2,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 649
+
 public class FPSCounter : MonoBehaviour
 {
-    public float updateInterval = 0.5F;
-    public Text text;
+    [SerializeField] private float updateInterval = 0.5F;
+    [SerializeField] private Text text;
 
     private double lastInterval; 
     private int frames = 0;

@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 649
+
 public class InputFieldOption : MonoBehaviour
 {
-    public string optionName;
-    public OptionType optionType;
-    public string defaultValue;
-    public InputField inputField;
+    [SerializeField] private string optionName;
+    [SerializeField] private OptionType optionType;
+    [SerializeField] private string defaultValue;
+    [SerializeField] private InputField inputField;
 
     public enum OptionType
     {

@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class BlackHole : MonoBehaviour
 {
-    private ShipStats targetShip;
+    private StatsController targetShip;
     private float startDistance;
     private Vector3 scale;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        targetShip = col.gameObject.GetComponent<ShipStats>();
+        targetShip = col.gameObject.GetComponent<StatsController>();
 
-        if(targetShip.isGodMod)
+        if (targetShip.isGodMod)
         {
             GetComponent<Collider2D>().enabled = false;
             targetShip = null;

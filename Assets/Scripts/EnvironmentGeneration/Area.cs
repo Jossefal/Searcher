@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class Area : MonoBehaviour
 {
-    public Transform nextAreaSpawnPoint;
-    public AreasChooser areasChooser;
+    [SerializeField] private Transform nextAreaSpawnPoint;
+    [SerializeField] private AreasChooser areasChooser;
 
     public void SpawnNextArea()
     {
@@ -12,7 +14,7 @@ public class Area : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.CompareTag("SpawnTrigger"))
+        if (coll.CompareTag("SpawnTrigger"))
             SpawnNextArea();
     }
 }

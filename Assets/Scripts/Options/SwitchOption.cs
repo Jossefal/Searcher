@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 649
+
 public class SwitchOption : MonoBehaviour
 {
-    public string optionName;
-    public OptionType optionType;
-    public string defaultValue;
-    public string[] values;
-    public Toggle[] toggles;
+    [SerializeField] private string optionName;
+    [SerializeField] private OptionType optionType;
+    [SerializeField] private string defaultValue;
+    [SerializeField] private string[] values;
+    [SerializeField] private Toggle[] toggles;
 
     private int currentIndex;
 

@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class Shifter : MonoBehaviour
 {
-    public Vector3 rndRadius;
+    [SerializeField] private Vector3 rndRadius;
 
     private void Start()
     {

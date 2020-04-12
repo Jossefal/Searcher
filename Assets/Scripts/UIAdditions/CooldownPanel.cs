@@ -3,10 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+#pragma warning disable 649
+
 public class CooldownPanel : MonoBehaviour
 {
-    public Text text;
-    public bool isRealtime;
+    [SerializeField] private Text text;
+    [SerializeField] private bool isRealtime;
 
     [SerializeField] private UnityEvent onCooldownStart = null;
     [SerializeField] private UnityEvent onCooldownEnd = null;

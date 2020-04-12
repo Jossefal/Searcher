@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 [CreateAssetMenu(fileName = "NewAreasChooser", menuName = "AreasChooser")]
 public class AreasChooser : ScriptableObject
 {
@@ -16,16 +18,6 @@ public class AreasChooser : ScriptableObject
     public ChooseType chooseType;
 
     [Space]
-    [Header("Battery areas")]
-    public bool spawnBatteries = true;
-    public GameObject[] batteryAreas;
-    // [Range(0f, 1f)] public float batterySpawnChance;
-    public int minAreasBetweenBatteries;
-    public int maxAreasBetweenBatteries;
-
-    private int areasLeftToBattery;
-
-    [Space]
     [Header("Spaceman areas")]
     public bool spawnSpacemans = true;
     public GameObject[] spacemanAreas;
@@ -37,9 +29,6 @@ public class AreasChooser : ScriptableObject
     public void RestartCounters()
     {
         areasLeftToSpaceman = Random.Range(minAreasBetweenSpacemans, maxAreasBetweenSpacemans);
-        areasLeftToBattery = Random.Range(minAreasBetweenBatteries, maxAreasBetweenBatteries);
-
-        // batterySpawnChance = Mathf.Clamp(PlayerPrefs.GetFloat("BatterySpawnChance", 0.1f), 0f, 1f);
     }
 
     private int ChooseIndex()
@@ -70,32 +59,13 @@ public class AreasChooser : ScriptableObject
     {
         if(spawnSpacemans && areasLeftToSpaceman <= 0)
         {
-            if(spawnBatteries)
-                areasLeftToBattery--;
-
             areasLeftToSpaceman = Random.Range(minAreasBetweenSpacemans, maxAreasBetweenSpacemans);
             return spacemanAreas[Random.Range(0, spacemanAreas.Length)];
-        }
-        // else if (spawnBatteries && Random.value < batterySpawnChance)
-        // {
-        //     areasLeftToSpaceman--;
-        //     return bonusAreas[Random.Range(0, bonusAreas.Length)];
-        // }
-        else if(spawnBatteries && areasLeftToBattery <= 0)
-        {
-            if(spawnSpacemans)
-                areasLeftToSpaceman--;
-
-            areasLeftToBattery = Random.Range(minAreasBetweenBatteries, maxAreasBetweenBatteries);
-            return batteryAreas[Random.Range(0, batteryAreas.Length)];
         }
         else
         {
             if(spawnSpacemans)
                 areasLeftToSpaceman--;
-            
-            if(spawnBatteries)
-                areasLeftToBattery--;
 
             switch (chooseType)
             {

@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+#pragma warning disable 649
+
 public class TriggerEvent : MonoBehaviour
 {
-    [SerializeField] private UTriggerEvent onTriggerEnter = null;
-    [SerializeField] private UTriggerEvent onTriggerExit = null;
+    [SerializeField] private UTriggerEvent onTriggerEnter;
+    [SerializeField] private UTriggerEvent onTriggerExit;
 
     private void OnTriggerEnter2D(Collider2D col)
     {

@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class CodeButton : MonoBehaviour
 {
-    public char symbol;
-    public SecretOpener secretOpener;
-    
+    [SerializeField] private char symbol;
+    [SerializeField] private SecretOpener secretOpener;
+
     public void EnterSymbol()
     {
         secretOpener.EnterSymbol(symbol);

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class ShipOptionsAplly : MonoBehaviour
 {
     public MovingController mc;
@@ -8,8 +10,7 @@ public class ShipOptionsAplly : MonoBehaviour
     {
         mc.maxAngle = (uint)PlayerPrefs.GetInt("MaxAngle", 45);
         mc.rotatingSpeed = PlayerPrefs.GetFloat("RotationSpeed", 0.3f);
-        
-        if(cc != null)
-            cc.maxOffsetX = PlayerPrefs.GetFloat("MaxOffset", 1f);
+
+        cc.maxOffsetX = PlayerPrefs.GetFloat("MaxOffsetXType2", 1f);
     }
 }

@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class RandomSpawner : MonoBehaviour
 {
-    public GameObject[] spawnObjects;
-    public bool withChances;
-    public float[] chances;
-    public float xRadius;
-    public float yRadius;
+    [SerializeField] private GameObject[] spawnObjects;
+    [SerializeField] private bool withChances;
+    [SerializeField] private float[] chances;
+    [SerializeField] private float xRadius;
+    [SerializeField] private float yRadius;
 
     private void Awake()
     {
-        if(withChances)
+        if (withChances)
             Sort();
     }
 
@@ -24,21 +26,25 @@ public class RandomSpawner : MonoBehaviour
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(xRadius * 2, yRadius * 2, 0));
     }
-    
+
     private int ChooseIndex()
     {
-        if(spawnObjects.Length == 1)
+        if (spawnObjects.Length == 1)
             return 0;
         float total = 0;
-        foreach(float elem in chances){
+        foreach (float elem in chances)
+        {
             total += elem;
         }
         float randomValue = Random.value * total;
-        for(int i= 0; i < chances.Length; i++){
-            if(randomValue < chances[i]){
+        for (int i = 0; i < chances.Length; i++)
+        {
+            if (randomValue < chances[i])
+            {
                 return i;
             }
-            else{
+            else
+            {
                 randomValue -= chances[i];
             }
         }
@@ -47,11 +53,11 @@ public class RandomSpawner : MonoBehaviour
 
     private void Sort()
     {
-        for(int i = 0; i < chances.Length - 1; i++)
+        for (int i = 0; i < chances.Length - 1; i++)
         {
-            for(int j = i + 1; j < chances.Length; j++)
+            for (int j = i + 1; j < chances.Length; j++)
             {
-                if(chances[i] < chances[j])
+                if (chances[i] < chances[j])
                 {
                     float tmpChance = chances[i];
                     GameObject tmpObject = spawnObjects[i];

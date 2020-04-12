@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class RotatingObject : MonoBehaviour
 {
     public enum RotatingType
@@ -8,13 +10,12 @@ public class RotatingObject : MonoBehaviour
         Transform
     }
 
-    public Vector3 speed;
-    public Vector3 rndRadius;
-    public bool isRndSpeed;
-    public bool isRndRotation;
-
-    public bool isRndDirection;
-    public RotatingType rotatingTypeSelection;
+    [SerializeField] private Vector3 speed;
+    [SerializeField] private Vector3 rndRadius;
+    [SerializeField] private bool isRndSpeed;
+    [SerializeField] private bool isRndRotation;
+    [SerializeField] private bool isRndDirection;
+    [SerializeField] private RotatingType rotatingTypeSelection;
 
     private Rigidbody2D rb;
 
@@ -22,17 +23,17 @@ public class RotatingObject : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if(isRndSpeed)
+        if (isRndSpeed)
         {
             speed.x += Random.Range(-rndRadius.x, rndRadius.x);
             speed.y += Random.Range(-rndRadius.y, rndRadius.y);
             speed.z += Random.Range(-rndRadius.z, rndRadius.z);
         }
 
-        if(isRndRotation)
+        if (isRndRotation)
             transform.rotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
 
-        if(isRndDirection)
+        if (isRndDirection)
             speed *= Random.value > 0.5f ? 1 : -1;
     }
 
@@ -56,13 +57,11 @@ public class RotatingObject : MonoBehaviour
 
     private void RotateUsingRigidbody()
     {
-        // rb.AddTorque(speed.z, ForceMode2D.Force);
         rb.angularVelocity = speed.z;
     }
 
     private void RotateUsingTransform()
-    {  
-        // transform.Rotate(speed, Space.World);
+    {
         transform.Rotate(speed * Time.fixedDeltaTime, Space.World);
     }
 }

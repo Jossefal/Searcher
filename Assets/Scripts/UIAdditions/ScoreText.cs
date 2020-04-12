@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 649
+
 public class ScoreText : MonoBehaviour
 {
     private Text text;
@@ -12,6 +14,6 @@ public class ScoreText : MonoBehaviour
 
     private void OnEnable()
     {
-        text.text = Converter.ConvertToString(PlayerPrefs.GetInt(Prefs.RECORD_PREF, (int)PlayerPrefs.GetFloat(Prefs.RECORD_PREF, 0f)));
+        text.text = Converter.ConvertToString(DataManager.record.GetValue());
     }
 }

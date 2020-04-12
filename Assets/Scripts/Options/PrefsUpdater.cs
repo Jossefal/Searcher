@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class PrefsUpdater : MonoBehaviour
 {
     public enum OptionType
@@ -17,7 +19,7 @@ public class PrefsUpdater : MonoBehaviour
         public string currentName;
     }
 
-    public UpdatedPref[] updatedPrefs;
+    [SerializeField] private UpdatedPref[] updatedPrefs;
 
     private void Awake()
     {

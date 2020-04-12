@@ -1,17 +1,22 @@
 ﻿public struct SafeInt
 {
-    private int _value;
-    private int _offset;
+    private int value;
+    private int offset;
 
     public SafeInt(int value)
     {
-        _offset = UnityEngine.Random.Range(1000, 10000);
-        _value = value + _offset;
+        this.offset = UnityEngine.Random.Range(1000, 10000);
+        this.value = value + offset;
     }
 
     public int GetValue()
     {
-        return _value - _offset;
+        return value - offset;
+    }
+
+    public override string ToString()
+    {
+        return Converter.ConvertToString(GetValue());
     }
 
     public static SafeInt operator +(SafeInt op1, SafeInt op2)

@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class MultipleSpawner : MonoBehaviour
 {
-    public GameObject spawnObject;
-    public int count;
-    public float xRadius;
-    public float yRadius;
+    [SerializeField] private GameObject spawnObject;
+    [SerializeField] private int count;
+    [SerializeField] private float xRadius;
+    [SerializeField] private float yRadius;
 
     private void Awake()
     {

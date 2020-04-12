@@ -14,18 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areas:
   - {fileID: 7504889239671408734, guid: 7febba69c219d3d4fbe3792222f68903, type: 3}
-  - {fileID: 7504889239671408734, guid: 133250c591308d341a4100001ca485a5, type: 3}
-  chances:
-  - 80
-  - 20
-  chooseType: 0
-  spawnBatteries: 1
-  batteryAreas:
-  - {fileID: 7504889239671408734, guid: e6a51107c1ee5e34baeff12e08a67840, type: 3}
-  minAreasBetweenBatteries: 10
-  maxAreasBetweenBatteries: 16
+  chances: []
+  chooseType: 1
   spawnSpacemans: 1
   spacemanAreas:
-  - {fileID: 7504889239671408734, guid: 3fc4f52883718814aab51f1bffccbfc1, type: 3}
+  - {fileID: 7504889239671408734, guid: 145c16486f4678e48a51662d261e0e09, type: 3}
   minAreasBetweenSpacemans: 2
   maxAreasBetweenSpacemans: 3

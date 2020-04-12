@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class CameraConstantWidth : MonoBehaviour
 {
-    public Camera cameraComponent;
-    public Vector2 defaultResolution;
+    [SerializeField] private Camera cameraComponent;
+    [SerializeField] private Vector2 defaultResolution;
 
     private float targetAspect;
 
@@ -15,5 +17,7 @@ public class CameraConstantWidth : MonoBehaviour
 
             cameraComponent.orthographicSize *= targetAspect / cameraComponent.aspect;
         }
+
+        enabled = false;
     }
 }

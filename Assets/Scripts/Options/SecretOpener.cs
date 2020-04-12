@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class SecretOpener : MonoBehaviour
 {
-    public string code;
-    public GameObject secretObject;
+    [SerializeField] private string code;
+    [SerializeField] private GameObject secretObject;
 
     private int currentSymbolIndex = 0;
 

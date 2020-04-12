@@ -2,13 +2,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+#pragma warning disable 649
+
 public class UIScroller : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
+    [SerializeField] protected UnityEvent onScrollingEnd = null;
 
     protected RectTransform rectTransform = null;
-
-    [SerializeField] protected UnityEvent onScrollingEnd = null;
 
     protected virtual void Awake()
     {
