@@ -12,10 +12,9 @@ public class StatsController : MonoBehaviour
     [SerializeField] private bool isDamagable = true;
     [SerializeField] private UnityEvent onStunStart;
     [SerializeField] private UnityEvent onStunEnd;
-    [SerializeField] private UnityEvent onGameOver;
+    [SerializeField] private UnityEvent onDeath;
 
     private float currentHp;
-    private bool isGameOver;
 
     private void Awake()
     {
@@ -33,19 +32,10 @@ public class StatsController : MonoBehaviour
             Death();
     }
 
-    public void GameOver()
-    {
-        if (isGameOver)
-            return;
-
-        isGameOver = true;
-        onGameOver.Invoke();
-    }
-
     private void Death()
     {
-        GameOver();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        onDeath.Invoke();
     }
 
     public void RestoreHP()

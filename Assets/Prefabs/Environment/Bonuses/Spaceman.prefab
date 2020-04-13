@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ada4ea937f8c824ba5d6bd5d80dde8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 30}
-  rndRadius: {x: 0, y: 0, z: 10}
+  speed: {x: 0, y: 0, z: 20}
+  rndRadius: {x: 0, y: 0, z: 20}
   isRndSpeed: 1
   isRndRotation: 1
   isRndDirection: 1

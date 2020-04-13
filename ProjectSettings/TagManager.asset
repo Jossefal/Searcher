@@ -10,11 +10,8 @@ TagManager:
   - DestroyTrigger
   - Bonus
   - Interface
-  - GManager
   - DeathPanel
-  - SkinsMenu
-  - EnergyRestorer
-  - ShipSprite
+  - Managers
   layers:
   - Default
   - TransparentFX

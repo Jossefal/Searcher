@@ -34,4 +34,10 @@ public class CooldownPanel : MonoBehaviour
         text.text = "0";
         onCooldownEnd.Invoke();
     }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+        text.text = "0";
+    }
 }

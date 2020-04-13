@@ -2,9 +2,7 @@
 
 public class Prefs
 {
-    internal const string RECORD_PREF = "Record";
-
-    internal const string SKIN_INDEX_PREF = "SkinIndex";
+    internal const string SAVE_DATA_PREF = "SAVE_DATA";
 
     public static void SetBoolPref(string name, bool value)
     {
