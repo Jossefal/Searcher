@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: AreasChooser
   m_EditorClassIdentifier: 
   areas:
-  - {fileID: 7504889239671408734, guid: 7febba69c219d3d4fbe3792222f68903, type: 3}
+  - {fileID: 7504889239671408734, guid: 3841dffdbc023b04292ba02949dbe125, type: 3}
   chances: []
   chooseType: 1
   spawnSpacemans: 1
   spacemanAreas:
-  - {fileID: 7504889239671408734, guid: 145c16486f4678e48a51662d261e0e09, type: 3}
-  minAreasBetweenSpacemans: 2
-  maxAreasBetweenSpacemans: 3
+  - {fileID: 7504889239671408734, guid: 07d6f62ccf041fc438465f55fb1f5982, type: 3}
+  minAreasBetweenSpacemans: 1
+  maxAreasBetweenSpacemans: 1

@@ -17,4 +17,10 @@ public class Area : MonoBehaviour
         if (coll.CompareTag("SpawnTrigger"))
             SpawnNextArea();
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(transform.position + new Vector3(0, 8, 0), new Vector3(9, 16, 0));
+    }
 }

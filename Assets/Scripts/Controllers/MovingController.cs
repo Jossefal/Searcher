@@ -4,12 +4,12 @@
 
 public class MovingController : MonoBehaviour
 {
-    public float speed = 8f;
-    public float rotatingSpeed = 0.3f;
-    public uint maxAngle = 45;
-
     [SerializeField] private InterfaceManager interfaceManager;
     [SerializeField] private ControlController controlController;
+
+    private const float speed = 8f;
+    private const float rotatingSpeed = 0.06f;
+    private const uint maxAngle = 45;  
 
     private Rigidbody2D rb;
     private StatsController shipStats;

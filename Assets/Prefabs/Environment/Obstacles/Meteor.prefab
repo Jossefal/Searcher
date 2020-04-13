@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6409251157244215965}
   - component: {fileID: 9022423212309751141}
   m_Layer: 12
-  m_Name: Stone-max
+  m_Name: Meteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede6ddc19108f54798691d0cd43cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 999
   deathEffect: {fileID: 195166072334390375, guid: 244113e0a82493649aad8d364369b824,
     type: 3}
   deathAfterDealingDamage: 1
@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ada4ea937f8c824ba5d6bd5d80dde8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 30}
-  rndRadius: {x: 0, y: 0, z: 10}
+  speed: {x: 0, y: 0, z: 20}
+  rndRadius: {x: 0, y: 0, z: 20}
   isRndSpeed: 1
   isRndRotation: 1
   isRndDirection: 1

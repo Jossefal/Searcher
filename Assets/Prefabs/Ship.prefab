@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 3359886654563027149}
   - component: {fileID: 5100866904108833936}
   - component: {fileID: 9041677799245956225}
-  - component: {fileID: 658579570}
   m_Layer: 9
   m_Name: Ship
   m_TagString: Ship
@@ -190,7 +189,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 1
   isDamagable: 1
-  isStunned: 0
   onStunStart:
     m_PersistentCalls:
       m_Calls:
@@ -219,10 +217,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  onGameOver:
+  onDeath:
     m_PersistentCalls:
-      m_Calls: []
-  isGodMod: 0
+      m_Calls:
+      - m_Target: {fileID: 9041677799245956225}
+        m_MethodName: SpawnDeathEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5100866904108833936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,9 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7382c22eb4c446438565eee19b1fac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  rotatingSpeed: 0.3
-  maxAngle: 45
   interfaceManager: {fileID: 0}
   controlController: {fileID: 0}
 --- !u!114 &9041677799245956225
@@ -254,20 +259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 8911352027092857193, guid: 8a168f06f5693224784e89a181e1d4f7,
     type: 3}
---- !u!114 &658579570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5100866904108833943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19db5d80ae8b0324bbc06cd6c6406015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mc: {fileID: 5100866904108833936}
-  cc: {fileID: 0}
 --- !u!1 &7475219822146783250
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 0}
+  scoreIconAnimator: {fileID: 0}
 --- !u!1 &7591309434365955011
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ray: {fileID: 4268646054140190695}
-  pullSpeed: 0.05
+  pullSpeed: 0.1
 --- !u!1001 &1952898986207198671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -583,6 +575,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShipTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 606448550849616007, guid: b4fc541582f96844481e8071c135ffdb,
+        type: 3}
+      propertyPath: m_Time
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4fc541582f96844481e8071c135ffdb, type: 3}

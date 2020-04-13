@@ -35,7 +35,7 @@ public class BlackHole : MonoBehaviour
             }
             else
             {
-                targetShip.GameOver();
+                GameObject.FindWithTag("Managers").GetComponent<GameManager>().GameOver();
                 targetShip = null;
             }
         }
