@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class Spawner : MonoBehaviour
 {
     [SerializeField] protected GameObject spawnObject;
     [SerializeField] protected Vector2 objectSize;
     [SerializeField] protected Vector2 range;
+    [SerializeField] private bool spawnOnStart;
 
     private void Start()
     {
-        Spawn();
+        if(spawnOnStart)
+            Spawn();
     }
 
     public virtual void Spawn()

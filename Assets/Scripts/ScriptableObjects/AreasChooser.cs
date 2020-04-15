@@ -18,17 +18,34 @@ public class AreasChooser : ScriptableObject
     public ChooseType chooseType;
 
     [Space]
-    [Header("Spaceman areas")]
+    [Header("Spacemans")]
     public bool spawnSpacemans = true;
-    public GameObject[] spacemanAreas;
-    public int minAreasBetweenSpacemans;
-    public int maxAreasBetweenSpacemans;
+    public uint minAreasBetweenSpacemans;
+    public uint maxAreasBetweenSpacemans;
+    public bool nextAreaIsSpaceman
+    {
+        get
+        {
+            if (spawnSpacemans && areasLeftToSpaceman == 0)
+            {
+                RestartCounters();
+                return true;
+            }
+            else if(spawnSpacemans)
+            {
+                areasLeftToSpaceman--;
+                return false;
+            }
+            else
+                return false;
+        }
+    }
 
     private int areasLeftToSpaceman;
 
     public void RestartCounters()
     {
-        areasLeftToSpaceman = Random.Range(minAreasBetweenSpacemans, maxAreasBetweenSpacemans);
+        areasLeftToSpaceman = Random.Range((int)minAreasBetweenSpacemans, (int)maxAreasBetweenSpacemans + 1);
     }
 
     private int ChooseIndex()
@@ -57,25 +74,14 @@ public class AreasChooser : ScriptableObject
 
     public GameObject GetArea()
     {
-        if(spawnSpacemans && areasLeftToSpaceman <= 0)
+        switch (chooseType)
         {
-            areasLeftToSpaceman = Random.Range(minAreasBetweenSpacemans, maxAreasBetweenSpacemans);
-            return spacemanAreas[Random.Range(0, spacemanAreas.Length)];
-        }
-        else
-        {
-            if(spawnSpacemans)
-                areasLeftToSpaceman--;
-
-            switch (chooseType)
-            {
-                case ChooseType.withChances:
-                    return areas[ChooseIndex()];
-                case ChooseType.random:
-                    return areas[Random.Range(0, areas.Length)];
-                default:
-                    return null;
-            }
+            case ChooseType.withChances:
+                return areas[ChooseIndex()];
+            case ChooseType.random:
+                return areas[Random.Range(0, areas.Length)];
+            default:
+                return null;
         }
     }
 }

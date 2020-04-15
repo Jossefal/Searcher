@@ -13,11 +13,22 @@ MonoBehaviour:
   m_Name: AreasChooser
   m_EditorClassIdentifier: 
   areas:
-  - {fileID: 7504889239671408734, guid: 3841dffdbc023b04292ba02949dbe125, type: 3}
+  - {fileID: 7504889239671408734, guid: 42722840ea525da49b2c5185ae4dbb2a, type: 3}
+  - {fileID: 7504889239671408734, guid: 423face93220218459996b0e39d638bf, type: 3}
+  - {fileID: 7504889239671408734, guid: e7a0bf8ccc05d9c438ae9ec950451772, type: 3}
+  - {fileID: 7504889239671408734, guid: 93e940c5fb8d91841baf2252548ef534, type: 3}
+  - {fileID: 7504889239671408734, guid: e38547e8dc0a4da4fa67640c6b86f4b4, type: 3}
+  - {fileID: 7504889239671408734, guid: 2ab75fc6544a08348ae9a64d11a6891e, type: 3}
+  - {fileID: 7504889239671408734, guid: c67c1e57c72d66a48bc1deeb85f3ea72, type: 3}
+  - {fileID: 7504889239671408734, guid: 25ca0aa7f89087044bf747f879e6a86d, type: 3}
+  - {fileID: 7504889239671408734, guid: 387f75ab7d69bee42ba628975b5fb960, type: 3}
+  - {fileID: 7504889239671408734, guid: 2650a328260223645bf170a986a60723, type: 3}
+  - {fileID: 7504889239671408734, guid: 9a005ab4bc336224783323034d95b126, type: 3}
+  - {fileID: 7504889239671408734, guid: ff9abfd383578b540a6145891101538e, type: 3}
+  - {fileID: 7504889239671408734, guid: 9f737d1d6f1303143967d128b6a0c393, type: 3}
+  - {fileID: 7504889239671408734, guid: 6a64babd27df644439b68c50b50ef4f9, type: 3}
   chances: []
   chooseType: 1
   spawnSpacemans: 1
-  spacemanAreas:
-  - {fileID: 7504889239671408734, guid: 07d6f62ccf041fc438465f55fb1f5982, type: 3}
   minAreasBetweenSpacemans: 1
-  maxAreasBetweenSpacemans: 1
+  maxAreasBetweenSpacemans: 2

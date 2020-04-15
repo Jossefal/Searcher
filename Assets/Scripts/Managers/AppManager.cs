@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class AppManager : MonoBehaviour
 {
+    public static bool isPaused { get; private set; }
+
     [SerializeField] private UnityEvent onApplicationPause;
 
     private void Awake()
@@ -15,17 +17,25 @@ public class AppManager : MonoBehaviour
 
     public static void Pause()
     {
-        Time.timeScale = 0f;
-    } 
+        if(!isPaused)
+        {
+            Time.timeScale = 0f;
+            isPaused = true;
+        }      
+    }
 
     public static void Play()
     {
-        Time.timeScale = 1f;
-    } 
+        if(isPaused)
+        {
+            Time.timeScale = 1f;
+            isPaused = false;
+        }  
+    }
 
     private void OnApplicationPause(bool pauseStatus)
     {
-        if(pauseStatus)
-            onApplicationPause.Invoke();
+        if (pauseStatus && !isPaused)
+            onApplicationPause.Invoke();    
     }
 }

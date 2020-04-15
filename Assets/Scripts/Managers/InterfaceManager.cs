@@ -7,8 +7,6 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private ScrollObject pausePanel;
     [SerializeField] private GameObject[] hiddenObjects;
 
-    private int openMenusCount;
-
     public void Pause()
     {
         AppManager.Pause();
@@ -17,22 +15,6 @@ public class InterfaceManager : MonoBehaviour
     public void Play()
     {
         AppManager.Play();
-    }
-
-    public void IncreaseOpenedMenusCount()
-    {
-        openMenusCount++;
-    }
-
-    public void DecreaseOpenedMenusCount()
-    {
-        if (openMenusCount > 0)
-            openMenusCount--;
-    }
-
-    public bool GetOpenMenusStatus()
-    {
-        return openMenusCount != 0;
     }
 
     public void HideObjects()

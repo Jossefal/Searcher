@@ -43,4 +43,14 @@ public class Magnet : MonoBehaviour
 
         ray.SetActive(false);
     }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        
+        if(target != null)
+            Destroy(target.gameObject);
+        
+        ray.SetActive(false);
+    }
 }

@@ -6,10 +6,18 @@ public class Area : MonoBehaviour
 {
     [SerializeField] private Transform nextAreaSpawnPoint;
     [SerializeField] private AreasChooser areasChooser;
+    [SerializeField] private Spawner spacemanSpawner;
+
+    private void Start()
+    {
+        if(areasChooser.nextAreaIsSpaceman)
+            spacemanSpawner.Spawn();
+    }
 
     public void SpawnNextArea()
     {
-        Instantiate(areasChooser.GetArea(), nextAreaSpawnPoint.position, nextAreaSpawnPoint.rotation);
+        GameObject nextArea = areasChooser.GetArea();
+        Instantiate(nextArea, nextAreaSpawnPoint.position, nextArea.transform.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -21,6 +29,6 @@ public class Area : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + new Vector3(0, 8, 0), new Vector3(9, 16, 0));
+        Gizmos.DrawWireCube(transform.position + new Vector3(0, 8, 0), new Vector3(9, 100, 0));
     }
 }
