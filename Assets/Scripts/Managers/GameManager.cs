@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     public void RespawnShip()
     {
         Camera camera = Camera.main;
-        Vector2 box = new Vector2(camera.orthographicSize * camera.aspect * 2f, camera.orthographicSize * 2f);
+        Vector2 box = new Vector2(camera.orthographicSize * camera.aspect * 2f, 16f);
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(camera.transform.position, box, 0f, obstacleLayers);
 
         foreach (Collider2D item in collider2Ds)
         {
-            Destroy(item.gameObject);
+            item.GetComponent<Obstacle>().Kill();
         }
 
         ship.SetActive(true);

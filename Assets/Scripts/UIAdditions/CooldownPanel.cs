@@ -1,29 +1,24 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 
 #pragma warning disable 649
 
-public class CooldownPanel : MonoBehaviour
+public class CooldownPanel : Cooldown
 {
     [SerializeField] private Text text;
-    [SerializeField] private bool isRealtime;
 
-    [SerializeField] private UnityEvent onCooldownStart = null;
-    [SerializeField] private UnityEvent onCooldownEnd = null;
-
-    public void Open(int seconds)
+    public override void StartCooldown(float time)
     {
         onCooldownStart.Invoke();
-        StartCoroutine(Cooldown(seconds));
+        StartCoroutine(Cooldown((int)time));
     }
 
-    private IEnumerator Cooldown(int seconds)
+    private IEnumerator Cooldown(float seconds)
     {
         for( ; seconds > 0; seconds--)
         {
-            text.text = Converter.ConvertToString(seconds);
+            text.text = Converter.ConvertToString((int)seconds);
 
             if(isRealtime)
                 yield return new WaitForSecondsRealtime(1f);
@@ -35,7 +30,7 @@ public class CooldownPanel : MonoBehaviour
         onCooldownEnd.Invoke();
     }
 
-    public void Stop()
+    public override void StopCooldown()
     {
         StopAllCoroutines();
         text.text = "0";

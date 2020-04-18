@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 #pragma warning disable 649
 
@@ -6,25 +7,29 @@ public class MovingController : MonoBehaviour
 {
     [SerializeField] private InterfaceManager interfaceManager;
     [SerializeField] private ControlController controlController;
+    [SerializeField] private float startSpeed = 6f;
+    [SerializeField] private float speedIncrease = 4f;
+    [SerializeField] private float timeToIncrease = 20f;
+    [SerializeField] private float increaseTime = 60f;
+    [SerializeField] private AnimationCurve increaseCurve;
 
-    private float speed = 8f;
-    private float rotationSpeed = 0.06f;
-    private float maxAngle = 45;  
+    private float speed = 9f;
+    private const float rotationSpeed = 0.09f;
+    private const float maxAngle = 45;  
 
     private Rigidbody2D rb;
     private StatsController shipStats;
 
     private void Awake()
     {
-        speed = PlayerPrefs.GetFloat("Speed", 8f);
-        rotationSpeed = PlayerPrefs.GetFloat("RotationSpeed", 0.06f);
-        maxAngle = PlayerPrefs.GetFloat("MaxAngle", 45f);
-
-        float scale = PlayerPrefs.GetFloat("ShipScale", 1f);
-        transform.localScale = new Vector3(scale, scale, scale);
-
         rb = GetComponent<Rigidbody2D>();
         shipStats = GetComponent<StatsController>();
+    }
+
+    private void Start()
+    {
+        speed = startSpeed;
+        StartCoroutine(SpeedControl());
     }
 
     private void Update()
@@ -39,5 +44,19 @@ public class MovingController : MonoBehaviour
             rb.velocity = transform.up * speed;
         else
             rb.velocity = Vector2.zero;
+    }
+
+    private IEnumerator SpeedControl()
+    {
+        yield return new WaitForSeconds(timeToIncrease);
+
+        float startIncreaseTime = Time.time;
+
+        while (speed != startSpeed + speedIncrease)
+        {
+            speed = startSpeed + increaseCurve.Evaluate((Time.time - startIncreaseTime) / increaseTime) * speedIncrease;
+
+            yield return null;
+        }
     }
 }

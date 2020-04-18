@@ -24,7 +24,7 @@ public static class DataManager
         else
         {
             record = new SafeInt(0);
-            keyCount = new SafeInt(0);
+            keyCount = new SafeInt(150);
         }
     }
 }

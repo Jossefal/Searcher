@@ -24,4 +24,9 @@ public class Obstacle : MonoBehaviour
         Instantiate(deathEffect, transform.position, deathEffect.transform.rotation);
         gameObject.SetActive(false);
     }
+
+    public void Kill()
+    {
+        Death();
+    }
 }

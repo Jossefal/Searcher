@@ -11,6 +11,7 @@ public class AppManager : MonoBehaviour
 
     private void Awake()
     {
+        isPaused = false;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         DataManager.Load();
     }

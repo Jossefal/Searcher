@@ -5,16 +5,21 @@ using UnityEngine.UI;
 
 public class KeyPanel : MonoBehaviour
 {
-    [SerializeField] private int seconds = 5;
+    [SerializeField] private float time = 5f;
     [SerializeField] private Text keyCountText;
-    [SerializeField] CooldownPanel cooldownPanel;
-    [SerializeField] StatsController shipStats;
-    [SerializeField] GameManager gameManager;
+    [SerializeField] private Button useKeyBtn;
+    [SerializeField] private Cooldown cooldown;
+    [SerializeField] private GameManager gameManager;
 
     public void Open()
     {
+        int keyCount = DataManager.keyCount.GetValue();
+        keyCountText.text = Converter.ConvertToString(DataManager.keyCount.GetValue());
+        if (keyCount == 0)
+            useKeyBtn.interactable = false;
+
         gameObject.SetActive(true);
-        cooldownPanel?.Open(seconds);
+        cooldown?.StartCooldown(time);
     }
 
     public void Close()
@@ -23,10 +28,19 @@ public class KeyPanel : MonoBehaviour
         gameManager.GameOver();
     }
 
+    public void UseKey()
+    {
+        if (DataManager.keyCount.GetValue() > 0)
+        {
+            DataManager.keyCount--;
+            Respawn();
+        }
+    }
+
     public void Respawn()
     {
         gameObject.SetActive(false);
-        cooldownPanel.Stop();
+        cooldown?.StopCooldown();
         gameManager.RespawnShip();
     }
 }

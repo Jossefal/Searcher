@@ -36,7 +36,7 @@
 
     public static SafeInt operator --(SafeInt op1)
     {
-        return new SafeInt(op1.GetValue() + 1);
+        return new SafeInt(op1.GetValue() - 1);
     }
 
     public static bool operator >(SafeInt op1, SafeInt op2)
