@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class RespawnPanel : MonoBehaviour
 {
     [SerializeField] private float time = 5f;
+    [SerializeField] private int livesCost = 1;
+    [SerializeField] private int costMultiplier = 2;
+    [SerializeField] private Text livesCostText;
     [SerializeField] private Text livesCountText;
     [SerializeField] private Button useLifeBtn;
     [SerializeField] private Cooldown cooldown;
@@ -13,9 +16,10 @@ public class RespawnPanel : MonoBehaviour
 
     public void Open()
     {
-        int keyCount = DataManager.livesCount.GetValue();
-        livesCountText.text = Converter.ConvertToString(keyCount);
-        if (keyCount == 0)
+        int livesCount = DataManager.livesCount.GetValue();
+        livesCountText.text = Converter.ConvertToString(livesCount);
+        livesCostText.text = Converter.ConvertToString(livesCost);
+        if (livesCount < livesCost)
             useLifeBtn.interactable = false;
 
         gameObject.SetActive(true);
@@ -30,9 +34,10 @@ public class RespawnPanel : MonoBehaviour
 
     public void UseLife()
     {
-        if (DataManager.livesCount.GetValue() > 0)
+        if (DataManager.livesCount.GetValue() >= livesCost)
         {
-            DataManager.livesCount--;
+            DataManager.livesCount = new SafeInt(DataManager.livesCount.GetValue() - livesCost);
+            livesCost *= costMultiplier;
             Respawn();
         }
     }
