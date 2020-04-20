@@ -39,4 +39,9 @@ public class AppManager : MonoBehaviour
         if (pauseStatus && !isPaused)
             onApplicationPause.Invoke();    
     }
+
+    private void OnDestroy()
+    {
+        DataManager.Save();
+    }
 }

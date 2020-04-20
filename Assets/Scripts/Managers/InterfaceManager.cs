@@ -4,8 +4,10 @@
 
 public class InterfaceManager : MonoBehaviour
 {
-    [SerializeField] private ScrollObject pausePanel;
     [SerializeField] private GameObject[] hiddenObjects;
+    [SerializeField] private GameObject ship;
+    [SerializeField] private ScrollObject pausePanel;
+    [SerializeField] private Animator pauseFadePanel;
 
     public void Pause()
     {
@@ -15,6 +17,16 @@ public class InterfaceManager : MonoBehaviour
     public void Play()
     {
         AppManager.Play();
+    }
+
+    public void OpenPausePanel()
+    {
+        if(ship.activeSelf)
+        {
+            AppManager.Pause();
+            pausePanel.OpenDircetly();
+            pauseFadePanel.SetTrigger("toOpaque");
+        }
     }
 
     public void HideObjects()

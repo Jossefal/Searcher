@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-#pragma warning disable 649
-
-public class ScoreText : MonoBehaviour
+public class LivesText : MonoBehaviour
 {
     private Text text;
 
@@ -19,6 +17,6 @@ public class ScoreText : MonoBehaviour
 
     public void Show()
     {
-        text.text = Converter.ConvertToString(DataManager.record.GetValue());
+        text.text = Converter.ConvertToString(DataManager.livesCount.GetValue());
     }
 }

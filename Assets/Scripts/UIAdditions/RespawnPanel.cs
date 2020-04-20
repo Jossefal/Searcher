@@ -3,20 +3,20 @@ using UnityEngine.UI;
 
 #pragma warning disable 649
 
-public class KeyPanel : MonoBehaviour
+public class RespawnPanel : MonoBehaviour
 {
     [SerializeField] private float time = 5f;
-    [SerializeField] private Text keyCountText;
-    [SerializeField] private Button useKeyBtn;
+    [SerializeField] private Text livesCountText;
+    [SerializeField] private Button useLifeBtn;
     [SerializeField] private Cooldown cooldown;
     [SerializeField] private GameManager gameManager;
 
     public void Open()
     {
-        int keyCount = DataManager.keyCount.GetValue();
-        keyCountText.text = Converter.ConvertToString(DataManager.keyCount.GetValue());
+        int keyCount = DataManager.livesCount.GetValue();
+        livesCountText.text = Converter.ConvertToString(keyCount);
         if (keyCount == 0)
-            useKeyBtn.interactable = false;
+            useLifeBtn.interactable = false;
 
         gameObject.SetActive(true);
         cooldown?.StartCooldown(time);
@@ -28,11 +28,11 @@ public class KeyPanel : MonoBehaviour
         gameManager.GameOver();
     }
 
-    public void UseKey()
+    public void UseLife()
     {
-        if (DataManager.keyCount.GetValue() > 0)
+        if (DataManager.livesCount.GetValue() > 0)
         {
-            DataManager.keyCount--;
+            DataManager.livesCount--;
             Respawn();
         }
     }

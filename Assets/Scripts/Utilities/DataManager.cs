@@ -3,11 +3,11 @@
 public static class DataManager
 {
     internal static SafeInt record;
-    internal static SafeInt keyCount;
+    internal static SafeInt livesCount;
 
     public static void Save()
     {
-        SaveData saveData = new SaveData(record.GetValue(), keyCount.GetValue());
+        SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue());
 
         SafePrefs.Save(Prefs.SAVE_DATA_PREF, JsonUtility.ToJson(saveData));
     }
@@ -19,12 +19,12 @@ public static class DataManager
         if(saveData != null)
         {
             record = new SafeInt(saveData.record);
-            keyCount = new SafeInt(saveData.keyCount);
+            livesCount = new SafeInt(saveData.livesCount);
         }
         else
         {
             record = new SafeInt(0);
-            keyCount = new SafeInt(150);
+            livesCount = new SafeInt(150);
         }
     }
 }
