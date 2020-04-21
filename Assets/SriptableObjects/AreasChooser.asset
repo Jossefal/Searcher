@@ -27,6 +27,9 @@ MonoBehaviour:
   - {fileID: 7504889239671408734, guid: ff9abfd383578b540a6145891101538e, type: 3}
   - {fileID: 7504889239671408734, guid: 9f737d1d6f1303143967d128b6a0c393, type: 3}
   - {fileID: 7504889239671408734, guid: 6a64babd27df644439b68c50b50ef4f9, type: 3}
+  - {fileID: 7504889239671408734, guid: d7849cda0b00ccb48be70a5c60069b91, type: 3}
+  - {fileID: 7504889239671408734, guid: 465a98062c588e84686d0637aa557655, type: 3}
+  - {fileID: 7504889239671408734, guid: 725208dadee21e04285a38da7429dc29, type: 3}
   chances: []
   chooseType: 1
   spawnSpacemans: 1
