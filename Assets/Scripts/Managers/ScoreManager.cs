@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
         if (safeCurrentScore > DataManager.record)
         {
             DataManager.record = safeCurrentScore;
-            DataManager.Save();
+            DataManager.LocalSave();
         }
     }
 }

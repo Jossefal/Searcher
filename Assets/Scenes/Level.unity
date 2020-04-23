@@ -765,7 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ship: {fileID: 658579569}
   startSpeed: 7
-  speedIncrease: 1.5
+  speedIncrease: 1
   timeToIncrease: 5
   increaseTime: 35
   increaseCurve:
