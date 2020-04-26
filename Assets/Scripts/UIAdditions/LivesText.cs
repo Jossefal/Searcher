@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 649
+
 public class LivesText : MonoBehaviour
 {
-    private Text text;
-
-    private void Awake()
-    {
-        text = GetComponent<Text>();
-    }
+    [SerializeField] private Text text;
 
     private void OnEnable()
     {

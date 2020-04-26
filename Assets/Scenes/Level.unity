@@ -723,6 +723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce68512c365cd749b9bb58947a08b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  livesText: {fileID: 0}
   onApplicationPause:
     m_PersistentCalls:
       m_Calls:
@@ -1229,6 +1231,11 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 75347482}
+    - target: {fileID: 5065609455899413889, guid: 1a6c2410418ceeb42adb3296b79d2c5e,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 5065609456623368200}
     - target: {fileID: 5065609456339938304, guid: 1a6c2410418ceeb42adb3296b79d2c5e,
         type: 3}
       propertyPath: ship
@@ -1393,5 +1400,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 299893c47008a9b4cb3469fff8c3ece0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5065609456623368200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5065609455899413888, guid: 1a6c2410418ceeb42adb3296b79d2c5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5065609456623368197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

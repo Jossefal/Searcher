@@ -1741,6 +1741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce68512c365cd749b9bb58947a08b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 5300349910018775209}
+  livesText: {fileID: 1650758438}
   onApplicationPause:
     m_PersistentCalls:
       m_Calls: []
@@ -2177,6 +2179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad41f2cf3f0ce784a95626a550deaf73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 1650758439}
 --- !u!114 &1650758439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2807,6 +2810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299893c47008a9b4cb3469fff8c3ece0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 5300349910018775208}
 --- !u!222 &5300349910018775211
 CanvasRenderer:
   m_ObjectHideFlags: 0

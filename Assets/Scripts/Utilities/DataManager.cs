@@ -15,6 +15,8 @@ public static class DataManager
         }
     }
 
+    internal static bool isDataLoaded { get; private set; }
+
     internal static void LocalSave()
     {
         SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue());
@@ -24,30 +26,40 @@ public static class DataManager
 
     internal static void LocalLoad()
     {
-        SaveData saveData = JsonUtility.FromJson<SaveData>(SafePrefs.Load(Prefs.SAVE_DATA_PREF));
-
-        if (saveData != null)
+        if (PlayerPrefs.HasKey(Prefs.SAVE_DATA_PREF))
         {
-            record = new SafeInt(saveData.record);
-            livesCount = new SafeInt(saveData.livesCount);
+            SaveData saveData = JsonUtility.FromJson<SaveData>(SafePrefs.Load(Prefs.SAVE_DATA_PREF));
+
+            if (saveData != null)
+            {
+                record = new SafeInt(saveData.record);
+                livesCount = new SafeInt(saveData.livesCount);
+            }
+            else
+                LoadDefaultData();
         }
         else
-        {
-            record = new SafeInt(0);
-            livesCount = new SafeInt(150);
-        }
+            LoadDefaultData();
+
+        isDataLoaded = true;
+    }
+
+    private static void LoadDefaultData()
+    {
+        record = new SafeInt(0);
+        livesCount = new SafeInt(150);
     }
 
     internal static void CloudSave()
     {
         SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue());
 
-        GPGSManager.WriteSaveData(Encoding.UTF8.GetBytes(JsonUtility.ToJson(saveData)));
+        GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(JsonUtility.ToJson(saveData)));
     }
 
     internal static void CloudLoad(Action onDataLoaded)
     {
-        GPGSManager.ReadSaveData(GPGSManager.DEFAULT_SAVE_NAME, (status, data) =>
+        GPGSManager.ReadSaveData(GPGSManager.SAVE_FILE_NAME, (status, data) =>
         {
             if (status == GooglePlayGames.BasicApi.SavedGame.SavedGameRequestStatus.Success && data.Length > 0)
             {
@@ -56,11 +68,9 @@ public static class DataManager
                 livesCount = new SafeInt(saveData.livesCount);
             }
             else
-            {
-                record = new SafeInt(0);
-                livesCount = new SafeInt(150);
-            }
+                LoadDefaultData();
 
+            isDataLoaded = true;
             onDataLoaded.Invoke();
         });
     }
@@ -71,6 +81,6 @@ public static class DataManager
         string stringSaveData = JsonUtility.ToJson(saveData);
 
         SafePrefs.Save(Prefs.SAVE_DATA_PREF, stringSaveData);
-        GPGSManager.WriteSaveData(Encoding.UTF8.GetBytes(stringSaveData));
+        GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(stringSaveData));
     }
 }

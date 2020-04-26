@@ -10,12 +10,12 @@ public static class GPGSManager
     {
         get
         {
-            if(PlayGamesPlatform.Instance != null) return PlayGamesPlatform.Instance.IsAuthenticated();
+            if (PlayGamesPlatform.Instance != null) return PlayGamesPlatform.Instance.IsAuthenticated();
             return false;
         }
     }
 
-    public const string DEFAULT_SAVE_NAME = "Save";
+    public const string SAVE_FILE_NAME = "Save";
 
     private static ISavedGameClient savedGameClient;
     private static ISavedGameMetadata currentSavedGameMetadata;
@@ -32,14 +32,19 @@ public static class GPGSManager
     {
         Social.localUser.Authenticate((success =>
         {
-            if(success) savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+            if (success) savedGameClient = PlayGamesPlatform.Instance.SavedGame;
             onAuth(success);
         }));
     }
 
+    public static void OpenSaveData()
+    {
+        OpenSaveData(SAVE_FILE_NAME, (status, metadata) => currentSavedGameMetadata = metadata);
+    }
+
     private static void OpenSaveData(string fileName, Action<SavedGameRequestStatus, ISavedGameMetadata> onDataOpen)
     {
-        if(!isAuthenticated)
+        if (!isAuthenticated)
         {
             onDataOpen(SavedGameRequestStatus.AuthenticationError, null);
             return;
@@ -50,47 +55,28 @@ public static class GPGSManager
 
     public static void ReadSaveData(string fileName, Action<SavedGameRequestStatus, byte[]> onDataRead)
     {
-        if(!isAuthenticated)
+        if (!isAuthenticated)
         {
             onDataRead(SavedGameRequestStatus.AuthenticationError, null);
             return;
         }
 
-        OpenSaveData(fileName, (status, metadata) => 
+        OpenSaveData(fileName, (status, metadata) =>
         {
-            if(status == SavedGameRequestStatus.Success)
+            if (status == SavedGameRequestStatus.Success)
             {
                 savedGameClient.ReadBinaryData(metadata, onDataRead);
-                currentSavedGameMetadata = metadata;
             }
         });
     }
 
-    public static void WriteSaveData(byte[] data)
+    public static void WriteSaveData(string fileName, byte[] data)
     {
-        if(!isAuthenticated || data == null || data.Length != 0)
+        if (!isAuthenticated || data == null || data.Length == 0)
             return;
 
-        Action onDataWrite = () =>
-        {
-            SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
-            SavedGameMetadataUpdate updatedMetadata = builder.Build();
-            savedGameClient.CommitUpdate(currentSavedGameMetadata, updatedMetadata, data, (SavedGameRequestStatus, metadata) => currentSavedGameMetadata = metadata);
-        };
-
-        if(currentSavedGameMetadata == null)
-        {
-            OpenSaveData(DEFAULT_SAVE_NAME, (status, metadata) => 
-            {
-                Debug.Log("Cloud data write status: " + status);
-                if(status == SavedGameRequestStatus.Success)
-                {
-                    currentSavedGameMetadata = metadata;
-                    onDataWrite();
-                }
-            });
-        }
-
-        onDataWrite();
+        SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
+        SavedGameMetadataUpdate updatedMetadata = builder.Build();
+        savedGameClient.CommitUpdate(currentSavedGameMetadata, updatedMetadata, data, (status, metadata) => Debug.Log("Commit saved game request status: " + status));
     }
 }

@@ -28,9 +28,6 @@ public class ScoreManager : MonoBehaviour
     public void SendScore()
     {
         if (safeCurrentScore > DataManager.record)
-        {
             DataManager.record = safeCurrentScore;
-            DataManager.LocalSave();
-        }
     }
 }

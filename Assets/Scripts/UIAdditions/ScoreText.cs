@@ -5,12 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreText : MonoBehaviour
 {
-    private Text text;
-
-    private void Awake()
-    {
-        text = GetComponent<Text>();
-    }
+    [SerializeField] private Text text;
 
     private void OnEnable()
     {
