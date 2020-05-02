@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class DataManager
 {
@@ -16,7 +17,7 @@ public static class DataManager
     }
 
     internal static bool isDataLoaded { get; private set; }
-
+    
     internal static void LocalSave()
     {
         SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue());
@@ -57,7 +58,7 @@ public static class DataManager
         GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(JsonUtility.ToJson(saveData)));
     }
 
-    internal static void CloudLoad(Action onDataLoaded)
+    internal static void CloudLoad(Action<bool> onDataLoaded)
     {
         GPGSManager.ReadSaveData(GPGSManager.SAVE_FILE_NAME, (status, data) =>
         {
@@ -71,7 +72,7 @@ public static class DataManager
                 LoadDefaultData();
 
             isDataLoaded = true;
-            onDataLoaded.Invoke();
+            onDataLoaded.Invoke(data.Length > 0);
         });
     }
 

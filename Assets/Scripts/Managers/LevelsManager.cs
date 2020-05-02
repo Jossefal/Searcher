@@ -7,19 +7,19 @@ public class LevelsManager : MonoBehaviour
 {
     public void LoadLevel()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        AppManager.Play();
+        SceneManager.LoadScene(2);
     }
 
     public void LoadLevel(string levelName)
     {
-        Time.timeScale = 1f;
+        AppManager.Play();
         SceneManager.LoadScene(levelName);
     }
 
     public void LoadStartMenu()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        AppManager.Play();
+        SceneManager.LoadScene(1);
     }
 }

@@ -28,6 +28,11 @@ public class ScoreManager : MonoBehaviour
     public void SendScore()
     {
         if (safeCurrentScore > DataManager.record)
+        {
             DataManager.record = safeCurrentScore;
+
+            if(GPGSManager.isAuthenticated)
+                GPGSManager.ReportScore(safeCurrentScore.GetValue());
+        }
     }
 }

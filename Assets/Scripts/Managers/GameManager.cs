@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
     {
         scoreManager.SendScore();
         interfaceManager.HideObjects();
+        deathPanel.gameObject.SetActive(true);
         deathPanel.Open();
     }
 

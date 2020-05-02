@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-public class Prefs
+internal class Prefs
 {
-    internal const string SAVE_DATA_PREF = "SAVE_DATA";
+    public const string SAVE_DATA_PREF = "SAVE_DATA";
+    public const string FIRST_GPG_AUTH_CHECK_PREF = "FIRST_GPG_AUTH_CHECK";
 
     public static void SetBoolPref(string name, bool value)
     {

@@ -8,6 +8,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private GameObject ship;
     [SerializeField] private ScrollObject pausePanel;
     [SerializeField] private Animator pauseFadePanel;
+    [SerializeField] private Animator scoreText;
 
     public void Pause()
     {
@@ -26,6 +27,7 @@ public class InterfaceManager : MonoBehaviour
             AppManager.Pause();
             pausePanel.OpenDircetly();
             pauseFadePanel.SetTrigger("toOpaque");
+            scoreText.SetTrigger("toWhite");
         }
     }
 

@@ -1836,7 +1836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: -0.000000019299819, y: 0.5}
 --- !u!222 &5065609455899413891
@@ -1910,7 +1910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5065609456331776672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2003,6 +2003,17 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 3
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5065609456331776673}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -2134,6 +2145,7 @@ MonoBehaviour:
   ship: {fileID: 0}
   pausePanel: {fileID: 786735810}
   pauseFadePanel: {fileID: 7341006096937704995}
+  scoreText: {fileID: 7601143482812829418}
 --- !u!1 &5065609456745382172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,7 +2165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5065609456745382175
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2267,7 +2279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22c296a12d98264aaa697f690ee2efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2000
+  speed: 2500
   onScrollingEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -2326,8 +2338,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 220, y: -135}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 209.99988, y: -135.22217}
+  m_SizeDelta: {x: 150, y: 150.44434}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5065609457192492952
 CanvasRenderer:

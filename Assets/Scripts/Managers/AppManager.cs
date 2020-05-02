@@ -20,27 +20,7 @@ public class AppManager : MonoBehaviour
 
     public void Awake()
     {
-        isPaused = false;
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
-        if(!DataManager.isDataLoaded)
-            DataManager.LocalLoad();
-
-        if (!GPGSManager.isAuthenticated)
-        {
-            GPGSManager.Initialize(false);
-            GPGSManager.Auth((success) =>
-            {
-                if (success && !DataManager.isHaveLocalSaveData)
-                    DataManager.CloudLoad(() => 
-                    {
-                        scoreText?.Show();
-                        livesText?.Show();
-                    });
-                
-                GPGSManager.OpenSaveData();
-            });
-        }
+        Play();
     }
 
     public static void Pause()
@@ -82,5 +62,20 @@ public class AppManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         DataManager.LocalAndCloudSave();
+    }
+
+    public void LogLeaderBoard()
+    {
+        GPGSManager.LogLeaderBoard();
+    }
+
+    public void ReportScore()
+    {
+        GPGSManager.ReportScore(DataManager.record.GetValue());
+    }
+
+    public void ShowLeaderBoard()
+    {
+        GPGSManager.ShowLeaderBoardUI();
     }
 }
