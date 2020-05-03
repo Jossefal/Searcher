@@ -20,45 +20,50 @@ public class LoadingManager : MonoBehaviour
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        if (!GPGSManager.isAuthenticated)
-        {
-            GPGSManager.Initialize(false);
-            GPGSManager.Auth((success) =>
-            {
-                if (success && GPGSManager.isFirstAuth)
-                {
-                    DataManager.CloudLoad((isExist) =>
-                    {
-                        GPGSManager.OpenSaveData();
+        GPGSManager.Initialize(false);
 
-                        if (isExist && DataManager.isHaveLocalSaveData)
-                        {
-                            cloudRecord = DataManager.record;
-                            cloudLives = DataManager.livesCount;
-                            cloudRecordText.text = Converter.ConvertToString(cloudRecord.GetValue());
-                            cloudLivesText.text = Converter.ConvertToString(cloudLives.GetValue());
-                            DataManager.LocalLoad();
-                            localRecordText.text = Converter.ConvertToString(DataManager.record.GetValue());
-                            localLivesText.text = Converter.ConvertToString(DataManager.livesCount.GetValue());
-                            chooseDataPanel.SetActive(true);
-                        }
-                        else if (DataManager.isHaveLocalSaveData)
-                        {
-                            DataManager.LocalLoad();
-                            SceneManager.LoadScene(1);
-                        }
-                        else
-                            SceneManager.LoadScene(1);
-                    });
-                }
-                else
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            DataManager.LocalLoad();
+            StartCoroutine(LoadStartMenu());
+            return;
+        }
+
+        GPGSManager.Auth((success) =>
+        {
+            if (success && GPGSManager.isFirstAuth)
+            {
+                DataManager.CloudLoad((isExist) =>
                 {
                     GPGSManager.OpenSaveData();
-                    DataManager.LocalLoad();
-                    StartCoroutine(LoadStartMenu());
-                }
-            });
-        }
+
+                    if (isExist && DataManager.isHaveLocalSaveData)
+                    {
+                        cloudRecord = DataManager.record;
+                        cloudLives = DataManager.livesCount;
+                        cloudRecordText.text = Converter.ConvertToString(cloudRecord.GetValue());
+                        cloudLivesText.text = Converter.ConvertToString(cloudLives.GetValue());
+                        DataManager.LocalLoad();
+                        localRecordText.text = Converter.ConvertToString(DataManager.record.GetValue());
+                        localLivesText.text = Converter.ConvertToString(DataManager.livesCount.GetValue());
+                        chooseDataPanel.SetActive(true);
+                    }
+                    else if (DataManager.isHaveLocalSaveData)
+                    {
+                        DataManager.LocalLoad();
+                        SceneManager.LoadScene(1);
+                    }
+                    else
+                        SceneManager.LoadScene(1);
+                });
+            }
+            else
+            {
+                GPGSManager.OpenSaveData();
+                DataManager.LocalLoad();
+                StartCoroutine(LoadStartMenu());
+            }
+        });
     }
 
     private IEnumerator LoadStartMenu()

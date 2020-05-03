@@ -64,17 +64,12 @@ public class AppManager : MonoBehaviour
         DataManager.LocalAndCloudSave();
     }
 
-    public void LogLeaderBoard()
-    {
-        GPGSManager.LogLeaderBoard();
-    }
-
     public void ReportScore()
     {
         GPGSManager.ReportScore(DataManager.record.GetValue());
     }
 
-    public void ShowLeaderBoard()
+    public void ShowLeaderBoardUI()
     {
         GPGSManager.ShowLeaderBoardUI();
     }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using GooglePlayGames;
@@ -103,63 +102,23 @@ public static class GPGSManager
         PlayGamesPlatform.Instance.ReportScore(score, LEADER_BOARD_ID, null);
     }
 
-    public static void LogLeaderBoard()
-    {
-        ILeaderboard lb = PlayGamesPlatform.Instance.CreateLeaderboard();
-        lb.id = LEADER_BOARD_ID;
-
-        lb.LoadScores(ok =>
-        {
-            if (ok)
-            {
-                List<string> userIds = new List<string>();
-
-                // get the user ids
-                foreach (IScore score in lb.scores)
-                {
-                    userIds.Add(score.userID);
-                }
-
-                string status = "Leaderboard loading: " + lb.title + " count = " + lb.scores.Length;
-                foreach (IScore score in lb.scores)
-                {
-                    status += "\n" + score.formattedValue + " by " + score.userID;
-                }
-                Debug.Log("UNITYENGINE.DEBUG: Leaderboard scores: " + status);
-                Console.WriteLine("SYSTEM.CONSOLE: Leaderboard scores: " + status);
-
-                // Debug.Log("UNITYENGINE.DEBUG: Start loading leaderboard");
-                // Console.WriteLine("SYSTEM.CONSOLE: Start loading leaderboard");
-                // load the profiles and display (or in this case, log)
-                // Social.LoadUsers(userIds.ToArray(), (users) =>
-                //     {
-                //         string status = "Leaderboard loading: " + lb.title + " count = " + lb.scores.Length;
-                //         foreach (IScore score in lb.scores)
-                //         {
-                //             status += "\n" + score.formattedValue + " by " + score.userID;
-                //         }
-                //         Debug.Log("UNITYENGINE.DEBUG: Success loading leaderboard: " + status);
-                //         Console.WriteLine("SYSTEM.CONSOLE: Success loading leaderboard: " + status);
-                //     });
-            }
-            else
-            {
-                Debug.Log("UNITYENGINE.DEBUG: Error retrieving leaderboard");
-                Console.WriteLine("SYSTEM.CONSOLE: Error retrieving leaderboard");
-            }
-        });
-    }
-
     public static void ShowLeaderBoardUI()
     {
         PlayGamesPlatform.Instance.ShowLeaderboardUI(LEADER_BOARD_ID);
     }
 
-    public static void LoadLeaderboardData(TimeScope timeScope, Action<LeaderboardData> onDataLoaded)
+    public static void LoadLeaderboardData(TimeScope timeScope, int maxCount, Action<LeaderboardData> onDataLoaded)
     {
+        if(!isAuthenticated)
+        {
+            onDataLoaded(null);
+            return;
+        }
+
         ILeaderboard lb = PlayGamesPlatform.Instance.CreateLeaderboard();
         lb.id = LEADER_BOARD_ID;
         lb.timeScope = timeScope;
+        lb.range = new Range(1, maxCount);
 
         lb.LoadScores(ok =>
         {

@@ -7,13 +7,25 @@ public class LeaderboardUI : MonoBehaviour
 {
     [SerializeField] private GameObject loadPanel;
     [SerializeField] private TimeScope timeScope;
+    [SerializeField] private int maxCount = 10;
     [SerializeField] private PlayerScorePanel[] playersScorePanels;
 
-    public void Open()
+    private bool isLoading;
+
+    private void OnEnable()
     {
+        Load();
+    }
+
+    public void Load()
+    {
+        if(isLoading)
+            return;
+
+        isLoading = true;
         loadPanel.SetActive(true);
 
-        GPGSManager.LoadLeaderboardData(timeScope, (leaderboardData) =>
+        GPGSManager.LoadLeaderboardData(timeScope, maxCount, (leaderboardData) =>
         {
             if(leaderboardData == null)
             {
@@ -32,6 +44,7 @@ public class LeaderboardUI : MonoBehaviour
                     playersScorePanels[i].gameObject.SetActive(false);
             }
 
+            isLoading = false;
             loadPanel.SetActive(false);
         });
     }
