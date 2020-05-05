@@ -4,11 +4,11 @@
 
 public class RandomAreaSpawner : MonoBehaviour
 {
-    [SerializeField] private AreasChooser areasChooser;
+    [SerializeField] private AreasManager areasManager;
 
-    private void Awake()
+    private void Start()
     {
-        GameObject area = areasChooser.GetArea();
-        Instantiate(area, transform.position, area.transform.rotation);
+        areasManager.GetArea().Respawn(transform.position);
+        gameObject.SetActive(false);
     }
 }

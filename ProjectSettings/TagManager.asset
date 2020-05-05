@@ -7,11 +7,11 @@ TagManager:
   - Ship
   - Asteroid
   - SpawnTrigger
-  - DestroyTrigger
   - Bonus
   - Interface
   - DeathPanel
   - Managers
+  - UnuseTrigger
   layers:
   - Default
   - TransparentFX

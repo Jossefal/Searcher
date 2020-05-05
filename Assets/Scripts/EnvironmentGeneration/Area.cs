@@ -5,30 +5,55 @@
 public class Area : MonoBehaviour
 {
     [SerializeField] private Transform nextAreaSpawnPoint;
-    [SerializeField] private AreasChooser areasChooser;
-    [SerializeField] private Spawner spacemanSpawner;
+    [SerializeField] private AreasManager areasManager;
+    [SerializeField] private GameObject[] obstacles;
+    [SerializeField] private Transform[] spacemanSpawnPoints;
+    [SerializeField] private GameObject spacemanPrefab;
 
-    private void Start()
-    {
-        if(areasChooser.nextAreaIsSpaceman)
-            spacemanSpawner.Spawn();
-    }
+    private GameObject spaceman;
 
     public void SpawnNextArea()
     {
-        GameObject nextArea = areasChooser.GetArea();
-        Instantiate(nextArea, nextAreaSpawnPoint.position, nextArea.transform.rotation);
+        Area nextArea = areasManager.GetArea();
+        nextArea.Respawn(nextAreaSpawnPoint.position);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.CompareTag("SpawnTrigger"))
             SpawnNextArea();
+        else if (coll.CompareTag("UnuseTrigger"))
+            Unuse();
     }
 
-    private void OnDrawGizmos()
+    private void OnEnable()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + new Vector3(0, 8, 0), new Vector3(9, 100, 0));
+        if (areasManager.nextAreaIsSpaceman)
+        {
+            int pointIndex = Random.Range(0, spacemanSpawnPoints.Length);
+            spaceman = Instantiate(spacemanPrefab, spacemanSpawnPoints[pointIndex].position, Quaternion.identity, transform);
+        }
+    }
+
+    public void Respawn(Vector3 pos)
+    {
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            obstacles[i].SetActive(true);
+        }
+
+        transform.position = pos;
+
+        gameObject.SetActive(true);
+    }
+
+    public void Unuse()
+    {
+        areasManager.UnuseArea(this);
+
+        if (spaceman != null)
+            Destroy(spaceman);
+
+        gameObject.SetActive(false);
     }
 }
