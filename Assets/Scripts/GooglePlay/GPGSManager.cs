@@ -109,7 +109,7 @@ public static class GPGSManager
 
     public static void LoadLeaderboardData(TimeScope timeScope, int maxCount, Action<LeaderboardData> onDataLoaded)
     {
-        if(!isAuthenticated)
+        if (!isAuthenticated)
         {
             onDataLoaded(null);
             return;
@@ -135,9 +135,9 @@ public static class GPGSManager
                 {
                     IUserProfile FindUser(string userID)
                     {
-                        for(int i = 0; i < users.Length; i++)
+                        for (int i = 0; i < users.Length; i++)
                         {
-                            if(users[i].id == userID)
+                            if (users[i].id == userID)
                                 return users[i];
                         }
                         return null;
@@ -146,9 +146,10 @@ public static class GPGSManager
                     LeaderboardData leaderboardData = new LeaderboardData();
                     leaderboardData.players = new LeaderboardData.PlayerScoreData[lb.scores.Length];
 
-                    for(int i = 0; i < lb.scores.Length; i++)
+                    for (int i = 0; i < lb.scores.Length; i++)
                     {
-                        leaderboardData.players[i].userName = FindUser(lb.scores[i].userID).userName;
+                        IUserProfile user = FindUser(lb.scores[i].userID);
+                        leaderboardData.players[i].userName = user.userName;
                         leaderboardData.players[i].score = lb.scores[i].formattedValue;
                     }
 

@@ -1,4 +1,6 @@
-﻿public class LeaderboardData
+﻿using UnityEngine;
+
+public class LeaderboardData
 {
     public struct PlayerScoreData
     {

@@ -2031,7 +2031,7 @@ GameObject:
   - component: {fileID: 5065609456339938308}
   - component: {fileID: 5065609456339938304}
   m_Layer: 5
-  m_Name: InterfaceCanvas
+  m_Name: LevelInterface
   m_TagString: Interface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

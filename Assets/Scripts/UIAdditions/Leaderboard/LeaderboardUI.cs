@@ -19,7 +19,7 @@ public class LeaderboardUI : MonoBehaviour
 
     public void Load()
     {
-        if(isLoading)
+        if (isLoading)
             return;
 
         isLoading = true;
@@ -27,17 +27,18 @@ public class LeaderboardUI : MonoBehaviour
 
         GPGSManager.LoadLeaderboardData(timeScope, maxCount, (leaderboardData) =>
         {
-            if(leaderboardData == null)
+            if (leaderboardData == null)
             {
                 loadPanel.SetActive(false);
                 return;
             }
 
-            for(int i = 0; i < playersScorePanels.Length; i++)
+            for (int i = 0; i < playersScorePanels.Length; i++)
             {
-                if(i < leaderboardData.players.Length)
+                if (i < leaderboardData.players.Length)
                 {
-                    playersScorePanels[i].score = (i + 1) + ". " + leaderboardData.players[i].userName + ": " + leaderboardData.players[i].score;
+                    playersScorePanels[i].score = leaderboardData.players[i].score;
+                    playersScorePanels[i].playerName = (i + 1) + " " + leaderboardData.players[i].userName;
                     playersScorePanels[i].gameObject.SetActive(true);
                 }
                 else

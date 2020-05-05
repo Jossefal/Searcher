@@ -17,5 +17,18 @@ public class PlayerScorePanel : MonoBehaviour
         }
     }
 
+    public string playerName
+    {
+        get
+        {
+            return playerNameText.text;
+        }
+        set
+        {
+            playerNameText.text = value;
+        }
+    }
+
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text playerNameText;
 }
