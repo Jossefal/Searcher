@@ -1186,7 +1186,6 @@ GameObject:
   - component: {fileID: 663224456}
   - component: {fileID: 663224457}
   - component: {fileID: 663224458}
-  - component: {fileID: 663224459}
   - component: {fileID: 663224455}
   - component: {fileID: 663224460}
   m_Layer: 0
@@ -1298,19 +1297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 573859740}
---- !u!114 &663224459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663224454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc743dd9502e6a142bee302e0ff432b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  areasChooser: {fileID: 11400000, guid: 06474b80f7f3d2f45b26096113cf823c, type: 2}
 --- !u!114 &663224460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2205,7 +2191,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20, y: 10}
+  m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
 --- !u!50 &1787702601
 Rigidbody2D:
