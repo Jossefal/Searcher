@@ -7,14 +7,8 @@ using UnityEngine.Events;
 public class UIScroller : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] protected UnityEvent onScrollingEnd = null;
-
-    protected RectTransform rectTransform = null;
-
-    protected virtual void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-    }
+    [SerializeField] protected UnityEvent onScrollingEnd;
+    [SerializeField] protected RectTransform rectTransform;
 
     public void ScrollTo(Vector2 targetPos)
     {

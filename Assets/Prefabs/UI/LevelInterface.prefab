@@ -759,8 +759,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c05b2a0c8f9034d43838374522c59265, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1986,6 +1986,7 @@ MonoBehaviour:
   onScrollingEnd:
     m_PersistentCalls:
       m_Calls: []
+  rectTransform: {fileID: 5065609456331776672}
   openedPos: {x: 0, y: 0}
   closedPos: {x: 1400, y: 0}
   isOpening: 0
@@ -2256,6 +2257,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8555121278088647344}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: toOpaque
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 6443190106805125184}
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2265,7 +2277,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: toOpaque
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1859457077
 MonoBehaviour:
@@ -2283,6 +2295,7 @@ MonoBehaviour:
   onScrollingEnd:
     m_PersistentCalls:
       m_Calls: []
+  rectTransform: {fileID: 5065609456745382175}
   openedPos: {x: 0, y: 0}
   closedPos: {x: 0, y: 2751}
   isOpening: 0
@@ -2516,18 +2529,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5065609457269685733}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Level
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5241873102770938723
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,7 +3350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4888457631550905949
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3394,7 +3396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c05b2a0c8f9034d43838374522c59265, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

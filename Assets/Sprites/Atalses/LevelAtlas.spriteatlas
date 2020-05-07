@@ -46,17 +46,24 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 36abcc805211c0a4b8f9d7d036b0c61e, type: 3}
     - {fileID: 2800000, guid: 0e03514f7c7b2ee4a8267f9d921f2ef7, type: 3}
     - {fileID: 2800000, guid: 2b9fc93a3a2f26841b393d3402cd07e9, type: 3}
-    totalSpriteSurfaceArea: 578080
+    - {fileID: 2800000, guid: 5e5d46932e81f164185171cd605bfee8, type: 3}
+    totalSpriteSurfaceArea: 643665
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 36abcc805211c0a4b8f9d7d036b0c61e, type: 3}
   - {fileID: 21300000, guid: 85405132dfb3a014da5821f2c42d8faf, type: 3}
+  - {fileID: -1177934027866655137, guid: 5e5d46932e81f164185171cd605bfee8, type: 3}
+  - {fileID: -6859001260349468157, guid: 5e5d46932e81f164185171cd605bfee8, type: 3}
+  - {fileID: 6326231466481203021, guid: 5e5d46932e81f164185171cd605bfee8, type: 3}
   - {fileID: 21300000, guid: 2b9fc93a3a2f26841b393d3402cd07e9, type: 3}
   - {fileID: 21300000, guid: 0e03514f7c7b2ee4a8267f9d921f2ef7, type: 3}
   m_PackedSpriteNamesToIndex:
   - ray
   - meteor
+  - stars_2
+  - stars_1
+  - stars_0
   - spaceman
   - rocket
   m_Tag: LevelAtlas

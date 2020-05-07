@@ -11,11 +11,6 @@ public class ScrollObject : UIScroller
     [SerializeField] protected UnityEvent onOpenEnd = null;
     [SerializeField] protected UnityEvent onCloseEnd = null;
 
-    protected override void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-    }
-
     public virtual void Open()
     {
         if (!isOpening)
