@@ -6,6 +6,7 @@ public class InterfaceManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] hiddenObjects;
     [SerializeField] private GameObject ship;
+    [SerializeField] private GameObject pauseBtn;
     [SerializeField] private ScrollObject pausePanel;
     [SerializeField] private Animator pauseFadePanel;
     [SerializeField] private Animator scoreText;
@@ -20,12 +21,27 @@ public class InterfaceManager : MonoBehaviour
         AppManager.Play();
     }
 
+    public void OpenPausePanelDirectly()
+    {
+        if(ship.activeSelf)
+        {
+            AppManager.Pause();
+            pausePanel.gameObject.SetActive(true);
+            pausePanel.OpenDircetly();
+            pauseBtn.SetActive(false);
+            pauseFadePanel.SetTrigger("toOpaque");
+            scoreText.SetTrigger("toWhite");
+        }
+    }
+
     public void OpenPausePanel()
     {
         if(ship.activeSelf)
         {
             AppManager.Pause();
-            pausePanel.OpenDircetly();
+            pausePanel.gameObject.SetActive(true);
+            pausePanel.Open();
+            pauseBtn.SetActive(false);
             pauseFadePanel.SetTrigger("toOpaque");
             scoreText.SetTrigger("toWhite");
         }
