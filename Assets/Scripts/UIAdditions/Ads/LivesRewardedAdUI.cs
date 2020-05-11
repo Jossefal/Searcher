@@ -68,13 +68,13 @@ public class LivesRewardedAdUI : AdUI
     {
         isLoading = false;
 
-        statusText.text = "Failed to load";
+        statusText.text = "Loading failed";
         closeBtn.SetActive(true);
     }
 
     public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
-        statusText.text = "Failed to show";
+        statusText.text = "Loading failed";
         closeBtn.SetActive(true);
     }
 

@@ -13,6 +13,7 @@ public class RespawnPanel : MonoBehaviour
     [SerializeField] private Button useLifeBtn;
     [SerializeField] private Cooldown cooldown;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private Cooldown respawnCooldown;
 
     public void Open()
     {
@@ -48,6 +49,13 @@ public class RespawnPanel : MonoBehaviour
         gameObject.SetActive(false);
         cooldown?.StopCooldown();
         gameManager.RespawnShip();
+    }
+
+    public void RespawnAfterCooldown(float time)
+    {
+        gameObject.SetActive(false);
+        cooldown?.StopCooldown();
+        respawnCooldown.StartCooldown(3f);
     }
 
     public void PauseCooldown()

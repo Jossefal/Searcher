@@ -68,19 +68,19 @@ public class RespawnRewardedAdUI : AdUI
     {
         isLoading = false;
 
-        statusText.text = "Failed to load";
+        statusText.text = "Loading failed";
         closeBtn.SetActive(true);
     }
 
     private void HandleAdFailedToShow(object sender, AdErrorEventArgs args)
     {
-        statusText.text = "Failed to show";
+        statusText.text = "Showing failed";
         closeBtn.SetActive(true);
     }
 
     private void HandleAdClosed(object sender, EventArgs args)
     {
-        statusPanel.SetActive(false);
+        Close();
         CreateAndRequestAd();
     }
 
