@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private DeathPanel deathPanel;
     [SerializeField] private InterfaceManager interfaceManager;
+    [SerializeField] private LevelIntersitialAdUI levelIntersitialAdUI;
 
     private MovingController shipMovingController;
 
@@ -77,6 +78,17 @@ public class GameManager : MonoBehaviour
         interfaceManager.HideObjects();
         deathPanel.gameObject.SetActive(true);
         deathPanel.Open();
+    }
+
+    public void Restart()
+    {
+        if(DataManager.leftToShowAd == 0 && levelIntersitialAdUI.adIsLoaded)
+        {
+            DataManager.leftToShowAd = DataManager.MAX_LEFT_TO_SHOW_AD;
+            levelIntersitialAdUI.ShowAd(LevelsManager.LoadLevelStatic);
+        }
+        else
+            LevelsManager.LoadLevelStatic();
     }
 
     public void DestroyObject(GameObject destroyingObject)

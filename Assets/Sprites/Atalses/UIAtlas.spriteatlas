@@ -57,7 +57,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: a02b83ebf49f6c146a37298ea9bcc860, type: 3}
     - {fileID: 2800000, guid: a01054f98054eed4e8cc5bc44d5bab75, type: 3}
     - {fileID: 2800000, guid: afaff207f1d87514f8c24ae2d47fa3d3, type: 3}
-    totalSpriteSurfaceArea: 986880
+    - {fileID: 2800000, guid: c05b2a0c8f9034d43838374522c59265, type: 3}
+    totalSpriteSurfaceArea: 986896
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -72,6 +73,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 339b6c6976d0ab34c8431119a03a43ca, type: 3}
   - {fileID: 21300000, guid: a01054f98054eed4e8cc5bc44d5bab75, type: 3}
   - {fileID: 21300000, guid: a02b83ebf49f6c146a37298ea9bcc860, type: 3}
+  - {fileID: 21300000, guid: c05b2a0c8f9034d43838374522c59265, type: 3}
   - {fileID: 21300000, guid: b44ec22de5f3a3a44b68b6c14c89c378, type: 3}
   - {fileID: 21300000, guid: cd696a6d6a8b35043806b7ab5c0ea9ae, type: 3}
   - {fileID: 21300000, guid: 0292239d4f9523d45ad494abc97243e2, type: 3}
@@ -88,6 +90,7 @@ SpriteAtlas:
   - reload-invert
   - volume-on
   - volume-off
+  - Square
   - heart-batton
   - menu-invert
   - pause

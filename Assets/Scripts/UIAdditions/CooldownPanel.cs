@@ -16,14 +16,19 @@ public class CooldownPanel : Cooldown
 
     private IEnumerator Cooldown(float seconds)
     {
-        for( ; seconds > 0; seconds--)
+        for (; seconds > 0; seconds--)
         {
-            text.text = Converter.ConvertToString((int)seconds);
+            if (!isPaused)
+            {
+                text.text = Converter.ConvertToString((int)seconds);
 
-            if(isRealtime)
-                yield return new WaitForSecondsRealtime(1f);
+                if (isRealtime)
+                    yield return new WaitForSecondsRealtime(1f);
+                else
+                    yield return new WaitForSeconds(1f);
+            }
             else
-                yield return new WaitForSeconds(1f);
+                yield return null;
         }
 
         text.text = "0";
@@ -34,5 +39,15 @@ public class CooldownPanel : Cooldown
     {
         StopAllCoroutines();
         text.text = "0";
+    }
+
+    public override void PauseCooldown()
+    {
+        isPaused = true;
+    }
+
+    public override void ResumeCooldown()
+    {
+        isPaused = false;
     }
 }

@@ -23,6 +23,7 @@ public class RespawnPanel : MonoBehaviour
             useLifeBtn.interactable = false;
 
         gameObject.SetActive(true);
+        cooldown.ResumeCooldown();
         cooldown?.StartCooldown(time);
     }
 
@@ -47,5 +48,15 @@ public class RespawnPanel : MonoBehaviour
         gameObject.SetActive(false);
         cooldown?.StopCooldown();
         gameManager.RespawnShip();
+    }
+
+    public void PauseCooldown()
+    {
+        cooldown.PauseCooldown();
+    }
+
+    public void ResumeCooldown()
+    {
+        cooldown.ResumeCooldown();
     }
 }

@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GoogleMobileAds.Api;
 
 #pragma warning disable 649
 
@@ -21,6 +22,7 @@ public class LoadingManager : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         GPGSManager.Initialize(false);
+        MobileAds.Initialize((status) => {});
 
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {

@@ -19,22 +19,35 @@ public class CooldownLine : Cooldown
         float scale = 1f;
         Vector3 localScale = new Vector3(1f, 1f, 1f);
 
-        while(timeLeft > 0)
+        while (timeLeft > 0)
         {
-            scale = timeLeft/time;
-            localScale.x = scale;
-            line.localScale = localScale;
+            if (!isPaused)
+            {
+                scale = timeLeft / time;
+                localScale.x = scale;
+                line.localScale = localScale;
 
-            timeLeft -= isRealtime ? Time.unscaledDeltaTime : Time.deltaTime;
+                timeLeft -= isRealtime ? Time.unscaledDeltaTime : Time.deltaTime;
+            }
 
             yield return null;
         }
-        
+
         onCooldownEnd.Invoke();
     }
 
     public override void StopCooldown()
     {
         StopAllCoroutines();
+    }
+
+    public override void PauseCooldown()
+    {
+        isPaused = true;
+    }
+
+    public override void ResumeCooldown()
+    {
+        isPaused = false;
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Text;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public static class DataManager
 {
     internal static SafeInt record;
     internal static SafeInt livesCount;
+    internal static uint leftToShowAd;
+    internal const uint MAX_LEFT_TO_SHOW_AD = 5;
 
     internal static bool isHaveLocalSaveData
     {
@@ -17,6 +18,11 @@ public static class DataManager
     }
 
     internal static bool isDataLoaded { get; private set; }
+
+    static DataManager()
+    {
+        leftToShowAd = MAX_LEFT_TO_SHOW_AD;
+    }
     
     internal static void LocalSave()
     {
