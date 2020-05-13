@@ -5,12 +5,18 @@ using UnityEngine;
 
 public class Magnet : MonoBehaviour
 {
+    [HideInInspector] public new Transform transform;
     [SerializeField] protected GameObject ray;
     [SerializeField] protected float pullSpeed = 0.3f;
 
     private Transform target;
     private float startDistance;
     private Vector3 scale;
+
+    private void Awake()
+    {
+        transform = base.transform;
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {

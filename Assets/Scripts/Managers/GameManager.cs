@@ -78,17 +78,20 @@ public class GameManager : MonoBehaviour
         interfaceManager.HideObjects();
         deathPanel.gameObject.SetActive(true);
         deathPanel.Open();
-    }
 
-    public void Restart()
-    {
         if(DataManager.leftToShowAd == 0 && levelIntersitialAdUI.adIsLoaded)
         {
             DataManager.leftToShowAd = DataManager.MAX_LEFT_TO_SHOW_AD;
-            levelIntersitialAdUI.ShowAd(LevelsManager.LoadLevelStatic);
+            StartCoroutine(ShowAdWithDelay(1f));
         }
-        else
-            LevelsManager.LoadLevelStatic();
+    }
+
+    private IEnumerator ShowAdWithDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        DataManager.leftToShowAd = DataManager.MAX_LEFT_TO_SHOW_AD;
+        levelIntersitialAdUI.ShowAd(LevelsManager.LoadLevelStatic);
     }
 
     public void DestroyObject(GameObject destroyingObject)

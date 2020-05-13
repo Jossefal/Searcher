@@ -9,7 +9,7 @@ public class LivesRewardedAdUI : AdUI
 {
     [SerializeField] private LivesText livesText;
     [SerializeField] private uint rewardLivesCount;
-    [SerializeField] private UnityEvent onAdClosed;
+    [SerializeField] private GameObject rewardPanel;
 
     private RewardedAd rewardedAd;
     private bool isNeedToShow;
@@ -17,32 +17,33 @@ public class LivesRewardedAdUI : AdUI
 
     private const string REWARDED_AD_ID = "ca-app-pub-3940256099942544/5224354917";
 
-    void Start()
-    {
-        CreateAndRequestAd();
-    }
+    // void Start()
+    // {
+    //     CreateAndRequestAd();
+    // }
 
     public void LoadAndShowAd()
     {
         statusPanel.SetActive(true);
+        CreateAndRequestAd();
 
-        if (rewardedAd.IsLoaded())
-            rewardedAd.Show();
-        else if (isLoading)
-            isNeedToShow = true;
-        else
-        {
-            isNeedToShow = true;
-            CreateAndRequestAd();
-        }
+        // if (rewardedAd.IsLoaded())
+        //     rewardedAd.Show();
+        // else if (isLoading)
+        //     isNeedToShow = true;
+        // else
+        // {
+        //     isNeedToShow = true;
+        //     CreateAndRequestAd();
+        // }
     }
 
     private void CreateAndRequestAd()
     {
         statusText.text = "Loading ad...";
         closeBtn.SetActive(false);
-        isNeedToShow = false;
-        isLoading = true;
+        // isNeedToShow = false;
+        // isLoading = true;
 
         rewardedAd = new RewardedAd(REWARDED_AD_ID);
 
@@ -58,15 +59,15 @@ public class LivesRewardedAdUI : AdUI
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
-        isLoading = false;
+        // isLoading = false;
 
-        if (isNeedToShow)
-            rewardedAd.Show();
+        // if (isNeedToShow)
+        rewardedAd.Show();
     }
 
     public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
-        isLoading = false;
+        // isLoading = false;
 
         statusText.text = "Loading failed";
         closeBtn.SetActive(true);
@@ -81,12 +82,13 @@ public class LivesRewardedAdUI : AdUI
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         statusPanel.SetActive(false);
-        CreateAndRequestAd();
-        onAdClosed.Invoke();
+        // CreateAndRequestAd();
     }
 
     public void HandleUserEarnedReward(object sender, Reward args)
     {
+        rewardPanel.SetActive(true);
         DataManager.livesCount = new SafeInt(DataManager.livesCount.GetValue() + (int)rewardLivesCount);
+        livesText.Show();
     }
 }

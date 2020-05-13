@@ -13,9 +13,7 @@ public class AppManager : MonoBehaviour
             return !PlayerPrefs.HasKey(Prefs.SAVE_DATA_PREF);
         }
     }
-
-    [SerializeField] private ScoreText scoreText;
-    [SerializeField] private LivesText livesText;
+    
     [SerializeField] private UnityEvent onApplicationPause;
 
     public void Awake()
@@ -72,5 +70,10 @@ public class AppManager : MonoBehaviour
     public void ShowLeaderBoardUI()
     {
         GPGSManager.ShowLeaderBoardUI();
+    }
+
+    public void OpenURL(string url)
+    {
+        Application.OpenURL(url);
     }
 }

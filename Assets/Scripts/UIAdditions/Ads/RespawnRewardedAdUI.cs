@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using GoogleMobileAds.Api;
 
 #pragma warning disable 649
@@ -9,40 +10,39 @@ public class RespawnRewardedAdUI : AdUI
     [SerializeField] private RespawnPanel respawnPanel;
 
     private RewardedAd rewardedAd;
-    private bool isNeedToShow;
-    private bool isLoading;
+    // private bool isNeedToShow;
+    // private bool isLoading;
 
     private const string REWARDED_AD_ID = "ca-app-pub-3940256099942544/5224354917";
 
-    private void Start()
-    {
-        CreateAndRequestAd();
-    }
+    // private void Start()
+    // {
+        //CreateAndRequestAd();
+    // }
 
     public void LoadAndShowAd()
     {
         respawnPanel.PauseCooldown();
         statusPanel.SetActive(true);
+        CreateAndRequestAd();
 
-        if (rewardedAd.IsLoaded())
-            rewardedAd.Show();
-        else if (isLoading)
-            isNeedToShow = true;
-        else
-        {
-            isNeedToShow = true;
-            CreateAndRequestAd();
-        }
+        // if (rewardedAd.IsLoaded())
+        //     rewardedAd.Show();
+        // else if (isLoading)
+        //     isNeedToShow = true;
+        // else
+        // {
+        //     isNeedToShow = true;
+        //     CreateAndRequestAd();
+        // }
     }
 
     private void CreateAndRequestAd()
     {
-        respawnPanel.PauseCooldown();
-
         statusText.text = "Loading ad...";
         closeBtn.SetActive(false);
-        isNeedToShow = false;
-        isLoading = true;
+        // isNeedToShow = false;
+        // isLoading = true;
 
         rewardedAd = new RewardedAd(REWARDED_AD_ID);
 
@@ -58,15 +58,15 @@ public class RespawnRewardedAdUI : AdUI
 
     private void HandleAdLoaded(object sender, EventArgs args)
     {
-        isLoading = false;
+        // isLoading = false;
 
-        if (isNeedToShow)
-            rewardedAd.Show();
+        // if (isNeedToShow)
+        rewardedAd.Show();
     }
 
     private void HandleAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
-        isLoading = false;
+        // isLoading = false;
 
         statusText.text = "Loading failed";
         closeBtn.SetActive(true);
@@ -81,17 +81,17 @@ public class RespawnRewardedAdUI : AdUI
     private void HandleAdClosed(object sender, EventArgs args)
     {
         Close();
-        CreateAndRequestAd();
+        // CreateAndRequestAd();
     }
 
     private void HandleUserEarnedReward(object sender, Reward args)
     {
-        respawnPanel.Respawn();
+        respawnPanel.RespawnAfterCooldown(5f);
     }
 
     public void Close()
     {
-        statusPanel.SetActive(false);
         respawnPanel.ResumeCooldown();
+        statusPanel.SetActive(false);
     }
 }

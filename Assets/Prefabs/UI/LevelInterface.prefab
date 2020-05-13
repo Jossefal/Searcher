@@ -62,11 +62,15 @@ MonoBehaviour:
   time: 5
   livesCost: 1
   costMultiplier: 2
+  maxAdsUsing: 5
   livesCostText: {fileID: 7419367711325615465}
   livesCountText: {fileID: 2463769326523972440}
   useLifeBtn: {fileID: 4843210042940854691}
+  useAdBtn: {fileID: 1430422790102582304}
   cooldown: {fileID: 2032196269024904959}
   gameManager: {fileID: 0}
+  respawnCooldown: {fileID: 3082615139283632744}
+  respawnRewardedAdUI: {fileID: 1574904254261889435}
 --- !u!1 &94477149457274008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2998,7 +3002,7 @@ GameObject:
   - component: {fileID: 7251730547442655397}
   - component: {fileID: 1430422790102582304}
   m_Layer: 5
-  m_Name: AdBtn
+  m_Name: UseAdBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3102,8 +3106,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1574904254261889435}
-        m_MethodName: LoadAndShowAd
+      - m_Target: {fileID: 8083831046394076447}
+        m_MethodName: UseAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

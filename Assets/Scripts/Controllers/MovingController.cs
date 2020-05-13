@@ -5,6 +5,7 @@
 public class MovingController : MonoBehaviour
 {
     public float speed { get; set; } = 9f;
+    [HideInInspector] public new Transform transform;
 
     [SerializeField] private InterfaceManager interfaceManager;
     [SerializeField] private ControlController controlController;
@@ -17,6 +18,7 @@ public class MovingController : MonoBehaviour
 
     private void Awake()
     {
+        transform = base.transform;
         rb = GetComponent<Rigidbody2D>();
         shipStats = GetComponent<StatsController>();
     }

@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 #pragma warning disable 649
 
 public class CooldownLine : Cooldown
 {
     [SerializeField] private RectTransform line;
-
+    
     public override void StartCooldown(float time)
     {
         onCooldownStart.Invoke();

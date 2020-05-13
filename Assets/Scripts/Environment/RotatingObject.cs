@@ -10,6 +10,8 @@ public class RotatingObject : MonoBehaviour
         Transform
     }
 
+    [HideInInspector] public new Transform transform;
+
     [SerializeField] private Vector3 speed;
     [SerializeField] private Vector3 rndRadius;
     [SerializeField] private bool isRndSpeed;
@@ -21,6 +23,7 @@ public class RotatingObject : MonoBehaviour
 
     private void Awake()
     {
+        transform = base.transform;
         rb = GetComponent<Rigidbody2D>();
 
         if (isRndSpeed)

@@ -7,13 +7,13 @@ public class LevelsManager : MonoBehaviour
 {
     public static void LoadLevelStatic()
     {
+        DataManager.leftToShowAd--;
         AppManager.Play();
         SceneManager.LoadScene(2);
     }
 
     public static void LoadLevelStatic(string levelName)
     {
-        DataManager.leftToShowAd--;
         AppManager.Play();
         SceneManager.LoadScene(levelName);
     }

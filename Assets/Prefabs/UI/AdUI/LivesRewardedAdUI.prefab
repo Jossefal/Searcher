@@ -62,7 +62,8 @@ MonoBehaviour:
   statusText: {fileID: 7103686173261712547}
   closeBtn: {fileID: 1470435960236432666}
   livesText: {fileID: 0}
-  rewardLivesCount: 3
+  rewardLivesCount: 1
+  rewardPanel: {fileID: 0}
 --- !u!1 &1470435960236432666
 GameObject:
   m_ObjectHideFlags: 0

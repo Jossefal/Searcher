@@ -8,20 +8,29 @@ public class RespawnPanel : MonoBehaviour
     [SerializeField] private float time = 5f;
     [SerializeField] private int livesCost = 1;
     [SerializeField] private int costMultiplier = 2;
+    [SerializeField] private int maxAdsUsing = 5;
     [SerializeField] private Text livesCostText;
     [SerializeField] private Text livesCountText;
     [SerializeField] private Button useLifeBtn;
+    [SerializeField] private Button useAdBtn;
     [SerializeField] private Cooldown cooldown;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private Cooldown respawnCooldown;
+    [SerializeField] private RespawnRewardedAdUI respawnRewardedAdUI;
+
+    private int adsUsed;
 
     public void Open()
     {
         int livesCount = DataManager.livesCount.GetValue();
         livesCountText.text = Converter.ConvertToString(livesCount);
         livesCostText.text = Converter.ConvertToString(livesCost);
+
         if (livesCount < livesCost)
             useLifeBtn.interactable = false;
+        
+        if (adsUsed >= maxAdsUsing)
+            useAdBtn.interactable = false;
 
         gameObject.SetActive(true);
         cooldown.ResumeCooldown();
@@ -42,6 +51,12 @@ public class RespawnPanel : MonoBehaviour
             livesCost *= costMultiplier;
             Respawn();
         }
+    }
+
+    public void UseAd()
+    {
+        respawnRewardedAdUI.LoadAndShowAd();
+        adsUsed++;
     }
 
     public void Respawn()

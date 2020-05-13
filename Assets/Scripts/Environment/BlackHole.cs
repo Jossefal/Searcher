@@ -12,13 +12,6 @@ public class BlackHole : MonoBehaviour
     {
         targetShip = col.gameObject.GetComponent<StatsController>();
 
-        if (targetShip.isGodMod)
-        {
-            GetComponent<Collider2D>().enabled = false;
-            targetShip = null;
-            return;
-        }
-
         targetShip.Stun();
         startDistance = Vector3.Distance(transform.position, targetShip.transform.position);
     }

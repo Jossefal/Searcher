@@ -4,6 +4,8 @@
 
 public class StarsBlock : MonoBehaviour
 {
+    [HideInInspector] public new Transform transform;
+
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float translateMultiplier;
     [SerializeField] private Transform topPoint;
@@ -12,6 +14,11 @@ public class StarsBlock : MonoBehaviour
     [SerializeField] private Vector2 range;  
 
     private Vector3 lastPos;
+
+    private void Awake()
+    {
+        transform = base.transform;
+    }
 
     private void Start()
     {
@@ -41,10 +48,5 @@ public class StarsBlock : MonoBehaviour
 
             stars[i].position = pos;
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, range * 2);
     }
 }

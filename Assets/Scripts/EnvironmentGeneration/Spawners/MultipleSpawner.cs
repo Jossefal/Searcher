@@ -4,8 +4,15 @@
 
 public class MultipleSpawner : Spawner
 {
+    [HideInInspector] public new Transform transform;
+
     [SerializeField] private Vector2 range; 
-    [SerializeField] private int count;   
+    [SerializeField] private int count;
+
+    private void Awake()
+    {
+        transform = base.transform;
+    }   
 
     void Start()
     {

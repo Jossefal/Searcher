@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class StatsController : MonoBehaviour
 {
-    [HideInInspector] public bool isGodMod { get; private set; }
     [HideInInspector] public bool isStunned { get; private set; }
 
     [SerializeField] private float maxHp;
@@ -18,13 +17,12 @@ public class StatsController : MonoBehaviour
 
     private void Awake()
     {
-        ApplyOptions();
         RestoreHP();
     }
 
     public void ReceiveDamage(float damage)
     {
-        if (isGodMod || !isDamagable)
+        if (!isDamagable)
             return;
 
         currentHp -= Mathf.Clamp(damage, 0, currentHp);
@@ -53,10 +51,5 @@ public class StatsController : MonoBehaviour
     {
         isStunned = false;
         onStunEnd.Invoke();
-    }
-
-    private void ApplyOptions()
-    {
-        isGodMod = Prefs.GetBoolPref("IsGodMode", false);
     }
 }

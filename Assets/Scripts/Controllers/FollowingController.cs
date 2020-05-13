@@ -4,6 +4,8 @@
 
 public class FollowingController : MonoBehaviour
 {
+    [HideInInspector] public new Transform transform;
+
     [SerializeField] private Transform pursuedObject;
     [SerializeField] private bool xAxis = true;
     [SerializeField] private bool yAxis = true;
@@ -13,6 +15,7 @@ public class FollowingController : MonoBehaviour
 
     private void Awake()
     {
+        transform = base.transform;
         targetPos = transform.position;
     }
 

@@ -8,6 +8,7 @@ public class ControlController : MonoBehaviour, IPointerDownHandler, IPointerUpH
     public float maxOffsetX = 1f;
 
     [SerializeField] private Transform ship;
+    [SerializeField] private Camera mainCamera;
 
     private Vector2 startPos;
     private PointerEventData pointer;
@@ -32,7 +33,7 @@ public class ControlController : MonoBehaviour, IPointerDownHandler, IPointerUpH
         if (pointer == null)
             return 0f;
 
-        Vector2 pointerWorldPos = Camera.main.ScreenToWorldPoint(pointer.position);
+        Vector2 pointerWorldPos = mainCamera.ScreenToWorldPoint(pointer.position);
 
         if (Mathf.Abs(ship.position.x - pointerWorldPos.x) < 0.2f)
             return 0f;
