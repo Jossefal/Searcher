@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         if(DataManager.leftToShowAd == 0 && levelIntersitialAdUI.adIsLoaded)
         {
             DataManager.leftToShowAd = DataManager.MAX_LEFT_TO_SHOW_AD;
-            StartCoroutine(ShowAdWithDelay(1f));
+            StartCoroutine(ShowAdWithDelay(0.5f));
         }
     }
 
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         DataManager.leftToShowAd = DataManager.MAX_LEFT_TO_SHOW_AD;
-        levelIntersitialAdUI.ShowAd(LevelsManager.LoadLevelStatic);
+        levelIntersitialAdUI.ShowAd(null);
     }
 
     public void DestroyObject(GameObject destroyingObject)

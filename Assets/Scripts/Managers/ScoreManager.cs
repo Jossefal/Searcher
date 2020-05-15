@@ -31,8 +31,8 @@ public class ScoreManager : MonoBehaviour
         {
             DataManager.record = safeCurrentScore;
 
-            if(GPGSManager.isAuthenticated)
-                GPGSManager.ReportScore(safeCurrentScore.GetValue());
+            // if(GPGSManager.isAuthenticated)
+            //     GPGSManager.ReportScore(safeCurrentScore.GetValue());
         }
     }
 }
