@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SocialPlatforms;
 
 #pragma warning disable 649
 
 public class LeaderboardUI : MonoBehaviour
 {
-    [SerializeField] private GameObject loadPanel;
+    [SerializeField] private Text statusText;
     [SerializeField] private TimeScope timeScope;
     [SerializeField] private int maxCount = 10;
+    [SerializeField] private GameObject playerScoresContainer;
     [SerializeField] private PlayerScorePanel[] playersScorePanels;
 
     private bool isLoading;
@@ -22,14 +24,24 @@ public class LeaderboardUI : MonoBehaviour
         if (isLoading)
             return;
 
+        playerScoresContainer.SetActive(false);
+        statusText.gameObject.SetActive(true);
+
+        if(!GPGSManager.isAuthenticated)
+        {
+            statusText.text = "To view the leaderboard, Google Play Games authorization is required";
+            return;
+        }
+
         isLoading = true;
-        loadPanel.SetActive(true);
+        statusText.text = "Loading...";
+        
 
         GPGSManager.LoadLeaderboardData(timeScope, maxCount, (leaderboardData) =>
         {
             if (leaderboardData == null)
             {
-                loadPanel.SetActive(false);
+                statusText.gameObject.SetActive(false);
                 return;
             }
 
@@ -46,7 +58,8 @@ public class LeaderboardUI : MonoBehaviour
             }
 
             isLoading = false;
-            loadPanel.SetActive(false);
+            statusText.gameObject.SetActive(false);
+            playerScoresContainer.SetActive(true);
         });
     }
 }

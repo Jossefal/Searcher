@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using GoogleMobileAds.Api;
 
 #pragma warning disable 649
 
 public class LoadingManager : MonoBehaviour
 {
+    [SerializeField] private AdsTargeter adsTargeter;
     [SerializeField] private GameObject chooseDataPanel;
     [SerializeField] private Text cloudRecordText;
     [SerializeField] private Text cloudLivesText;
@@ -17,12 +17,17 @@ public class LoadingManager : MonoBehaviour
     [SerializeField] private SafeInt cloudRecord;
     [SerializeField] private SafeInt cloudLives;
 
+    private bool adsIsReady;
+
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         GPGSManager.Initialize(false);
-        MobileAds.Initialize((status) => {});
+        MobileAds.Initialize((status) => 
+        {
+            adsIsReady = true;
+        });
 
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
@@ -53,10 +58,10 @@ public class LoadingManager : MonoBehaviour
                     else if (DataManager.isHaveLocalSaveData)
                     {
                         DataManager.LocalLoad();
-                        SceneManager.LoadScene(1);
+                        StartCoroutine(LoadStartMenu());
                     }
                     else
-                        SceneManager.LoadScene(1);
+                        StartCoroutine(LoadStartMenu());
                 });
             }
             else
@@ -70,20 +75,23 @@ public class LoadingManager : MonoBehaviour
 
     private IEnumerator LoadStartMenu()
     {
-        yield return new WaitForSeconds(1f);
+        while(!adsIsReady)
+        {
+            yield return null;
+        }
 
-        SceneManager.LoadScene(1);
+        adsTargeter.CheckTargetAge();
     }
 
     public void ChooseCloud()
     {
         DataManager.record = cloudRecord;
         DataManager.livesCount = cloudLives;
-        SceneManager.LoadScene(1);
+        LevelsManager.LoadStartMenuStatic();
     }
 
     public void ChooseLocal()
     {
-        SceneManager.LoadScene(1);
+        LevelsManager.LoadStartMenuStatic();
     }
 }
