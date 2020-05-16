@@ -18,12 +18,7 @@ public static class InterstitialAdManager
     public static event Action OnAdClosed;
 
     private static InterstitialAd interstitialAd;
-    private const string INTERSTITIAL_AD_ID = "ca-app-pub-3940256099942544/1033173712";
-
-    static InterstitialAdManager()
-    {
-        CreateAndRequestAd();
-    }
+    private const string INTERSTITIAL_AD_ID = "ca-app-pub-9489981556175219/5193563577";
 
     public static void ShowAd()
     {

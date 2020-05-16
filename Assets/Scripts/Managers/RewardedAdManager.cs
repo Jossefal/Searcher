@@ -22,12 +22,7 @@ public static class RewardedAdManager
     public static event Action OnAdClosed;
 
     private static RewardedAd rewardedAd;
-    private const string REWARDED_AD_ID = "ca-app-pub-3940256099942544/5224354917";
-
-    static RewardedAdManager()
-    {
-        CreateAndRequestAd();
-    }
+    private const string REWARDED_AD_ID = "ca-app-pub-9489981556175219/6803186386";
 
     public static void ShowAd()
     {

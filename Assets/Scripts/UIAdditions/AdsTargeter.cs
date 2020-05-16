@@ -50,5 +50,8 @@ public class AdsTargeter : MonoBehaviour
 
         RequestConfiguration requestConfiguration = new RequestConfiguration.Builder().SetMaxAdContentRating(maxAdContentRating).build();
         MobileAds.SetRequestConfiguration(requestConfiguration);
+
+        RewardedAdManager.CreateAndRequestAd();
+        InterstitialAdManager.CreateAndRequestAd();
     }
 }
