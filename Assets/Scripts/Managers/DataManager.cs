@@ -54,7 +54,7 @@ public static class DataManager
     private static void LoadDefaultData()
     {
         record = new SafeInt(0);
-        livesCount = new SafeInt(5);
+        livesCount = new SafeInt(15);
     }
 
     internal static void CloudSave()

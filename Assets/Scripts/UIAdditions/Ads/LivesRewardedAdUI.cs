@@ -31,29 +31,38 @@ public class LivesRewardedAdUI : AdUI
         else if (RewardedAdManager.isLoading)
             isNeedToShow = true;
         else
+        {
+            isNeedToShow = true;
             RewardedAdManager.CreateAndRequestAd();
+        }
     }
 
     public void HandleAdLoaded()
     {
         if (isNeedToShow)
+        {
             RewardedAdManager.ShowAd();
+            isNeedToShow = false;
+        }
     }
 
     public void HandleAdFailedToLoad()
     {
+        isNeedToShow = false;
         statusText.text = "Loading failed";
         closeBtn.SetActive(true);
     }
 
     public void HandleAdFailedToShow()
     {
+        isNeedToShow = false;
         statusText.text = "Loading failed";
         closeBtn.SetActive(true);
     }
 
     public void HandleAdClosed()
     {
+        isNeedToShow = false;
         statusPanel.SetActive(false);
     }
 

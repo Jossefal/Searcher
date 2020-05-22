@@ -32,29 +32,38 @@ public class RespawnRewardedAdUI : AdUI
         else if (RewardedAdManager.isLoading)
             isNeedToShow = true;
         else
+        {
+            isNeedToShow = true;
             RewardedAdManager.CreateAndRequestAd();
+        }
     }
 
     private void HandleAdLoaded()
     {
         if (isNeedToShow)
+        {
             RewardedAdManager.ShowAd();
+            isNeedToShow = false;
+        }
     }
 
     private void HandleAdFailedToLoad()
     {
+        isNeedToShow = false;
         statusText.text = "Loading failed";
         closeBtn.SetActive(true);
     }
 
     private void HandleAdFailedToShow()
     {
+        isNeedToShow = false;
         statusText.text = "Showing failed";
         closeBtn.SetActive(true);
     }
 
     private void HandleAdClosed()
     {
+        isNeedToShow = false;
         Close();
     }
 
