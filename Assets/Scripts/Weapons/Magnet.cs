@@ -8,6 +8,7 @@ public class Magnet : MonoBehaviour
     [HideInInspector] public new Transform transform;
     [SerializeField] protected GameObject ray;
     [SerializeField] protected float pullSpeed = 0.3f;
+    [SerializeField] private AreasManager areasManager;
 
     private Transform target;
     private float startDistance;
@@ -23,6 +24,7 @@ public class Magnet : MonoBehaviour
         if(target != null)
             return;
 
+        areasManager.RemoveSpaceman(col.transform);
         target = col.transform;
         target.SetParent(transform);
         startDistance = Vector3.Distance(transform.position, target.position);

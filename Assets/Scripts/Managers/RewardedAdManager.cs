@@ -33,16 +33,18 @@ public static class RewardedAdManager
     {
         isLoading = true;
 
-        rewardedAd = new RewardedAd(REWARDED_AD_ID);
+        // rewardedAd = new RewardedAd(REWARDED_AD_ID);
 
-        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
-        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-        rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
-        rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-        rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+        // rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
+        // rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+        // rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
+        // rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        // rewardedAd.OnAdClosed += HandleRewardedAdClosed;
 
-        AdRequest request = new AdRequest.Builder().Build();
-        rewardedAd.LoadAd(request);
+        // AdRequest request = new AdRequest.Builder().Build();
+        // rewardedAd.LoadAd(request);
+
+        HandleRewardedAdFailedToLoad(null, null);
     }
 
     public static void HandleRewardedAdLoaded(object sender, EventArgs args)

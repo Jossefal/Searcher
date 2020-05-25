@@ -40,7 +40,7 @@ public class RotatingObject : MonoBehaviour
             speed *= Random.value > 0.5f ? 1 : -1;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Rotate();
     }

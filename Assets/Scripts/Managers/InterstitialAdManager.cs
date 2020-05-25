@@ -29,14 +29,16 @@ public static class InterstitialAdManager
     {
         isLoading = true;
 
-        interstitialAd = new InterstitialAd(INTERSTITIAL_AD_ID);
+        // interstitialAd = new InterstitialAd(INTERSTITIAL_AD_ID);
 
-        interstitialAd.OnAdClosed += HandleInterstitialAdClosed;
-        interstitialAd.OnAdLoaded += HandleInterstitialAdLoaded;
-        interstitialAd.OnAdFailedToLoad += HandleInterstitialAdFailedToLoad;
+        // interstitialAd.OnAdClosed += HandleInterstitialAdClosed;
+        // interstitialAd.OnAdLoaded += HandleInterstitialAdLoaded;
+        // interstitialAd.OnAdFailedToLoad += HandleInterstitialAdFailedToLoad;
 
-        AdRequest request = new AdRequest.Builder().Build();
-        interstitialAd.LoadAd(request);
+        // AdRequest request = new AdRequest.Builder().Build();
+        // interstitialAd.LoadAd(request);
+
+        HandleInterstitialAdFailedToLoad(null, null);
     }
 
     public static void HandleInterstitialAdLoaded(object sender, EventArgs args)

@@ -12,6 +12,7 @@ TagManager:
   - DeathPanel
   - Managers
   - UnuseTrigger
+  - AreasManager
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2659131935
     locked: 0
   - name: Obstacle
     uniqueID: 2407546683

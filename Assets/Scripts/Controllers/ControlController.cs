@@ -5,13 +5,16 @@ using UnityEngine.EventSystems;
 
 public class ControlController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public float maxOffsetX = 1f;
-
-    [SerializeField] private Transform ship;
-    [SerializeField] private Camera mainCamera;
+    [SerializeField] private float maxOffsetX = 1f;
 
     private Vector2 startPos;
     private PointerEventData pointer;
+    private float centerX;
+
+    private void Start()
+    {
+        centerX = Screen.width / 2f;
+    }
 
     public void OnPointerDown(PointerEventData ped)
     {
@@ -32,12 +35,12 @@ public class ControlController : MonoBehaviour, IPointerDownHandler, IPointerUpH
     {
         if (pointer == null)
             return 0f;
+        
+        float offset = centerX - pointer.position.x;
 
-        Vector2 pointerWorldPos = mainCamera.ScreenToWorldPoint(pointer.position);
-
-        if (Mathf.Abs(ship.position.x - pointerWorldPos.x) < 0.2f)
+        if (Mathf.Abs(offset) < 10f)
             return 0f;
         else
-            return Mathf.Clamp((ship.position.x - pointerWorldPos.x) / maxOffsetX, -1f, 1f);
+            return Mathf.Clamp((offset) / maxOffsetX, -1f, 1f);
     }
 }

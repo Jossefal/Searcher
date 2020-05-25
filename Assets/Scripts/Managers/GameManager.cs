@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         }
 
         ship.SetActive(true);
-        ship.transform.position = new Vector3(0f, ship.transform.position.y, 0f);
+        // ship.transform.position = new Vector3(0f, ship.transform.position.y, 0f);
         ship.transform.rotation = new Quaternion(0, 0, 0, 0);
 
         interfaceManager.ShowObjects();

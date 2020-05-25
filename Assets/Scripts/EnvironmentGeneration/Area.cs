@@ -5,6 +5,7 @@
 public class Area : MonoBehaviour
 {
     [SerializeField] private Transform nextAreaSpawnPoint;
+    [SerializeField] private Transform cameraTransform;
     [SerializeField] private AreasManager areasManager;
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private Transform[] spacemanSpawnPoints;
@@ -15,7 +16,7 @@ public class Area : MonoBehaviour
     public void SpawnNextArea()
     {
         Area nextArea = areasManager.GetArea();
-        nextArea.Respawn(nextAreaSpawnPoint.position);
+        nextArea.Respawn(new Vector3(cameraTransform.position.x, nextAreaSpawnPoint.position.y, 0f));
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -32,6 +33,7 @@ public class Area : MonoBehaviour
         {
             int pointIndex = Random.Range(0, spacemanSpawnPoints.Length);
             spaceman = Instantiate(spacemanPrefab, spacemanSpawnPoints[pointIndex].position, Quaternion.identity, transform);
+            areasManager.AddSpaceman(spaceman.transform);
         }
     }
 
@@ -52,7 +54,10 @@ public class Area : MonoBehaviour
         areasManager.UnuseArea(this);
 
         if (spaceman != null)
+        {
+            areasManager.RemoveSpaceman(spaceman.transform);
             Destroy(spaceman);
+        }
 
         gameObject.SetActive(false);
     }
