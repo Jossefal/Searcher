@@ -9,6 +9,7 @@ public class Area : MonoBehaviour
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private Transform[] spacemanSpawnPoints;
     [SerializeField] private GameObject spacemanPrefab;
+    [SerializeField] private bool isEasy;
 
     private GameObject spaceman;
 
@@ -49,11 +50,19 @@ public class Area : MonoBehaviour
 
     public void Unuse()
     {
-        areasManager.UnuseArea(this);
+        if(isEasy)
+            areasManager.UnuseEasyArea(this);
+        else
+            areasManager.UnuseNormalArea(this);
 
         if (spaceman != null)
             Destroy(spaceman);
 
         gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(base.transform.position + Vector3.up * 8f, new Vector3(9f, 16f, 0f));
     }
 }

@@ -22,15 +22,21 @@ public class AreasManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private List<Area> unusedAreas;
+    [SerializeField] private List<Area> unusedEasyAreas;
+    [SerializeField] private float startChance;
+    [SerializeField] private float chanceDecreaseStep;
+    [SerializeField] private float finalChance;
+    [SerializeField] private List<Area> unusedNormalAreas;
     [SerializeField] private int minAreasBetweenSpacemans;
     [SerializeField] private int maxAreasBetweenSpacemans;
 
     private float areasLeftToSpaceman;
+    private float easyAreaChance;
 
     private void Awake()
     {
         RestartCounters();
+        easyAreaChance = startChance;
     }
 
     public void RestartCounters()
@@ -40,13 +46,31 @@ public class AreasManager : MonoBehaviour
 
     public Area GetArea()
     {
-        Area nextArea = unusedAreas[Random.Range(0, unusedAreas.Count)];
-        unusedAreas.Remove(nextArea);
+        Area nextArea;
+
+        if (Random.value <= easyAreaChance)
+        {
+            nextArea = unusedEasyAreas[Random.Range(0, unusedEasyAreas.Count)];
+            unusedEasyAreas.Remove(nextArea);
+        }
+        else
+        {
+            nextArea = unusedNormalAreas[Random.Range(0, unusedNormalAreas.Count)];
+            unusedNormalAreas.Remove(nextArea);
+        }
+
+        easyAreaChance = Mathf.Clamp(easyAreaChance - chanceDecreaseStep, finalChance, 1f);
+
         return nextArea;
     }
 
-    public void UnuseArea(Area area)
+    public void UnuseEasyArea(Area area)
     {
-        unusedAreas.Add(area);
+        unusedEasyAreas.Add(area);
+    }
+
+    public void UnuseNormalArea(Area area)
+    {
+        unusedNormalAreas.Add(area);
     }
 }
