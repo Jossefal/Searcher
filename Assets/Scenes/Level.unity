@@ -2888,7 +2888,6 @@ MonoBehaviour:
   - {fileID: 1903172109}
   minAreasBetweenSpacemans: 1
   maxAreasBetweenSpacemans: 1
-  easyAreaChance: 0
 --- !u!4 &2009277147
 Transform:
   m_ObjectHideFlags: 0

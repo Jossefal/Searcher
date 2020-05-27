@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b9fc93a3a2f26841b393d3402cd07e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a0481ad9148d98458ec1b10d329ac2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2979,7 +2979,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b9fc93a3a2f26841b393d3402cd07e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a0481ad9148d98458ec1b10d329ac2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3333,6 +3333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxOffsetX: 1
   ship: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!1 &8411965252119797168
 GameObject:
   m_ObjectHideFlags: 0
