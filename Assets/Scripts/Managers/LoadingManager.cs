@@ -7,25 +7,44 @@ using GoogleMobileAds.Api;
 
 public class LoadingManager : MonoBehaviour
 {
+    public MaxAdContentRating maxAdContentRating
+    {
+        get
+        {
+            return _maxAdContentRating;
+        }
+        set
+        {
+            _maxAdContentRating = value;
+        }
+    }
+
     [SerializeField] private AdsTargeter adsTargeter;
     [SerializeField] private GameObject chooseDataPanel;
     [SerializeField] private Text cloudRecordText;
     [SerializeField] private Text cloudLivesText;
     [SerializeField] private Text localRecordText;
     [SerializeField] private Text localLivesText;
-
     [SerializeField] private SafeInt cloudRecord;
     [SerializeField] private SafeInt cloudLives;
 
     private bool adsIsReady;
+    private MaxAdContentRating _maxAdContentRating = MaxAdContentRating.G;
 
-    void Start()
+    public void Load()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         GPGSManager.Initialize(false);
-        MobileAds.Initialize((status) => 
+
+        MobileAds.Initialize((status) =>
         {
+            RequestConfiguration requestConfiguration = new RequestConfiguration.Builder().SetMaxAdContentRating(_maxAdContentRating).build();
+            MobileAds.SetRequestConfiguration(requestConfiguration);
+
+            RewardedAdManager.CreateAndRequestAd();
+            InterstitialAdManager.CreateAndRequestAd();
+
             adsIsReady = true;
         });
 
@@ -75,23 +94,24 @@ public class LoadingManager : MonoBehaviour
 
     private IEnumerator LoadStartMenu()
     {
-        while(!adsIsReady)
+        while (!adsIsReady)
         {
             yield return null;
         }
 
-        adsTargeter.CheckTargetAge();
+        LevelsManager.LoadStartMenuStatic();
     }
 
     public void ChooseCloud()
     {
         DataManager.record = cloudRecord;
         DataManager.livesCount = cloudLives;
-        LevelsManager.LoadStartMenuStatic();
+
+        StartCoroutine(LoadStartMenu());
     }
 
     public void ChooseLocal()
     {
-        LevelsManager.LoadStartMenuStatic();
+        StartCoroutine(LoadStartMenu());
     }
 }

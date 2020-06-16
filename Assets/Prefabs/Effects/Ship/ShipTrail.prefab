@@ -69,7 +69,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 827186191
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Time: 0.2
   m_Parameters:
@@ -79,14 +79,14 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.004219413
-        value: 0.45213944
-        inSlope: 0.7760778
-        outSlope: 0.7760778
+        time: 0
+        value: 0.48
+        inSlope: 0.6426002
+        outSlope: 0.6426002
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.4294528
+        outWeight: 0.31769678
       - serializedVersion: 3
         time: 0.35859364
         value: 0.632062
@@ -214,7 +214,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 827186191
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Time: 0.2
   m_Parameters:
@@ -225,13 +225,13 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.29084915
-        inSlope: 0.7760778
-        outSlope: 0.7760778
+        value: 0.32
+        inSlope: 0.6134978
+        outSlope: 0.6134978
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.4294528
+        outWeight: 0.32126394
       - serializedVersion: 3
         time: 0.3480451
         value: 0.4707717

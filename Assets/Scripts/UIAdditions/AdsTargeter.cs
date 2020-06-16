@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using GoogleMobileAds.Api;
 
 #pragma warning disable 649
@@ -9,6 +10,13 @@ public class AdsTargeter : MonoBehaviour
     [SerializeField] private GameObject birthDatePanel;
     [SerializeField] private TextChooser monthChooser;
     [SerializeField] private TextChooser yearChooser;
+    [SerializeField] private Button okButton;
+    [SerializeField] private LoadingManager loadingManager;
+
+    private void Start()
+    {
+        CheckTargetAge();
+    }
 
     public void CheckTargetAge()
     {
@@ -16,7 +24,6 @@ public class AdsTargeter : MonoBehaviour
         {
             DateTime dateOfBirth = DateTime.Parse(SafePrefs.Load(Prefs.DATE_OF_BIRTH_PREF));
             SetTargetAge(dateOfBirth);
-            LevelsManager.LoadStartMenuStatic();
         }
         else
             birthDatePanel.SetActive(true);
@@ -48,10 +55,15 @@ public class AdsTargeter : MonoBehaviour
         else
             maxAdContentRating = MaxAdContentRating.MA;
 
-        RequestConfiguration requestConfiguration = new RequestConfiguration.Builder().SetMaxAdContentRating(maxAdContentRating).build();
-        MobileAds.SetRequestConfiguration(requestConfiguration);
+        loadingManager.maxAdContentRating = maxAdContentRating;
+        loadingManager.Load();
+    }
 
-        RewardedAdManager.CreateAndRequestAd();
-        InterstitialAdManager.CreateAndRequestAd();
+    public void CheckValues()
+    {
+        if(monthChooser.isEmptyValue || yearChooser.isEmptyValue)
+            okButton.interactable = false;
+        else
+            okButton.interactable = true;
     }
 }

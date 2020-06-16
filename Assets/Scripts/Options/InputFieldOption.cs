@@ -8,7 +8,8 @@ public class InputFieldOption : MonoBehaviour
     [SerializeField] private string optionName;
     [SerializeField] private OptionType optionType;
     [SerializeField] private string defaultValue;
-    [SerializeField] private InputField inputField;
+
+    private bool isInitializated;
 
     public enum OptionType
     {
@@ -17,8 +18,13 @@ public class InputFieldOption : MonoBehaviour
         String
     }
 
-    private void Awake()
+    private void OnEnable()
     {
+        if (isInitializated)
+            return;
+
+        InputField inputField = GetComponent<InputField>();
+
         switch (optionType)
         {
             case OptionType.Int:
@@ -31,20 +37,25 @@ public class InputFieldOption : MonoBehaviour
                 inputField.text = PlayerPrefs.GetString(optionName, defaultValue);
                 break;
         }
+
+        UnityEngine.Events.UnityAction<string> saveAction = Save;
+        inputField.onEndEdit.AddListener(saveAction);
+
+        isInitializated = true;
     }
 
-    public void Save()
+    public void Save(string value)
     {
         switch (optionType)
         {
             case OptionType.Int:
-                PlayerPrefs.SetInt(optionName, Converter.ConvertToInt32(inputField.text));
+                PlayerPrefs.SetInt(optionName, Converter.ConvertToInt32(value));
                 break;
             case OptionType.Float:
-                PlayerPrefs.SetFloat(optionName, Converter.ConvertToFloat(inputField.text));
+                PlayerPrefs.SetFloat(optionName, Converter.ConvertToFloat(value));
                 break;
             case OptionType.String:
-                PlayerPrefs.SetString(optionName, inputField.text);
+                PlayerPrefs.SetString(optionName, value);
                 break;
         }
     }

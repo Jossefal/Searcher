@@ -2,7 +2,7 @@
 
 #pragma warning disable 649
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : MonoBehaviour, IObstacle
 {
     [SerializeField] private float damage;
     [SerializeField] private GameObject deathEffect;

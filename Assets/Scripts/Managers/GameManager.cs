@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject ship;
+    [SerializeField] private StatsController shipStats;
+    [SerializeField] private MovingController shipMovingController;
     [SerializeField] private float startSpeed = 7f;
-    [SerializeField] private float speedIncrease = 2f;
-    [SerializeField] private float timeToIncrease = 5f;
-    [SerializeField] private float increaseTime = 20f;
+    [SerializeField] private float speedIncrease = 3f;
+    [SerializeField] private float timeToIncrease = 30f;
+    [SerializeField] private float increaseTime = 180f;
     [SerializeField] private AnimationCurve increaseCurve;
     [SerializeField] private LayerMask obstacleLayers;
     [SerializeField] private ScoreManager scoreManager;
@@ -17,12 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InterfaceManager interfaceManager;
     [SerializeField] private LevelIntersitialAdUI levelIntersitialAdUI;
 
-    private MovingController shipMovingController;
-
     public void Start()
     {
-        shipMovingController = ship.GetComponent<MovingController>();
-
         shipMovingController.speed = startSpeed;
         if (speedIncrease > 0f)
             StartCoroutine(ShipSpeedControl());
@@ -36,12 +33,14 @@ public class GameManager : MonoBehaviour
 
         foreach (Collider2D item in collider2Ds)
         {
-            item.GetComponent<Obstacle>().Kill();
+            item.GetComponent<IObstacle>().Kill();
         }
 
-        ship.SetActive(true);
-        ship.transform.position = new Vector3(0f, ship.transform.position.y, 0f);
-        ship.transform.rotation = new Quaternion(0, 0, 0, 0);
+        shipStats.gameObject.SetActive(true);
+        shipStats.transform.position = new Vector3(0f, shipStats.transform.position.y, 0f);
+        shipStats.transform.rotation = new Quaternion(0, 0, 0, 0);
+        shipStats.transform.localScale = new Vector3(1f, 1f, 1f);
+        shipStats.StopStun();
 
         interfaceManager.ShowObjects();
     }
@@ -52,7 +51,7 @@ public class GameManager : MonoBehaviour
 
         while (timeLeft > 0f)
         {
-            if (ship.activeSelf && !AppManager.isPaused)
+            if (shipStats.gameObject.activeSelf && !AppManager.isPaused)
                 timeLeft -= Time.deltaTime;
 
             yield return null;
@@ -62,7 +61,7 @@ public class GameManager : MonoBehaviour
 
         while (shipMovingController.speed != startSpeed + speedIncrease)
         {
-            if (ship.activeSelf && !AppManager.isPaused)
+            if (shipStats.gameObject.activeSelf && !AppManager.isPaused)
             {
                 shipMovingController.speed = startSpeed + increaseCurve.Evaluate(timePassed / increaseTime) * speedIncrease;
                 timePassed += Time.deltaTime;

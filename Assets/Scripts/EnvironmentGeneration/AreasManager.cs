@@ -22,13 +22,22 @@ public class AreasManager : MonoBehaviour
         }
     }
 
+    [HideInInspector] public Vector3 currentScale;
+
     [SerializeField] private List<Area> unusedEasyAreas;
-    [SerializeField] private float startChance;
-    [SerializeField] private float chanceDecreaseStep;
-    [SerializeField] private float finalChance;
     [SerializeField] private List<Area> unusedNormalAreas;
     [SerializeField] private int minAreasBetweenSpacemans;
     [SerializeField] private int maxAreasBetweenSpacemans;
+
+    [Space]
+    [Header("Difficulty oprions")]
+    [SerializeField] private float startEasyChance;
+    [SerializeField] private float easyChanceDecreaseStep;
+    [SerializeField] private float finalEasyChance;
+    [SerializeField] private float startScale;
+    [SerializeField] private uint areasToScale;
+    [SerializeField] private float scaleStep;
+    [SerializeField] private float finalScale;
 
     private float areasLeftToSpaceman;
     private float easyAreaChance;
@@ -36,7 +45,8 @@ public class AreasManager : MonoBehaviour
     private void Awake()
     {
         RestartCounters();
-        easyAreaChance = startChance;
+        easyAreaChance = startEasyChance;
+        currentScale = new Vector3(startScale, startScale, startScale);
     }
 
     public void RestartCounters()
@@ -59,7 +69,12 @@ public class AreasManager : MonoBehaviour
             unusedNormalAreas.Remove(nextArea);
         }
 
-        easyAreaChance = Mathf.Clamp(easyAreaChance - chanceDecreaseStep, finalChance, 1f);
+        easyAreaChance = Mathf.Clamp(easyAreaChance - easyChanceDecreaseStep, finalEasyChance, 1f);
+
+        if (areasToScale != 0)
+            areasToScale--;
+        else if (currentScale.x < finalScale)
+            currentScale.x = currentScale.y = Mathf.Clamp(currentScale.x + scaleStep, 1, finalScale);
 
         return nextArea;
     }

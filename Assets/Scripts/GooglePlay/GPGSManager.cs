@@ -25,7 +25,7 @@ public static class GPGSManager
     }
 
     public const string SAVE_FILE_NAME = "Save";
-    public const string LEADER_BOARD_ID = "CgkI_vLHk88FEAIQAw";
+    public const string LEADER_BOARD_ID = "CgkIvcrMjfQeEAIQAQ";
 
     public const string FIRST_GPG_AUTH_CHECK_PREF = "FIRST_GPG_AUTH_CHECK";
 

@@ -65,6 +65,6 @@ public class RotatingObject : MonoBehaviour
 
     private void RotateUsingTransform()
     {
-        transform.Rotate(speed * Time.fixedDeltaTime, Space.World);
+        transform.Rotate(speed * Time.deltaTime, Space.World);
     }
 }

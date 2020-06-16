@@ -7,21 +7,24 @@ public class Area : MonoBehaviour
     [SerializeField] private Transform nextAreaSpawnPoint;
     [SerializeField] private AreasManager areasManager;
     [SerializeField] private GameObject[] obstacles;
+    [SerializeField] private Transform[] scalebleObstacles;
     [SerializeField] private Transform[] spacemanSpawnPoints;
     [SerializeField] private GameObject spacemanPrefab;
     [SerializeField] private bool isEasy;
 
     private GameObject spaceman;
+    private bool nextIsSpawned;
 
     public void SpawnNextArea()
     {
         Area nextArea = areasManager.GetArea();
         nextArea.Respawn(nextAreaSpawnPoint.position);
+        nextIsSpawned = true;
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("SpawnTrigger"))
+        if (coll.CompareTag("SpawnTrigger") && !nextIsSpawned)
             SpawnNextArea();
         else if (coll.CompareTag("UnuseTrigger"))
             Unuse();
@@ -43,6 +46,12 @@ public class Area : MonoBehaviour
             obstacles[i].SetActive(true);
         }
 
+        for (int i = 0; i < scalebleObstacles.Length; i++)
+        {
+            scalebleObstacles[i].localScale = areasManager.currentScale;
+            scalebleObstacles[i].gameObject.SetActive(true);
+        }
+
         transform.position = pos;
 
         gameObject.SetActive(true);
@@ -50,7 +59,7 @@ public class Area : MonoBehaviour
 
     public void Unuse()
     {
-        if(isEasy)
+        if (isEasy)
             areasManager.UnuseEasyArea(this);
         else
             areasManager.UnuseNormalArea(this);
@@ -58,11 +67,16 @@ public class Area : MonoBehaviour
         if (spaceman != null)
             Destroy(spaceman);
 
+        nextIsSpawned = false;
         gameObject.SetActive(false);
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(base.transform.position + Vector3.up * 8f, new Vector3(9f, 16f, 0f));
+        Vector3 pos = base.transform.position;
+        Vector3 cubeSize = new Vector3(9f, nextAreaSpawnPoint.position.y - pos.y, 0f);
+        Vector3 cubePos = pos;
+        cubePos.y += cubeSize.y / 2f;
+        Gizmos.DrawWireCube(cubePos, cubeSize);
     }
 }

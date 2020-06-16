@@ -12,6 +12,7 @@ TagManager:
   - DeathPanel
   - Managers
   - UnuseTrigger
+  - RespawnPanel
   layers:
   - Default
   - TransparentFX
