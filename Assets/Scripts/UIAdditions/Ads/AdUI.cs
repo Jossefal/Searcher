@@ -7,5 +7,4 @@ public class AdUI : MonoBehaviour
 {
     [SerializeField] protected GameObject statusPanel;
     [SerializeField] protected Text statusText;
-    [SerializeField] protected GameObject closeBtn;
 }

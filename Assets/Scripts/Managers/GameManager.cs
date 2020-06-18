@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         DataManager.leftToShowAd = DataManager.MAX_LEFT_TO_SHOW_AD;
-        levelIntersitialAdUI.ShowAd(null);
+        levelIntersitialAdUI.ShowAd(2f, null);
     }
 
     public void DestroyObject(GameObject destroyingObject)

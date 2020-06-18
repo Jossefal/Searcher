@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 #pragma warning disable 649
 
 public class LivesRewardedAdUI : AdUI
 {
+    public bool adInProcces { get; private set; }
+
     [SerializeField] private LivesText livesText;
     [SerializeField] private uint rewardLivesCount;
     [SerializeField] private GameObject rewardPanel;
@@ -21,10 +24,44 @@ public class LivesRewardedAdUI : AdUI
 
     public void LoadAndShowAd()
     {
+        if (adInProcces)
+            return;
+
+        adInProcces = true;
         statusText.text = "Loading ad...";
-        closeBtn.SetActive(false);
         isNeedToShow = false;
         statusPanel.SetActive(true);
+
+        if (RewardedAdManager.isLoaded)
+            RewardedAdManager.ShowAd();
+        else if (RewardedAdManager.isLoading)
+            isNeedToShow = true;
+        else
+        {
+            isNeedToShow = true;
+            RewardedAdManager.CreateAndRequestAd();
+        }
+    }
+
+    public void LoadAndShowAd(float delay)
+    {
+        if (adInProcces)
+            return;
+
+        adInProcces = true;
+        statusText.text = "Loading ad...";
+        isNeedToShow = false;
+        statusPanel.SetActive(true);
+
+        if (!RewardedAdManager.isLoaded && !RewardedAdManager.isLoading)
+            RewardedAdManager.CreateAndRequestAd();
+
+        StartCoroutine(LoadAndShowWithDelay(delay));
+    }
+
+    private IEnumerator LoadAndShowWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
 
         if (RewardedAdManager.isLoaded)
             RewardedAdManager.ShowAd();
@@ -48,22 +85,27 @@ public class LivesRewardedAdUI : AdUI
 
     public void HandleAdFailedToLoad()
     {
-        isNeedToShow = false;
-        statusText.text = "Loading failed";
-        closeBtn.SetActive(true);
+        if (isNeedToShow)
+        {
+            isNeedToShow = false;
+            statusText.text = "Loading failed";
+        }
+
+        adInProcces = false;
     }
 
     public void HandleAdFailedToShow()
     {
         isNeedToShow = false;
         statusText.text = "Loading failed";
-        closeBtn.SetActive(true);
+        adInProcces = false;
     }
 
     public void HandleAdClosed()
     {
         isNeedToShow = false;
         statusPanel.SetActive(false);
+        adInProcces = false;
     }
 
     public void HandleUserEarnedReward()
@@ -71,6 +113,14 @@ public class LivesRewardedAdUI : AdUI
         rewardPanel.SetActive(true);
         DataManager.livesCount = new SafeInt(DataManager.livesCount.GetValue() + (int)rewardLivesCount);
         livesText.Show();
+    }
+
+    public void Close()
+    {
+        StopAllCoroutines();
+        adInProcces = false;
+        isNeedToShow = false;
+        statusPanel.SetActive(false);
     }
 
     private void OnDestroy()

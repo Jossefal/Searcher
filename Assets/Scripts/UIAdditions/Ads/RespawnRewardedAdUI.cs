@@ -1,11 +1,12 @@
-﻿using System;
+﻿using System.Collections;
 using UnityEngine;
-using GoogleMobileAds.Api;
 
 #pragma warning disable 649
 
 public class RespawnRewardedAdUI : AdUI
 {
+    public bool adInProcces { get; private set; }
+
     [SerializeField] private RespawnPanel respawnPanel;
 
     private bool isNeedToShow;
@@ -21,11 +22,46 @@ public class RespawnRewardedAdUI : AdUI
 
     public void LoadAndShowAd()
     {
+        if (adInProcces)
+            return;
+
+        adInProcces = true;
         respawnPanel.PauseCooldown();
         statusText.text = "Loading ad...";
-        closeBtn.SetActive(false);
         isNeedToShow = false;
         statusPanel.SetActive(true);
+
+        if (RewardedAdManager.isLoaded)
+            RewardedAdManager.ShowAd();
+        else if (RewardedAdManager.isLoading)
+            isNeedToShow = true;
+        else
+        {
+            isNeedToShow = true;
+            RewardedAdManager.CreateAndRequestAd();
+        }
+    }
+
+    public void LoadAndShowAd(float delay)
+    {
+        if (adInProcces)
+            return;
+
+        adInProcces = true;
+        respawnPanel.PauseCooldown();
+        statusText.text = "Loading ad...";
+        isNeedToShow = false;
+        statusPanel.SetActive(true);
+
+        if (!RewardedAdManager.isLoaded && !RewardedAdManager.isLoading)
+            RewardedAdManager.CreateAndRequestAd();
+
+        StartCoroutine(LoadAndShowWithDelay(delay));
+    }
+
+    private IEnumerator LoadAndShowWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
 
         if (RewardedAdManager.isLoaded)
             RewardedAdManager.ShowAd();
@@ -49,21 +85,24 @@ public class RespawnRewardedAdUI : AdUI
 
     private void HandleAdFailedToLoad()
     {
-        isNeedToShow = false;
-        statusText.text = "Loading failed";
-        closeBtn.SetActive(true);
+        if (isNeedToShow)
+        {
+            isNeedToShow = false;
+            statusText.text = "Loading failed";
+        }
+
+        adInProcces = false;
     }
 
     private void HandleAdFailedToShow()
     {
         isNeedToShow = false;
         statusText.text = "Showing failed";
-        closeBtn.SetActive(true);
+        adInProcces = false;
     }
 
     private void HandleAdClosed()
     {
-        isNeedToShow = false;
         Close();
     }
 
@@ -75,6 +114,9 @@ public class RespawnRewardedAdUI : AdUI
     public void Close()
     {
         respawnPanel.ResumeCooldown();
+        StopAllCoroutines();
+        adInProcces = false;
+        isNeedToShow = false;
         statusPanel.SetActive(false);
     }
 

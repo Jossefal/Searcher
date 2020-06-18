@@ -28,7 +28,7 @@ public class RespawnPanel : MonoBehaviour
 
         if (livesCount < livesCost)
             useLifeBtn.interactable = false;
-        
+
         if (adsUsed >= maxAdsUsing)
             useAdBtn.interactable = false;
 
@@ -55,7 +55,7 @@ public class RespawnPanel : MonoBehaviour
 
     public void UseAd()
     {
-        respawnRewardedAdUI.LoadAndShowAd();
+        respawnRewardedAdUI.LoadAndShowAd(1.5f);
         adsUsed++;
     }
 

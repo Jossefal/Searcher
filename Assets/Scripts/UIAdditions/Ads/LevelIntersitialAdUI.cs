@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using UnityEngine;
 
 public class LevelIntersitialAdUI : AdUI
 {
@@ -26,16 +28,31 @@ public class LevelIntersitialAdUI : AdUI
         InterstitialAdManager.ShowAd();
     }
 
+    public void ShowAd(float delay, Action onClosedAd)
+    {
+        this.onClosedAd = onClosedAd;
+        statusPanel.SetActive(true);
+
+        StartCoroutine(ShowAdWithDelay(delay));
+    }
+
+    private IEnumerator ShowAdWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        InterstitialAdManager.ShowAd();
+    }
+
     private void HandleAdClosed()
     {
         statusPanel.SetActive(false);
 
         if (onClosedAd != null)
+        {
             onClosedAd.Invoke();
-    }
+            onClosedAd = null;
+        }
 
-    public void Close()
-    {
         statusPanel.SetActive(false);
     }
 
