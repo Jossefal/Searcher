@@ -2,7 +2,7 @@
 
 #pragma warning disable 649
 
-[CreateAssetMenu(fileName = "NewAreasChooser", menuName = "AreasChooser")]
+[CreateAssetMenu(fileName = "NewAreasChooser", menuName = "ScriptableObject`s/AreasChooser")]
 public class AreasChooser : ScriptableObject
 {
     [Space]

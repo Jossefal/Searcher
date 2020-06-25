@@ -6,6 +6,9 @@ public static class DataManager
 {
     internal static SafeInt record;
     internal static SafeInt livesCount;
+    internal static SafeInt diamondsCount;
+    internal static SafeInt currentEnvironmentSkinId;
+    internal static SafeInt currentShipSkinId;
     internal static uint leftToShowAd;
     internal const uint MAX_LEFT_TO_SHOW_AD = 5;
 
@@ -23,10 +26,10 @@ public static class DataManager
     {
         leftToShowAd = MAX_LEFT_TO_SHOW_AD;
     }
-    
+
     internal static void LocalSave()
     {
-        SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue());
+        SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue(), diamondsCount.GetValue(), currentEnvironmentSkinId.GetValue(), currentShipSkinId.GetValue());
 
         SafePrefs.Save(Prefs.SAVE_DATA_PREF, JsonUtility.ToJson(saveData));
     }
@@ -41,6 +44,9 @@ public static class DataManager
             {
                 record = new SafeInt(saveData.record);
                 livesCount = new SafeInt(saveData.livesCount);
+                diamondsCount = new SafeInt(saveData.diamondsCount);
+                currentEnvironmentSkinId = new SafeInt(saveData.currentEnvironmentSkinId);
+                currentShipSkinId = new SafeInt(saveData.currentShipSkinId);
             }
             else
                 LoadDefaultData();
@@ -55,11 +61,14 @@ public static class DataManager
     {
         record = new SafeInt(0);
         livesCount = new SafeInt(15);
+        diamondsCount = new SafeInt(0);
+        currentEnvironmentSkinId = new SafeInt(0);
+        currentShipSkinId = new SafeInt(0);
     }
 
     internal static void CloudSave()
     {
-        SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue());
+        SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue(), diamondsCount.GetValue(), currentEnvironmentSkinId.GetValue(), currentShipSkinId.GetValue());
 
         GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(JsonUtility.ToJson(saveData)));
     }
@@ -73,6 +82,9 @@ public static class DataManager
                 SaveData saveData = JsonUtility.FromJson<SaveData>(Encoding.UTF8.GetString(data));
                 record = new SafeInt(saveData.record);
                 livesCount = new SafeInt(saveData.livesCount);
+                diamondsCount = new SafeInt(saveData.diamondsCount);
+                currentEnvironmentSkinId = new SafeInt(saveData.currentEnvironmentSkinId);
+                currentShipSkinId = new SafeInt(saveData.currentShipSkinId);
             }
             else
                 LoadDefaultData();
@@ -84,7 +96,7 @@ public static class DataManager
 
     internal static void LocalAndCloudSave()
     {
-        SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue());
+        SaveData saveData = new SaveData(record.GetValue(), livesCount.GetValue(), diamondsCount.GetValue(), currentEnvironmentSkinId.GetValue(), currentShipSkinId.GetValue());
         string stringSaveData = JsonUtility.ToJson(saveData);
 
         SafePrefs.Save(Prefs.SAVE_DATA_PREF, stringSaveData);
