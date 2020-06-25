@@ -34,7 +34,6 @@ public class AdsTargeter : MonoBehaviour
         DateTime dateOfBirth = new DateTime(Converter.ConvertToInt32(yearChooser.currentValue), monthChooser.currentIndex + 1, 1);
         SafePrefs.Save(Prefs.DATE_OF_BIRTH_PREF, dateOfBirth.ToString());
         SetTargetAge(dateOfBirth);
-        LevelsManager.LoadStartMenuStatic();
     }
 
     private void SetTargetAge(DateTime dateOfBirth)
