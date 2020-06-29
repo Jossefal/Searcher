@@ -17,8 +17,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DeathPanel deathPanel;
     [SerializeField] private InterfaceManager interfaceManager;
     [SerializeField] private LevelIntersitialAdUI levelIntersitialAdUI;
+    [SerializeField] private SkinsContainer skinsContainer;
 
-    public void Start()
+    private void Awake()
+    {
+        skinsContainer.SetCurrentSkins();
+    }
+
+    private void Start()
     {
         shipMovingController.speed = startSpeed;
         if (speedIncrease > 0f)

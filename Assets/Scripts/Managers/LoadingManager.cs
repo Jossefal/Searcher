@@ -35,6 +35,13 @@ public class LoadingManager : MonoBehaviour
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
+        if(DataManager.isTestMode)
+        {
+            DataManager.LocalLoad();
+            LevelsManager.LoadStartMenuStatic();
+        }
+
+
         GPGSManager.Initialize(false);
 
         MobileAds.Initialize((status) =>

@@ -27,7 +27,12 @@ public static class InterstitialAdManager
 
     public static void CreateAndRequestAd()
     {
-        HandleInterstitialAdFailedToLoad(null, null);
+        if (DataManager.isTestMode)
+        {
+            HandleInterstitialAdFailedToLoad(null, null);
+            return;
+        }
+
         isLoading = true;
 
         interstitialAd = new InterstitialAd(INTERSTITIAL_AD_ID);

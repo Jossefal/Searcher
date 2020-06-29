@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4033037339047522690}
   - component: {fileID: 7232563848383429276}
-  - component: {fileID: 5021019741227841298}
+  - component: {fileID: 8273601244928200389}
   m_Layer: 12
-  m_Name: Sprite
+  m_Name: SkinSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5021019741227841298
+--- !u!114 &8273601244928200389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,16 +90,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6167344679669117151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ada4ea937f8c824ba5d6bd5d80dde8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 895aa2706940f8846ae8cfae8349aed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transform: {fileID: 0}
-  speed: {x: 0, y: 0, z: -30}
-  rndRadius: {x: 0, y: 0, z: 0}
-  isRndSpeed: 0
-  isRndRotation: 0
-  isRndDirection: 0
-  rotatingTypeSelection: 1
+  skinsContainer: {fileID: 11400000, guid: 08c016370619b934e9fa9bfc354159a4, type: 2}
+  obstacleType: 1
 --- !u!1 &6943048450435344984
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,3 +179,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullSpeed: 0.05
+  respawnPanel: {fileID: 0}

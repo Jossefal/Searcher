@@ -31,7 +31,12 @@ public static class RewardedAdManager
 
     public static void CreateAndRequestAd()
     {
-        HandleRewardedAdFailedToLoad(null, null);
+        if (DataManager.isTestMode)
+        {
+            HandleRewardedAdFailedToLoad(null, null);
+            return;
+        }
+
         isLoading = true;
 
         rewardedAd = new RewardedAd(REWARDED_AD_ID);
