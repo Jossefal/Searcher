@@ -48,4 +48,9 @@ public class IAPShop : MonoBehaviour
                 IAPManager.Instance.ConfirmPendingPurchase(product);
         });
     }
+
+    private void OnDestroy()
+    {
+	IAPManager.Instance.onSuccessConsumable -= ProccesConsumable;
+    }
 }
