@@ -76,6 +76,7 @@ public static class DataManager
     internal static bool isDataLoaded { get; private set; }
 
     internal static bool isTestMode { get; private set; } = true;
+    internal static bool isLocalTestMode { get; private set; } = false;
 
     static DataManager()
     {
@@ -135,14 +136,14 @@ public static class DataManager
     {
         record = new SafeInt(0);
         livesCount = new SafeInt(15);
-        diamondsCount = new SafeInt(5);
+        diamondsCount = new SafeInt(1000);
         currentEnvironmentSkinId = new SafeInt(0);
         currentShipSkinId = new SafeInt(0);
         environmentSkinIds.Add(0);
         shipSkinIds.Add(0);
     }
 
-    internal static void CloudSave()
+    internal static void CloudSave(Action<bool> callback)
     {
         SaveData saveData = new SaveData();
         saveData.record = record.GetValue();
@@ -153,7 +154,7 @@ public static class DataManager
         saveData.environmentSkinIds = environmentSkinIds.ToArray();
         saveData.shipSkinIds = shipSkinIds.ToArray();
 
-        GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(JsonUtility.ToJson(saveData)));
+        GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(JsonUtility.ToJson(saveData)), callback);
     }
 
     internal static void CloudLoad(Action<bool> onDataLoaded)
@@ -190,7 +191,7 @@ public static class DataManager
         });
     }
 
-    internal static void LocalAndCloudSave()
+    internal static void LocalAndCloudSave(Action<bool> cloudSaveCallback)
     {
         SaveData saveData = new SaveData();
         saveData.record = record.GetValue();
@@ -204,6 +205,6 @@ public static class DataManager
         string stringSaveData = JsonUtility.ToJson(saveData);
 
         SafePrefs.Save(Prefs.SAVE_DATA_PREF, stringSaveData);
-        GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(stringSaveData));
+        GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(stringSaveData), cloudSaveCallback);
     }
 }

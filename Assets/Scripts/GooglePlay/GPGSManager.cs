@@ -87,14 +87,21 @@ public static class GPGSManager
         });
     }
 
-    public static void WriteSaveData(string fileName, byte[] data)
+    public static void WriteSaveData(string fileName, byte[] data, Action<bool> callback)
     {
         if (!isAuthenticated || data == null || data.Length == 0)
             return;
 
         SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
         SavedGameMetadataUpdate updatedMetadata = builder.Build();
-        savedGameClient.CommitUpdate(currentSavedGameMetadata, updatedMetadata, data, (status, metadata) => Debug.Log("Commit saved game request status: " + status));
+        savedGameClient.CommitUpdate(currentSavedGameMetadata, updatedMetadata, data, (status, metadata) =>
+        {
+            Debug.Log("Commit saved game request status: " + status);
+            if (status == SavedGameRequestStatus.Success)
+                callback?.Invoke(true);
+            else
+                callback?.Invoke(false);
+        });
     }
 
     public static void ReportScore(int score)

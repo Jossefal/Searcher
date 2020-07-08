@@ -29,18 +29,18 @@ public class LoadingManager : MonoBehaviour
     [SerializeField] private SafeInt cloudLives;
 
     private bool adsIsReady;
+    private bool purchasesIsReady;
     private MaxAdContentRating _maxAdContentRating = MaxAdContentRating.G;
 
     public void Load()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        if(DataManager.isTestMode)
+        if (DataManager.isLocalTestMode)
         {
             DataManager.LocalLoad();
             LevelsManager.LoadStartMenuStatic();
         }
-
 
         GPGSManager.Initialize(false);
 
@@ -54,6 +54,8 @@ public class LoadingManager : MonoBehaviour
 
             adsIsReady = true;
         });
+
+        IAPManager.Initialize((status) => purchasesIsReady = true);
 
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
@@ -101,7 +103,7 @@ public class LoadingManager : MonoBehaviour
 
     private IEnumerator LoadStartMenu()
     {
-        while (!adsIsReady)
+        while (!adsIsReady && !purchasesIsReady)
         {
             yield return null;
         }

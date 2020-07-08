@@ -19,6 +19,7 @@ public static class InterstitialAdManager
 
     private static InterstitialAd interstitialAd;
     private const string INTERSTITIAL_AD_ID = "ca-app-pub-9489981556175219/3507022326";
+    private const string TEST_INTERSTITIAL_AD_ID = "ca-app-pub-3940256099942544/1033173712";
 
     public static void ShowAd()
     {
@@ -27,7 +28,7 @@ public static class InterstitialAdManager
 
     public static void CreateAndRequestAd()
     {
-        if (DataManager.isTestMode)
+        if (DataManager.isLocalTestMode)
         {
             HandleInterstitialAdFailedToLoad(null, null);
             return;
@@ -35,7 +36,7 @@ public static class InterstitialAdManager
 
         isLoading = true;
 
-        interstitialAd = new InterstitialAd(INTERSTITIAL_AD_ID);
+        interstitialAd = new InterstitialAd(DataManager.isTestMode ? TEST_INTERSTITIAL_AD_ID : INTERSTITIAL_AD_ID);
 
         interstitialAd.OnAdClosed += HandleInterstitialAdClosed;
         interstitialAd.OnAdLoaded += HandleInterstitialAdLoaded;

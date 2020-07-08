@@ -13,7 +13,7 @@ public class AppManager : MonoBehaviour
             return !PlayerPrefs.HasKey(Prefs.SAVE_DATA_PREF);
         }
     }
-    
+
     [SerializeField] private UnityEvent onApplicationPause;
 
     public void Awake()
@@ -43,7 +43,7 @@ public class AppManager : MonoBehaviour
     {
         if (pauseStatus)
         {
-            DataManager.LocalAndCloudSave();
+            DataManager.LocalAndCloudSave(null);
 
             if (!isPaused)
                 onApplicationPause.Invoke();
@@ -59,7 +59,7 @@ public class AppManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        DataManager.LocalAndCloudSave();
+        DataManager.LocalAndCloudSave(null);
     }
 
     public void ReportScore()

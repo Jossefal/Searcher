@@ -23,6 +23,7 @@ public static class RewardedAdManager
 
     private static RewardedAd rewardedAd;
     private const string REWARDED_AD_ID = "ca-app-pub-9489981556175219/2002368964";
+    private const string TEST_REWAEDED_AD_ID = "ca-app-pub-3940256099942544/5224354917";
 
     public static void ShowAd()
     {
@@ -31,7 +32,7 @@ public static class RewardedAdManager
 
     public static void CreateAndRequestAd()
     {
-        if (DataManager.isTestMode)
+        if (DataManager.isLocalTestMode)
         {
             HandleRewardedAdFailedToLoad(null, null);
             return;
@@ -39,7 +40,7 @@ public static class RewardedAdManager
 
         isLoading = true;
 
-        rewardedAd = new RewardedAd(REWARDED_AD_ID);
+        rewardedAd = new RewardedAd(DataManager.isTestMode ? TEST_REWAEDED_AD_ID : REWARDED_AD_ID);
 
         rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
