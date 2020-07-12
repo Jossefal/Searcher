@@ -4,10 +4,11 @@ using UnityEngine.EventSystems;
 
 #pragma warning disable 649
 
-public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     [SerializeField] private List<Transform> objects = new List<Transform>();
     [SerializeField] private Transform content;
+    private RectTransform contentRect;
     [SerializeField] private Transform center;
 
     private enum Axis
@@ -17,17 +18,45 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     [SerializeField] private Axis axis;
+    [SerializeField] private float scrollMultiplier = 1f;
     [SerializeField] [Range(0f, 1f)] private float snapSpeed = 0.1f;
     [SerializeField] private Vector3 normalScale = new Vector3(1f, 1f, 1f);
     [SerializeField] private Vector3 scaleAdd = new Vector3(0.2f, 0.2f, 0.2f);
     [SerializeField] private float scaleDistance = 5f;
     [SerializeField] private Transform startObject;
 
-    private bool isScrolling;
     private Transform highlightedObject;
+    private PointerEventData pointer;
+    private Vector3 lastPos;
+    private float pointerDownTime;
+    private Transform nextHighlightedObject;
 
     private void Start()
     {
+        contentRect = (RectTransform)content;
+
+        objects.Sort((a, b) =>
+        {
+            if (axis == Axis.Horizontal)
+            {
+                if (a.position.x > b.position.x)
+                    return 1;
+                else if (a.position.x < b.position.x)
+                    return -1;
+                else
+                    return 0;
+            }
+            else
+            {
+                if (a.position.y > b.position.y)
+                    return 1;
+                else if (a.position.y < b.position.y)
+                    return -1;
+                else
+                    return 0;
+            }
+        });
+
         if (startObject != null)
             SetHighlightedObject(startObject);
     }
@@ -39,9 +68,19 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         highlightedObject = axis == Axis.Vertical ? GetNearestObjectVertical() : GetNearestObjectHorizontal();
 
-        if (!isScrolling)
+        if (pointer == null)
         {
-            Vector3 offset = center.position - highlightedObject.position;
+            Vector3 offset;
+
+            if (nextHighlightedObject != null)
+            {
+                offset = center.position - nextHighlightedObject.position;
+
+                if (offset.sqrMagnitude < 0.01f)
+                    nextHighlightedObject = null;
+            }
+            else
+                offset = center.position - highlightedObject.position;
 
             content.position = Vector3.Lerp(content.position, content.position + offset, snapSpeed);
         }
@@ -98,11 +137,46 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        isScrolling = true;
+        nextHighlightedObject = null;
+        pointer = pointerEventData;
+        lastPos = pointerEventData.pointerPressRaycast.worldPosition;
+        pointerDownTime = Time.unscaledTime;
     }
 
     public void OnPointerUp(PointerEventData pointerEventData)
     {
-        isScrolling = false;
+        if (Time.unscaledTime - pointerDownTime < 1f)
+        {
+            if (axis == Axis.Horizontal)
+            {
+                if (lastPos.x < pointerEventData.pointerCurrentRaycast.worldPosition.x)
+                    nextHighlightedObject = objects[Mathf.Clamp(objects.IndexOf(highlightedObject) - 1, 0, objects.Count - 1)];
+                else if (lastPos.x > pointerEventData.pointerCurrentRaycast.worldPosition.x)
+                    nextHighlightedObject = objects[Mathf.Clamp(objects.IndexOf(highlightedObject) + 1, 0, objects.Count - 1)];
+            }
+            else
+            {
+                if (lastPos.y < pointerEventData.pointerCurrentRaycast.worldPosition.y)
+                    nextHighlightedObject = objects[Mathf.Clamp(objects.IndexOf(highlightedObject) - 1, 0, objects.Count - 1)];
+                else if (lastPos.y > pointerEventData.pointerCurrentRaycast.worldPosition.y)
+                    nextHighlightedObject = objects[Mathf.Clamp(objects.IndexOf(highlightedObject) + 1, 0, objects.Count - 1)];
+            }
+        }
+
+        pointer = null;
+    }
+
+    public void OnDrag(PointerEventData pointerEventData)
+    {
+        Vector3 translation = new Vector3();
+
+        if (axis == Axis.Horizontal)
+            translation.x = pointerEventData.pointerCurrentRaycast.worldPosition.x - lastPos.x;
+        else
+            translation.y = pointerEventData.pointerCurrentRaycast.worldPosition.y - lastPos.y;
+
+        content.Translate(translation * scrollMultiplier);
+
+        lastPos = pointerEventData.pointerCurrentRaycast.worldPosition;
     }
 }

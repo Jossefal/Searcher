@@ -1856,6 +1856,7 @@ GameObject:
   - component: {fileID: 5065609455447119167}
   - component: {fileID: 5065609455447119164}
   - component: {fileID: 5065609455447119165}
+  - component: {fileID: 649765778765509293}
   m_Layer: 5
   m_Name: ContinueBtn
   m_TagString: Untagged
@@ -1972,6 +1973,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &649765778765509293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5065609455447119155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00c93e5d2225924495906811144a7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5065609455899413895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,6 +2815,7 @@ GameObject:
   - component: {fileID: 6796185075634887810}
   - component: {fileID: 3958221855321799632}
   - component: {fileID: 5664641568118114621}
+  - component: {fileID: 2555315816741492613}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2918,6 +2932,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2555315816741492613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5394251078867703084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00c93e5d2225924495906811144a7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5670515469768842586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,6 +3374,7 @@ GameObject:
   - component: {fileID: 8678611075839424105}
   - component: {fileID: 7884965389824318379}
   - component: {fileID: 1891528852547452135}
+  - component: {fileID: 1521152022582028360}
   m_Layer: 5
   m_Name: PauseBtn
   m_TagString: Untagged
@@ -3464,6 +3491,18 @@ MonoBehaviour:
           m_StringArgument: toWhite
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1521152022582028360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411965252119797168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00c93e5d2225924495906811144a7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8470900538093406368
 GameObject:
   m_ObjectHideFlags: 0
