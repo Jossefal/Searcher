@@ -51,6 +51,7 @@ public class IAPShop : MonoBehaviour
 
     private void OnDestroy()
     {
-	IAPManager.Instance.onSuccessConsumable -= ProccesConsumable;
+        if (IAPManager.isInitialized)
+            IAPManager.Instance.onSuccessConsumable -= ProccesConsumable;
     }
 }

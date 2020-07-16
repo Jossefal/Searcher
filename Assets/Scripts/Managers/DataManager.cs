@@ -75,8 +75,8 @@ public static class DataManager
 
     internal static bool isDataLoaded { get; private set; }
 
-    internal static bool isTestMode { get; private set; } = true;
-    internal static bool isLocalTestMode { get; private set; } = false;
+    internal static bool isTestMode { get; private set; } = false;
+    internal static bool isLocalTestMode { get; private set; } = true;
 
     static DataManager()
     {
@@ -207,4 +207,26 @@ public static class DataManager
         SafePrefs.Save(Prefs.SAVE_DATA_PREF, stringSaveData);
         GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(stringSaveData), cloudSaveCallback);
     }
+
+    public static bool CheckValueCount(ValueVariant valueVariant, int count)
+    {
+        switch (valueVariant)
+        {
+            case ValueVariant.LivesCount:
+                return livesCount.GetValue() >= count;
+            case ValueVariant.DiamondsCount:
+                return diamondsCount.GetValue() >= count;
+            case ValueVariant.Record:
+                return record.GetValue() >= count;
+            default:
+                return false;
+        }
+    }
+}
+
+public enum ValueVariant
+{
+    Record,
+    LivesCount,
+    DiamondsCount
 }

@@ -40,6 +40,7 @@ public class LoadingManager : MonoBehaviour
         {
             DataManager.LocalLoad();
             LevelsManager.LoadStartMenuStatic();
+            return;
         }
 
         GPGSManager.Initialize(false);

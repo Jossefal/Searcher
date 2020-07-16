@@ -16,7 +16,7 @@ public class IAPManager : IStoreListener
     {
         get
         {
-            return _instance.controller != null && _instance.extensions != null;
+            return _instance != null && _instance.controller != null && _instance.extensions != null;
         }
     }
 

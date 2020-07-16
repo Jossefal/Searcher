@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class ValueText : MonoBehaviour
 {
-    public enum ValueVariant
-    {
-        Record,
-        LivesCount,
-        DiamondsCount
-    }
-
     [SerializeField] private Text text;
     [SerializeField] private ValueVariant valueVariant;
 

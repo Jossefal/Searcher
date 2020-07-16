@@ -34,6 +34,7 @@ public class AdsTargeter : MonoBehaviour
         DateTime dateOfBirth = new DateTime(Converter.ConvertToInt32(yearChooser.currentValue), monthChooser.currentIndex + 1, 1);
         SafePrefs.Save(Prefs.DATE_OF_BIRTH_PREF, dateOfBirth.ToString());
         SetTargetAge(dateOfBirth);
+        gameObject.SetActive(false);
     }
 
     private void SetTargetAge(DateTime dateOfBirth)
@@ -60,7 +61,7 @@ public class AdsTargeter : MonoBehaviour
 
     public void CheckValues()
     {
-        if(monthChooser.isEmptyValue || yearChooser.isEmptyValue)
+        if (monthChooser.isEmptyValue || yearChooser.isEmptyValue)
             okButton.interactable = false;
         else
             okButton.interactable = true;
