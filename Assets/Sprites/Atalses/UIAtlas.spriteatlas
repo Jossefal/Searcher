@@ -64,7 +64,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 42aa71dfe7da7864ea02d6a3c4414b27, type: 3}
     - {fileID: 2800000, guid: ac05bd17e149c354b874c45681d370c9, type: 3}
     - {fileID: 2800000, guid: 2a0481ad9148d98458ec1b10d329ac2c, type: 3}
-    totalSpriteSurfaceArea: 1573132
+    - {fileID: 2800000, guid: a844b3365455b4d4697746f45e97d8d2, type: 3}
+    totalSpriteSurfaceArea: 1823132
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -79,6 +80,7 @@ SpriteAtlas:
   - {fileID: -637032860984675081, guid: c68f75844a6625f40b7256ddfa7bb58d, type: 3}
   - {fileID: 8598033060274790998, guid: c68f75844a6625f40b7256ddfa7bb58d, type: 3}
   - {fileID: 21300000, guid: c6e5cf069fd793445a281c232454031e, type: 3}
+  - {fileID: 21300000, guid: a844b3365455b4d4697746f45e97d8d2, type: 3}
   - {fileID: 21300000, guid: afaff207f1d87514f8c24ae2d47fa3d3, type: 3}
   - {fileID: 21300000, guid: ac05bd17e149c354b874c45681d370c9, type: 3}
   - {fileID: 21300000, guid: 98741c29ab4324949b70675b05d3e557, type: 3}
@@ -104,6 +106,7 @@ SpriteAtlas:
   - g5215_1
   - g5215_2
   - heart-add
+  - diamond
   - leaderboard-invert
   - up
   - heart

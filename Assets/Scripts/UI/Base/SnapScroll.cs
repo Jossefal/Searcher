@@ -138,6 +138,9 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
+        if (pointer != null && pointerEventData.pointerId != pointer.pointerId)
+            return;
+
         nextHighlightedObject = null;
         pointer = pointerEventData;
         lastPos = pointerEventData.pointerPressRaycast.worldPosition;
@@ -146,6 +149,9 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerUp(PointerEventData pointerEventData)
     {
+        if (pointer != null && pointerEventData.pointerId != pointer.pointerId)
+            return;
+
         if (Time.unscaledTime - pointerDownTime < 1f)
         {
             if (axis == Axis.Horizontal)
@@ -169,6 +175,9 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnDrag(PointerEventData pointerEventData)
     {
+        if (pointer == null || pointerEventData.pointerId != pointer.pointerId)
+            return;
+
         Vector3 translation = new Vector3();
 
         if (axis == Axis.Horizontal)
