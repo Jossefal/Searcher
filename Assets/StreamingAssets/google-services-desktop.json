@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "481574054957",
+    "firebase_url": "https://leaderboardtest-a394c.firebaseio.com",
+    "project_id": "leaderboardtest-a394c",
+    "storage_bucket": "leaderboardtest-a394c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481574054957:android:cb52d74cd951210d3d9ca4",
+        "android_client_info": {
+          "package_name": "com.sivercompany.masta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481574054957-0nivgp5d8f8pnfgcp1g79jmj0c0hj9vj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqtIugBrQMToPd1SUT5NCdsltXX-ii58c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481574054957-0nivgp5d8f8pnfgcp1g79jmj0c0hj9vj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

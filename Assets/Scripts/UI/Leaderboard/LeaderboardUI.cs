@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SocialPlatforms;
 
 #pragma warning disable 649
 
 public class LeaderboardUI : MonoBehaviour
 {
     [SerializeField] private Text statusText;
-    [SerializeField] private TimeScope timeScope;
-    [SerializeField] private int maxCount = 10;
+    [SerializeField] private int limit = 10;
     [SerializeField] private GameObject playerScoresContainer;
     [SerializeField] private PlayerScorePanel[] playersScorePanels;
 
@@ -27,19 +25,19 @@ public class LeaderboardUI : MonoBehaviour
         playerScoresContainer.SetActive(false);
         statusText.gameObject.SetActive(true);
 
-        if(!GPGSManager.isAuthenticated)
+        if (!FirestoreManager.isAuthenticated)
         {
-            statusText.text = "To view the leaderboard, Google Play Games authorization is required";
+            statusText.text = "Trouble to loading leaderboard";
             return;
         }
 
         isLoading = true;
         statusText.text = "Loading...";
-        
 
-        GPGSManager.LoadLeaderboardData(timeScope, maxCount, (leaderboardData) =>
+
+        FirestoreManager.LoadLeaderboardData(limit, (task, leaderboardData) =>
         {
-            if (leaderboardData == null)
+            if (!task.IsCompleted)
             {
                 statusText.gameObject.SetActive(false);
                 return;
@@ -47,10 +45,10 @@ public class LeaderboardUI : MonoBehaviour
 
             for (int i = 0; i < playersScorePanels.Length; i++)
             {
-                if (i < leaderboardData.players.Length)
+                if (i < leaderboardData.scores.Count)
                 {
-                    playersScorePanels[i].score = leaderboardData.players[i].score;
-                    playersScorePanels[i].playerName = (i + 1) + " " + leaderboardData.players[i].userName;
+                    playersScorePanels[i].score = Converter.ConvertToString(leaderboardData.scores[i].userScore);
+                    playersScorePanels[i].playerName = (i + 1) + " " + leaderboardData.scores[i].userName;
                     playersScorePanels[i].gameObject.SetActive(true);
                 }
                 else

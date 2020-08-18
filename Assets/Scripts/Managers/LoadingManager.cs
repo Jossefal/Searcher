@@ -30,6 +30,7 @@ public class LoadingManager : MonoBehaviour
 
     private bool adsIsReady;
     private bool purchasesIsReady;
+    private bool firebaseIsReady;
     private MaxAdContentRating _maxAdContentRating = MaxAdContentRating.G;
 
     public void Load()
@@ -44,6 +45,7 @@ public class LoadingManager : MonoBehaviour
         }
 
         GPGSManager.Initialize(false);
+        FirestoreManager.Initialize();
 
         MobileAds.Initialize((status) =>
         {
@@ -67,6 +69,16 @@ public class LoadingManager : MonoBehaviour
 
         GPGSManager.Auth((success) =>
         {
+            if (success)
+            {
+                FirestoreManager.Auth(GPGSManager.GetServerAuthCode(), task =>
+                {
+                    firebaseIsReady = true;
+                });
+            }
+            else
+                firebaseIsReady = true;
+
             if (success && GPGSManager.isFirstAuth)
             {
                 DataManager.CloudLoad((isExist) =>
@@ -104,7 +116,7 @@ public class LoadingManager : MonoBehaviour
 
     private IEnumerator LoadStartMenu()
     {
-        while (!adsIsReady && !purchasesIsReady)
+        while (!adsIsReady || !purchasesIsReady || !firebaseIsReady)
         {
             yield return null;
         }

@@ -75,8 +75,8 @@ public static class DataManager
 
     internal static bool isDataLoaded { get; private set; }
 
-    internal static bool isTestMode { get; private set; } = false;
-    internal static bool isLocalTestMode { get; private set; } = true;
+    internal static bool isTestMode { get; private set; } = true;
+    internal static bool isLocalTestMode { get; private set; } = false;
 
     static DataManager()
     {

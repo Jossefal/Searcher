@@ -1,12 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class LeaderboardData
 {
-    public struct PlayerScoreData
-    {
-        public string userName;
-        public string score;
-    }
-
-    public PlayerScoreData[] players;
+    public List<UserScoreData> scores = new List<UserScoreData>();
 }
