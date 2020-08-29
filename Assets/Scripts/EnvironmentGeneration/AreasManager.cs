@@ -22,8 +22,17 @@ public class AreasManager : MonoBehaviour
         }
     }
 
+    public RespawnPanel respawnPanel
+    {
+        get
+        {
+            return _respawnPanel;
+        }
+    }
+
     [HideInInspector] public Vector3 currentScale;
 
+    [SerializeField] private RespawnPanel _respawnPanel;
     [SerializeField] private List<Area> unusedEasyAreas;
     [SerializeField] private List<Area> unusedNormalAreas;
     [SerializeField] private int minAreasBetweenSpacemans;

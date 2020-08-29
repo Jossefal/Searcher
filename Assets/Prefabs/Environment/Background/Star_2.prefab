@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5111189198064291126}
   - component: {fileID: 5111189198064291127}
+  - component: {fileID: 9185734430712243651}
   m_Layer: 0
-  m_Name: Stars_2
+  m_Name: Star_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,3 +82,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9185734430712243651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111189198064291120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4a6d2d923451946ab5cc4ea27d46b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themeSkins:
+  - themeId: 0
+    sprite: {fileID: -1177934027866655137, guid: 5e5d46932e81f164185171cd605bfee8,
+      type: 3}
+  - themeId: 1
+    sprite: {fileID: -7542546070418757605, guid: 0ecf5b68408aba6468340b3d7c68f9dd,
+      type: 3}
+  - themeId: 2
+    sprite: {fileID: 8598033060274790998, guid: c68f75844a6625f40b7256ddfa7bb58d,
+      type: 3}
+  - themeId: 3
+    sprite: {fileID: 21300000, guid: c6e5cf069fd793445a281c232454031e, type: 3}

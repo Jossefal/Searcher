@@ -26,13 +26,14 @@ public static class FirestoreManager
             return;
 
         db = FirebaseFirestore.DefaultInstance;
-        auth = FirebaseAuth.DefaultInstance;
 
         isInitialized = true;
     }
 
     public static void Auth(string authCode, Action<Task> callback)
     {
+        auth = FirebaseAuth.DefaultInstance;
+
         Credential credential = PlayGamesAuthProvider.GetCredential(authCode);
 
         auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>

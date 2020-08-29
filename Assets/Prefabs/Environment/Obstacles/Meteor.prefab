@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3759631803878270300}
   - component: {fileID: 7986415613988147124}
-  - component: {fileID: 6019589931577815943}
+  - component: {fileID: 2079466127529185282}
   m_Layer: 12
-  m_Name: SkinSpawner
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1887420613
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 85405132dfb3a014da5821f2c42d8faf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6019589931577815943
+--- !u!114 &2079466127529185282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,11 +90,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 321107886386876939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 895aa2706940f8846ae8cfae8349aed9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d4a6d2d923451946ab5cc4ea27d46b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinsContainer: {fileID: 11400000, guid: 08c016370619b934e9fa9bfc354159a4, type: 2}
-  obstacleType: 0
+  themeSkins:
+  - themeId: 0
+    sprite: {fileID: 21300000, guid: 85405132dfb3a014da5821f2c42d8faf, type: 3}
+  - themeId: 1
+    sprite: {fileID: 21300000, guid: 65a6633f1381df84fa16b8e88f16610d, type: 3}
+  - themeId: 2
+    sprite: {fileID: 21300000, guid: 8e7c087138d47984f92ec1ccb6e17d09, type: 3}
+  - themeId: 3
+    sprite: {fileID: 21300000, guid: 83b655197157e7b44bf4caeeb7f63d4c, type: 3}
 --- !u!1 &6409251157244215961
 GameObject:
   m_ObjectHideFlags: 0

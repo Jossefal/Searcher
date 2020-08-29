@@ -5,13 +5,13 @@
 public class Area : MonoBehaviour
 {
     [SerializeField] private Transform nextAreaSpawnPoint;
-    [SerializeField] private AreasManager areasManager;
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private Transform[] scalebleObstacles;
     [SerializeField] private Transform[] spacemanSpawnPoints;
     [SerializeField] private GameObject spacemanPrefab;
     [SerializeField] private bool isEasy;
 
+    private AreasManager areasManager;
     private GameObject spaceman;
     private bool nextIsSpawned;
 
@@ -41,6 +41,9 @@ public class Area : MonoBehaviour
 
     public void Respawn(Vector3 pos)
     {
+        if (areasManager == null)
+            areasManager = GameObject.FindWithTag("AreasManager").GetComponent<AreasManager>();
+
         for (int i = 0; i < obstacles.Length; i++)
         {
             obstacles[i].SetActive(true);

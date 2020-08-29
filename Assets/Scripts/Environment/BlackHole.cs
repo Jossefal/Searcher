@@ -6,11 +6,16 @@ using UnityEngine;
 public class BlackHole : MonoBehaviour, IObstacle
 {
     [SerializeField] private float pullSpeed = 0.1f;
-    [SerializeField] private RespawnPanel respawnPanel;
 
+    private RespawnPanel respawnPanel;
     private StatsController targetShip;
     private float startDistance;
     private Vector3 scale;
+
+    private void Start()
+    {
+        respawnPanel = GameObject.FindWithTag("AreasManager").GetComponent<AreasManager>().respawnPanel;
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {

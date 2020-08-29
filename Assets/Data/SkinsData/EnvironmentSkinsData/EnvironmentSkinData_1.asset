@@ -16,7 +16,7 @@ MonoBehaviour:
   price: 50
   background: {fileID: 8587708478380332379, guid: 515adfc452ee5994289239d8d6260eee,
     type: 3}
-  meteorSpite: {fileID: 5565177436223690822, guid: 35e6507a7cb34d648a5e25554c7c8f19,
+  meteorSpite: {fileID: 5565177436223690822, guid: 210d6845562986546b2287fe13228853,
     type: 3}
   blackHoleSprite: {fileID: 7110797430547895032, guid: 4a31b9f0be06c3a489959d59dd4edab5,
     type: 3}

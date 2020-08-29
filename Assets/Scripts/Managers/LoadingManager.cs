@@ -71,7 +71,11 @@ public class LoadingManager : MonoBehaviour
         {
             if (success)
             {
-                FirestoreManager.Auth(GPGSManager.GetServerAuthCode(), task =>
+                string authCode = GPGSManager.GetServerAuthCode();
+                Debug.Log("DEBUG_LOG: ServerAuthCode=" + authCode);
+                System.Console.WriteLine("CONSOLE_WRITELINE: ServerAuthCode=" + authCode);
+                UnityEngine.Debug.Log("UNITYENGINE_DEBUG_LOG: ServerAuthCode=" + authCode);
+                FirestoreManager.Auth(authCode, task =>
                 {
                     firebaseIsReady = true;
                 });
@@ -83,7 +87,7 @@ public class LoadingManager : MonoBehaviour
             {
                 DataManager.CloudLoad((isExist) =>
                 {
-                    GPGSManager.OpenSaveData();
+                    // GPGSManager.OpenSaveData();
 
                     if (isExist && DataManager.isHaveLocalSaveData)
                     {
@@ -107,7 +111,7 @@ public class LoadingManager : MonoBehaviour
             }
             else
             {
-                GPGSManager.OpenSaveData();
+                // GPGSManager.OpenSaveData();
                 DataManager.LocalLoad();
                 StartCoroutine(LoadStartMenu());
             }

@@ -10,8 +10,10 @@ public static class DataManager
     private static SafeInt _diamondsCount;
     private static SafeInt _currentEnvironmentSkinId;
     private static SafeInt _currentShipSkinId;
+    private static SafeInt _currentThemeId;
     internal static List<int> environmentSkinIds { get; } = new List<int>();
     internal static List<int> shipSkinIds { get; } = new List<int>();
+    internal static List<int> themesIds { get; } = new List<int>();
 
     internal static SafeInt record
     {
@@ -63,6 +65,16 @@ public static class DataManager
         }
     }
 
+    internal static SafeInt currentThemeId
+    {
+        get => _currentThemeId;
+        set
+        {
+            _currentThemeId = value;
+            onDataChanged?.Invoke();
+        }
+    }
+
     internal static uint leftToShowAd;
     internal const uint MAX_LEFT_TO_SHOW_AD = 5;
 
@@ -85,14 +97,7 @@ public static class DataManager
 
     internal static void LocalSave()
     {
-        SaveData saveData = new SaveData();
-        saveData.record = record.GetValue();
-        saveData.livesCount = livesCount.GetValue();
-        saveData.diamondsCount = diamondsCount.GetValue();
-        saveData.currentEnvironmentSkinId = currentEnvironmentSkinId.GetValue();
-        saveData.currentShipSkinId = currentShipSkinId.GetValue();
-        saveData.environmentSkinIds = environmentSkinIds.ToArray();
-        saveData.shipSkinIds = shipSkinIds.ToArray();
+        SaveData saveData = CreateSaveData();
 
         SafePrefs.Save(Prefs.SAVE_DATA_PREF, JsonUtility.ToJson(saveData));
     }
@@ -102,29 +107,7 @@ public static class DataManager
         if (PlayerPrefs.HasKey(Prefs.SAVE_DATA_PREF))
         {
             string saveDataJson = SafePrefs.Load(Prefs.SAVE_DATA_PREF);
-            SaveData saveData = JsonUtility.FromJson<SaveData>(saveDataJson);
-
-            if (saveData != null)
-            {
-                record = new SafeInt(saveData.record);
-                livesCount = new SafeInt(saveData.livesCount);
-
-                diamondsCount = saveDataJson.Contains("diamondsCount") ? new SafeInt(saveData.diamondsCount) : new SafeInt(5);
-                currentEnvironmentSkinId = saveDataJson.Contains("currentEnvironmentSkinId") ? new SafeInt(saveData.currentEnvironmentSkinId) : new SafeInt(0);
-                currentShipSkinId = saveDataJson.Contains("currentShipSkinId") ? new SafeInt(saveData.currentShipSkinId) : new SafeInt(0);
-
-                if (saveDataJson.Contains("environmentSkinIds"))
-                    environmentSkinIds.AddRange(saveData.environmentSkinIds);
-                else
-                    environmentSkinIds.Add(0);
-
-                if (saveDataJson.Contains("shipSkinIds"))
-                    shipSkinIds.AddRange(saveData.shipSkinIds);
-                else
-                    shipSkinIds.Add(0);
-            }
-            else
-                LoadDefaultData();
+            ParseJsonSaveData(saveDataJson);
         }
         else
             LoadDefaultData();
@@ -139,20 +122,15 @@ public static class DataManager
         diamondsCount = new SafeInt(1000);
         currentEnvironmentSkinId = new SafeInt(0);
         currentShipSkinId = new SafeInt(0);
+        currentThemeId = new SafeInt(0);
         environmentSkinIds.Add(0);
         shipSkinIds.Add(0);
+        themesIds.Add(0);
     }
 
     internal static void CloudSave(Action<bool> callback)
     {
-        SaveData saveData = new SaveData();
-        saveData.record = record.GetValue();
-        saveData.livesCount = livesCount.GetValue();
-        saveData.diamondsCount = diamondsCount.GetValue();
-        saveData.currentEnvironmentSkinId = currentEnvironmentSkinId.GetValue();
-        saveData.currentShipSkinId = currentShipSkinId.GetValue();
-        saveData.environmentSkinIds = environmentSkinIds.ToArray();
-        saveData.shipSkinIds = shipSkinIds.ToArray();
+        SaveData saveData = CreateSaveData();
 
         GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(JsonUtility.ToJson(saveData)), callback);
     }
@@ -164,24 +142,7 @@ public static class DataManager
             if (status == GooglePlayGames.BasicApi.SavedGame.SavedGameRequestStatus.Success && data.Length > 0)
             {
                 string saveDataJson = SafePrefs.Load(Encoding.UTF8.GetString(data));
-                SaveData saveData = JsonUtility.FromJson<SaveData>(saveDataJson);
-
-                record = new SafeInt(saveData.record);
-                livesCount = new SafeInt(saveData.livesCount);
-
-                diamondsCount = saveDataJson.Contains("diamondsCount") ? new SafeInt(saveData.diamondsCount) : new SafeInt(5);
-                currentEnvironmentSkinId = saveDataJson.Contains("currentEnvironmentSkinId") ? new SafeInt(saveData.currentEnvironmentSkinId) : new SafeInt(0);
-                currentShipSkinId = saveDataJson.Contains("currentShipSkinId") ? new SafeInt(saveData.currentShipSkinId) : new SafeInt(0);
-
-                if (saveDataJson.Contains("environmentSkinIds"))
-                    environmentSkinIds.AddRange(saveData.environmentSkinIds);
-                else
-                    environmentSkinIds.Add(0);
-
-                if (saveDataJson.Contains("shipSkinIds"))
-                    shipSkinIds.AddRange(saveData.shipSkinIds);
-                else
-                    shipSkinIds.Add(0);
+                ParseJsonSaveData(saveDataJson);
             }
             else
                 LoadDefaultData();
@@ -193,14 +154,7 @@ public static class DataManager
 
     internal static void LocalAndCloudSave(Action<bool> cloudSaveCallback)
     {
-        SaveData saveData = new SaveData();
-        saveData.record = record.GetValue();
-        saveData.livesCount = livesCount.GetValue();
-        saveData.diamondsCount = diamondsCount.GetValue();
-        saveData.currentEnvironmentSkinId = currentEnvironmentSkinId.GetValue();
-        saveData.currentShipSkinId = currentShipSkinId.GetValue();
-        saveData.environmentSkinIds = environmentSkinIds.ToArray();
-        saveData.shipSkinIds = shipSkinIds.ToArray();
+        SaveData saveData = CreateSaveData();
 
         string stringSaveData = JsonUtility.ToJson(saveData);
 
@@ -221,6 +175,56 @@ public static class DataManager
             default:
                 return false;
         }
+    }
+
+    private static SaveData CreateSaveData()
+    {
+        SaveData saveData = new SaveData();
+        saveData.record = record.GetValue();
+        saveData.livesCount = livesCount.GetValue();
+        saveData.diamondsCount = diamondsCount.GetValue();
+        saveData.currentEnvironmentSkinId = currentEnvironmentSkinId.GetValue();
+        saveData.currentShipSkinId = currentShipSkinId.GetValue();
+        saveData.currentThemeId = currentThemeId.GetValue();
+        saveData.environmentSkinIds = environmentSkinIds.ToArray();
+        saveData.shipSkinIds = shipSkinIds.ToArray();
+        saveData.themesIds = themesIds.ToArray();
+
+        return saveData;
+    }
+
+    private static void ParseJsonSaveData(string saveDataJson)
+    {
+        SaveData saveData = JsonUtility.FromJson<SaveData>(saveDataJson);
+
+        if (saveData == null)
+        {
+            LoadDefaultData();
+            return;
+        }
+
+        record = new SafeInt(saveData.record);
+        livesCount = new SafeInt(saveData.livesCount);
+
+        diamondsCount = saveDataJson.Contains("diamondsCount") ? new SafeInt(saveData.diamondsCount) : new SafeInt(5);
+        currentEnvironmentSkinId = saveDataJson.Contains("currentEnvironmentSkinId") ? new SafeInt(saveData.currentEnvironmentSkinId) : new SafeInt(0);
+        currentShipSkinId = saveDataJson.Contains("currentShipSkinId") ? new SafeInt(saveData.currentShipSkinId) : new SafeInt(0);
+        currentThemeId = saveDataJson.Contains("currentThemeId") ? new SafeInt(saveData.currentThemeId) : new SafeInt(0);
+
+        if (saveDataJson.Contains("environmentSkinIds"))
+            environmentSkinIds.AddRange(saveData.environmentSkinIds);
+        else
+            environmentSkinIds.Add(0);
+
+        if (saveDataJson.Contains("shipSkinIds"))
+            shipSkinIds.AddRange(saveData.shipSkinIds);
+        else
+            shipSkinIds.Add(0);
+
+        if (saveDataJson.Contains("themesIds"))
+            themesIds.AddRange(saveData.themesIds);
+        else
+            themesIds.Add(0);
     }
 }
 

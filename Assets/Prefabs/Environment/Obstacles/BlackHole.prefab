@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4033037339047522690}
   - component: {fileID: 7232563848383429276}
-  - component: {fileID: 8273601244928200389}
+  - component: {fileID: 8496497714638927129}
   m_Layer: 12
-  m_Name: SkinSpawner
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8273601244928200389
+--- !u!114 &8496497714638927129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,11 +90,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6167344679669117151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 895aa2706940f8846ae8cfae8349aed9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d4a6d2d923451946ab5cc4ea27d46b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinsContainer: {fileID: 11400000, guid: 08c016370619b934e9fa9bfc354159a4, type: 2}
-  obstacleType: 1
+  themeSkins:
+  - themeId: 0
+    sprite: {fileID: 21300000, guid: 7eeeff0be4ed56143b270665e86c63a1, type: 3}
+  - themeId: 1
+    sprite: {fileID: 21300000, guid: 7eeeff0be4ed56143b270665e86c63a1, type: 3}
+  - themeId: 2
+    sprite: {fileID: 21300000, guid: 2fc1a9aa3a74ad2468d1c0dd4e4e77ec, type: 3}
+  - themeId: 3
+    sprite: {fileID: 21300000, guid: a844b3365455b4d4697746f45e97d8d2, type: 3}
 --- !u!1 &6943048450435344984
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,4 +186,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullSpeed: 0.05
-  respawnPanel: {fileID: 0}

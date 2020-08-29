@@ -10,8 +10,7 @@ public static class GPGSManager
     {
         get
         {
-            if (PlayGamesPlatform.Instance != null) return PlayGamesPlatform.Instance.IsAuthenticated();
-            return false;
+            return PlayGamesPlatform.Instance != null && PlayGamesPlatform.Instance.IsAuthenticated();
         }
     }
 
@@ -29,11 +28,11 @@ public static class GPGSManager
     public const string FIRST_GPG_AUTH_CHECK_PREF = "FIRST_GPG_AUTH_CHECK";
 
     private static ISavedGameClient savedGameClient;
-    private static ISavedGameMetadata currentSavedGameMetadata;
+    // private static ISavedGameMetadata currentSavedGameMetadata;
 
     public static void Initialize(bool debug)
     {
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().RequestServerAuthCode(false).Build();
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.DebugLogEnabled = debug;
         PlayGamesPlatform.Activate();
@@ -53,10 +52,10 @@ public static class GPGSManager
         }));
     }
 
-    public static void OpenSaveData()
-    {
-        OpenSaveData(SAVE_FILE_NAME, (status, metadata) => currentSavedGameMetadata = metadata);
-    }
+    // public static void OpenSaveData()
+    // {
+    //     OpenSaveData(SAVE_FILE_NAME, (status, metadata) => currentSavedGameMetadata = metadata);
+    // }
 
     private static void OpenSaveData(string fileName, Action<SavedGameRequestStatus, ISavedGameMetadata> onDataOpen)
     {
@@ -91,15 +90,21 @@ public static class GPGSManager
         if (!isAuthenticated || data == null || data.Length == 0)
             return;
 
-        SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
-        SavedGameMetadataUpdate updatedMetadata = builder.Build();
-        savedGameClient.CommitUpdate(currentSavedGameMetadata, updatedMetadata, data, (status, metadata) =>
+        OpenSaveData(fileName, (openStatus, metadata) =>
         {
-            Debug.Log("Commit saved game request status: " + status);
-            if (status == SavedGameRequestStatus.Success)
-                callback?.Invoke(true);
-            else
-                callback?.Invoke(false);
+            if (openStatus == SavedGameRequestStatus.Success)
+            {
+                SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
+                SavedGameMetadataUpdate updatedMetadata = builder.Build();
+                savedGameClient.CommitUpdate(metadata, updatedMetadata, data, (commitStatus, newMetadata) =>
+                {
+                    Debug.Log("Commit saved game request status: " + commitStatus);
+                    if (commitStatus == SavedGameRequestStatus.Success)
+                        callback?.Invoke(true);
+                    else
+                        callback?.Invoke(false);
+                });
+            }
         });
     }
 
@@ -115,10 +120,10 @@ public static class GPGSManager
 
     public static string GetServerAuthCode()
     {
-        if (!isAuthenticated)
-            return "";
-        else
+        if (isAuthenticated)
             return PlayGamesPlatform.Instance.GetServerAuthCode();
+        else
+            return "";
     }
 
     public static string GetUserName()
