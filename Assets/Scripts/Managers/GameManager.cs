@@ -17,12 +17,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DeathPanel deathPanel;
     [SerializeField] private InterfaceManager interfaceManager;
     [SerializeField] private LevelIntersitialAdUI levelIntersitialAdUI;
-    [SerializeField] private SkinsContainer skinsContainer;
-
-    private void Awake()
-    {
-        skinsContainer.SetCurrentSkins();
-    }
 
     private void Start()
     {
@@ -84,7 +78,7 @@ public class GameManager : MonoBehaviour
         deathPanel.gameObject.SetActive(true);
         deathPanel.Open();
 
-        if(DataManager.leftToShowAd == 0 && levelIntersitialAdUI.adIsLoaded)
+        if (DataManager.leftToShowAd == 0 && levelIntersitialAdUI.adIsLoaded)
         {
             DataManager.leftToShowAd = DataManager.MAX_LEFT_TO_SHOW_AD;
             StartCoroutine(ShowAdWithDelay(0.5f));

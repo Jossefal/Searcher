@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 #pragma warning disable 649
@@ -10,30 +11,25 @@ public class ControlController : MonoBehaviour, IPointerDownHandler, IPointerUpH
     [SerializeField] private Transform ship;
     [SerializeField] private Camera mainCamera;
 
-    private Vector2 startPos;
     private PointerEventData pointer;
+    private List<PointerEventData> pointers = new List<PointerEventData>();
 
     public void OnPointerDown(PointerEventData ped)
     {
-        if (pointer == null)
-        {
-            pointer = ped;
-            startPos = ped.position;
-        }
+        pointers.Add(ped);
     }
 
     public void OnPointerUp(PointerEventData ped)
     {
-        if (pointer == ped)
-            pointer = null;
+        pointers.Remove(ped);
     }
 
     public float Horizontal()
     {
-        if (pointer == null)
+        if (pointers.Count == 0)
             return 0f;
 
-        Vector2 pointerWorldPos = mainCamera.ScreenToWorldPoint(pointer.position);
+        Vector2 pointerWorldPos = mainCamera.ScreenToWorldPoint(pointers[0].position);
 
         if (Mathf.Abs(ship.position.x - pointerWorldPos.x) < 0.2f)
             return 0f;
