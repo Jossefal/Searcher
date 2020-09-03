@@ -4,9 +4,15 @@
 
 public class Obstacle : MonoBehaviour, IObstacle
 {
+    private EffectsController effectsController;
+
     [SerializeField] private float damage;
-    [SerializeField] private GameObject deathEffect;
     [SerializeField] private bool deathAfterDealingDamage;
+
+    private void Start()
+    {
+        effectsController = GetComponent<EffectsController>();
+    }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
@@ -21,7 +27,7 @@ public class Obstacle : MonoBehaviour, IObstacle
 
     private void Death()
     {
-        Instantiate(deathEffect, transform.position, deathEffect.transform.rotation);
+        effectsController.SpawnDeathEffect();
         gameObject.SetActive(false);
     }
 

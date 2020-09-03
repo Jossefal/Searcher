@@ -4,10 +4,11 @@
 
 public class EffectsController : MonoBehaviour
 {
-    [SerializeField] private GameObject deathEffect;
+    public GameObject deathEffectPrefab { get; set; }
 
     public void SpawnDeathEffect()
     {
-        Instantiate(deathEffect, transform.position, transform.rotation);
+        if (deathEffectPrefab != null)
+            Instantiate(deathEffectPrefab, transform.position, transform.rotation);
     }
 }
