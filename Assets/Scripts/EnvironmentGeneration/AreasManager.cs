@@ -5,23 +5,6 @@ using UnityEngine;
 
 public class AreasManager : MonoBehaviour
 {
-    public bool nextAreaIsSpaceman
-    {
-        get
-        {
-            if (areasLeftToSpaceman == 0)
-            {
-                RestartCounters();
-                return true;
-            }
-            else
-            {
-                areasLeftToSpaceman--;
-                return false;
-            }
-        }
-    }
-
     public RespawnPanel respawnPanel
     {
         get
@@ -35,8 +18,6 @@ public class AreasManager : MonoBehaviour
     [SerializeField] private RespawnPanel _respawnPanel;
     [SerializeField] private List<Area> unusedEasyAreas;
     [SerializeField] private List<Area> unusedNormalAreas;
-    [SerializeField] private int minAreasBetweenSpacemans;
-    [SerializeField] private int maxAreasBetweenSpacemans;
 
     [Space]
     [Header("Difficulty oprions")]
@@ -48,19 +29,31 @@ public class AreasManager : MonoBehaviour
     [SerializeField] private float scaleStep;
     [SerializeField] private float finalScale;
 
-    private float areasLeftToSpaceman;
     private float easyAreaChance;
+    private PickableManager pickableManager;
 
     private void Awake()
     {
-        RestartCounters();
+        pickableManager = GetComponent<PickableManager>();
+        pickableManager.Initialize();
+
         easyAreaChance = startEasyChance;
         currentScale = new Vector3(startScale, startScale, startScale);
+
+        InitializeAreas();
     }
 
-    public void RestartCounters()
+    private void InitializeAreas()
     {
-        areasLeftToSpaceman = Random.Range(minAreasBetweenSpacemans, maxAreasBetweenSpacemans + 1);
+        foreach (Area area in unusedEasyAreas)
+        {
+            area.Initialize(this);
+        }
+
+        foreach (Area area in unusedNormalAreas)
+        {
+            area.Initialize(this);
+        }
     }
 
     public Area GetArea()
@@ -84,6 +77,8 @@ public class AreasManager : MonoBehaviour
             areasToScale--;
         else if (currentScale.x < finalScale)
             currentScale.x = currentScale.y = Mathf.Clamp(currentScale.x + scaleStep, 1, finalScale);
+
+        pickableManager.Evaluate(nextArea);
 
         return nextArea;
     }

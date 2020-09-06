@@ -1,5 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &243334988176479971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6276127307072227749}
+  m_Layer: 0
+  m_Name: SpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6276127307072227749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243334988176479971}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1777305718535689547}
+  - {fileID: 3390514573766148943}
+  - {fileID: 2000319028230716868}
+  - {fileID: 5397219517198525534}
+  m_Father: {fileID: 7504889239671408731}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1976542104903660270
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,8 +61,8 @@ Transform:
   m_LocalPosition: {x: -2.4, y: 5.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7504889239671408731}
-  m_RootOrder: 7
+  m_Father: {fileID: 6276127307072227749}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3774564944307459773
 GameObject:
@@ -57,8 +91,8 @@ Transform:
   m_LocalPosition: {x: 0.25, y: 8.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7504889239671408731}
-  m_RootOrder: 8
+  m_Father: {fileID: 6276127307072227749}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7504889239671408734
 GameObject:
@@ -96,10 +130,7 @@ Transform:
   - {fileID: 195979263213666210}
   - {fileID: 2068959770329845860}
   - {fileID: 3921472688059604978}
-  - {fileID: 1777305718535689547}
-  - {fileID: 3390514573766148943}
-  - {fileID: 2000319028230716868}
-  - {fileID: 5397219517198525534}
+  - {fileID: 6276127307072227749}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,13 +206,7 @@ MonoBehaviour:
   - {fileID: 195979263213666210}
   - {fileID: 2068959770329845860}
   - {fileID: 3921472688059604978}
-  spacemanSpawnPoints:
-  - {fileID: 1777305718535689547}
-  - {fileID: 3390514573766148943}
-  - {fileID: 2000319028230716868}
-  - {fileID: 5397219517198525534}
-  spacemanPrefab: {fileID: 6692435511983111624, guid: 28e83bfbfe0f55549baae35f890676a5,
-    type: 3}
+  spawnPointsParent: {fileID: 6276127307072227749}
   isEasy: 0
 --- !u!1 &7504889239826000958
 GameObject:
@@ -240,8 +265,8 @@ Transform:
   m_LocalPosition: {x: 0.05, y: 2.1799998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7504889239671408731}
-  m_RootOrder: 6
+  m_Father: {fileID: 6276127307072227749}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8630414635004858632
 GameObject:
@@ -270,8 +295,8 @@ Transform:
   m_LocalPosition: {x: 2.95, y: 5.4700003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7504889239671408731}
-  m_RootOrder: 9
+  m_Father: {fileID: 6276127307072227749}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2739363128192932562
 PrefabInstance:

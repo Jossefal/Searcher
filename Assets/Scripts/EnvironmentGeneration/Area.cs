@@ -4,16 +4,34 @@
 
 public class Area : MonoBehaviour
 {
+    private new Transform transform;
+
     [SerializeField] private Transform nextAreaSpawnPoint;
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private Transform[] scalebleObstacles;
-    [SerializeField] private Transform[] spacemanSpawnPoints;
-    [SerializeField] private GameObject spacemanPrefab;
+    [SerializeField] private Transform spawnPointsParent;
     [SerializeField] private bool isEasy;
 
     private AreasManager areasManager;
-    private GameObject spaceman;
+    private GameObject spawnedObject;
     private bool nextIsSpawned;
+    private Transform[] spawnPoints;
+
+    public void Initialize(AreasManager areasManager)
+    {
+        this.areasManager = areasManager;
+        transform = GetComponent<Transform>();
+
+        if (spawnPointsParent.childCount != 0)
+        {
+            spawnPoints = new Transform[spawnPointsParent.childCount];
+
+            for (int i = 0; i < spawnPointsParent.childCount; i++)
+            {
+                spawnPoints[i] = spawnPointsParent.GetChild(i);
+            }
+        }
+    }
 
     public void SpawnNextArea()
     {
@@ -30,20 +48,17 @@ public class Area : MonoBehaviour
             Unuse();
     }
 
-    private void OnEnable()
+    public void SpawnObject(GameObject prefab)
     {
-        if (areasManager.nextAreaIsSpaceman)
+        if (spawnedObject == null)
         {
-            int pointIndex = Random.Range(0, spacemanSpawnPoints.Length);
-            spaceman = Instantiate(spacemanPrefab, spacemanSpawnPoints[pointIndex].position, Quaternion.identity, transform);
+            int pointIndex = Random.Range(0, spawnPoints.Length);
+            spawnedObject = Instantiate(prefab, spawnPoints[pointIndex].position, Quaternion.identity, transform);
         }
     }
 
     public void Respawn(Vector3 pos)
     {
-        if (areasManager == null)
-            areasManager = GameObject.FindWithTag("AreasManager").GetComponent<AreasManager>();
-
         for (int i = 0; i < obstacles.Length; i++)
         {
             obstacles[i].SetActive(true);
@@ -67,8 +82,8 @@ public class Area : MonoBehaviour
         else
             areasManager.UnuseNormalArea(this);
 
-        if (spaceman != null)
-            Destroy(spaceman);
+        if (spawnedObject != null)
+            Destroy(spawnedObject);
 
         nextIsSpawned = false;
         gameObject.SetActive(false);

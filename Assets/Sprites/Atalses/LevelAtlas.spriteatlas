@@ -49,7 +49,11 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 83b655197157e7b44bf4caeeb7f63d4c, type: 3}
     - {fileID: 2800000, guid: e22a30db97e9d9942b1c451fd016e328, type: 3}
     - {fileID: 2800000, guid: e0643719e23c70e46b68e53aee8ad116, type: 3}
-    totalSpriteSurfaceArea: 694037
+    - {fileID: 2800000, guid: 5d96d8fdeb84d604dad3487e20fc6d39, type: 3}
+    - {fileID: 2800000, guid: c8fb3dd917fa0db4d9e115e4aa2ccd9f, type: 3}
+    - {fileID: 2800000, guid: 153df85b8b012d443977e2a5657b0f0d, type: 3}
+    - {fileID: 2800000, guid: 2662910c3b45b204fb19752c81646b5a, type: 3}
+    totalSpriteSurfaceArea: 1113859
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -60,7 +64,14 @@ SpriteAtlas:
   - {fileID: 6326231466481203021, guid: 5e5d46932e81f164185171cd605bfee8, type: 3}
   - {fileID: 21300000, guid: 83b655197157e7b44bf4caeeb7f63d4c, type: 3}
   - {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116, type: 3}
+  - {fileID: 21300000, guid: c8fb3dd917fa0db4d9e115e4aa2ccd9f, type: 3}
+  - {fileID: 5056626699452136604, guid: 153df85b8b012d443977e2a5657b0f0d, type: 3}
+  - {fileID: -8655498747461282204, guid: 153df85b8b012d443977e2a5657b0f0d, type: 3}
+  - {fileID: 7416298283011143849, guid: 153df85b8b012d443977e2a5657b0f0d, type: 3}
+  - {fileID: 4842298561321774563, guid: 153df85b8b012d443977e2a5657b0f0d, type: 3}
   - {fileID: 21300000, guid: e22a30db97e9d9942b1c451fd016e328, type: 3}
+  - {fileID: 21300000, guid: 2662910c3b45b204fb19752c81646b5a, type: 3}
+  - {fileID: 21300000, guid: 5d96d8fdeb84d604dad3487e20fc6d39, type: 3}
   - {fileID: 21300000, guid: 0e03514f7c7b2ee4a8267f9d921f2ef7, type: 3}
   m_PackedSpriteNamesToIndex:
   - ray
@@ -70,7 +81,14 @@ SpriteAtlas:
   - stars_0
   - spaceman
   - spaceman-hand
+  - circle
+  - Smithers_1
+  - Smithers_0
+  - Smithers_3
+  - Smithers_2
   - spaceman-body
+  - smokes-without-borders
+  - bordered_circle
   - rocket
   m_Tag: LevelAtlas
   m_IsVariant: 0

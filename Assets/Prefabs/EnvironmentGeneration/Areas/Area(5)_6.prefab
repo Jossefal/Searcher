@@ -27,8 +27,8 @@ Transform:
   m_LocalPosition: {x: 3.08, y: 3.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7504889239671408731}
-  m_RootOrder: 6
+  m_Father: {fileID: 6823658757575823487}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3607071790600860925
 GameObject:
@@ -57,8 +57,8 @@ Transform:
   m_LocalPosition: {x: -1.4, y: 5.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7504889239671408731}
-  m_RootOrder: 7
+  m_Father: {fileID: 6823658757575823487}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6284389843629849058
 GameObject:
@@ -87,8 +87,8 @@ Transform:
   m_LocalPosition: {x: 0.18, y: 8.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7504889239671408731}
-  m_RootOrder: 8
+  m_Father: {fileID: 6823658757575823487}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7504889239671408734
 GameObject:
@@ -126,9 +126,7 @@ Transform:
   - {fileID: 195979263213666210}
   - {fileID: 2068959770329845860}
   - {fileID: 3921472688059604978}
-  - {fileID: 7200357648551879819}
-  - {fileID: 2767925654797763902}
-  - {fileID: 8930662424212952699}
+  - {fileID: 6823658757575823487}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -204,12 +202,7 @@ MonoBehaviour:
   - {fileID: 195979263213666210}
   - {fileID: 2068959770329845860}
   - {fileID: 3921472688059604978}
-  spacemanSpawnPoints:
-  - {fileID: 7200357648551879819}
-  - {fileID: 2767925654797763902}
-  - {fileID: 8930662424212952699}
-  spacemanPrefab: {fileID: 6692435511983111624, guid: 28e83bfbfe0f55549baae35f890676a5,
-    type: 3}
+  spawnPointsParent: {fileID: 6823658757575823487}
   isEasy: 0
 --- !u!1 &7504889239826000958
 GameObject:
@@ -240,6 +233,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7504889239671408731}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8678963957841933342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6823658757575823487}
+  m_Layer: 0
+  m_Name: SpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6823658757575823487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8678963957841933342}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7200357648551879819}
+  - {fileID: 2767925654797763902}
+  - {fileID: 8930662424212952699}
+  m_Father: {fileID: 7504889239671408731}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2739363128192932562
 PrefabInstance:

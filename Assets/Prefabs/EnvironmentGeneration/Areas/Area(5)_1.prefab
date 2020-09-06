@@ -27,8 +27,8 @@ Transform:
   m_LocalPosition: {x: 1.68, y: 4.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7504889239671408731}
-  m_RootOrder: 8
+  m_Father: {fileID: 8534251411922549835}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4473487875461016311
 GameObject:
@@ -57,6 +57,39 @@ Transform:
   m_LocalPosition: {x: -1.14, y: 1.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 8534251411922549835}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4552801170241107762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8534251411922549835}
+  m_Layer: 0
+  m_Name: SpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8534251411922549835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552801170241107762}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5560890597099490880}
+  - {fileID: 4013217762992702310}
+  - {fileID: 3240504910948398710}
   m_Father: {fileID: 7504889239671408731}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,8 +120,8 @@ Transform:
   m_LocalPosition: {x: -1.73, y: 6.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7504889239671408731}
-  m_RootOrder: 7
+  m_Father: {fileID: 8534251411922549835}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7504889239671408734
 GameObject:
@@ -126,9 +159,7 @@ Transform:
   - {fileID: 1523702035684047813}
   - {fileID: 8554614248044293499}
   - {fileID: 8062559980877572304}
-  - {fileID: 5560890597099490880}
-  - {fileID: 4013217762992702310}
-  - {fileID: 3240504910948398710}
+  - {fileID: 8534251411922549835}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -204,12 +235,7 @@ MonoBehaviour:
   - {fileID: 1523702035684047813}
   - {fileID: 8554614248044293499}
   - {fileID: 8062559980877572304}
-  spacemanSpawnPoints:
-  - {fileID: 5560890597099490880}
-  - {fileID: 4013217762992702310}
-  - {fileID: 3240504910948398710}
-  spacemanPrefab: {fileID: 6692435511983111624, guid: 28e83bfbfe0f55549baae35f890676a5,
-    type: 3}
+  spawnPointsParent: {fileID: 8534251411922549835}
   isEasy: 0
 --- !u!1 &7504889239826000958
 GameObject:
