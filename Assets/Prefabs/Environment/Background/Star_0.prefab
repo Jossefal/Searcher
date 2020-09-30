@@ -102,8 +102,5 @@ MonoBehaviour:
     sprite: {fileID: -3414963050774899787, guid: 0ecf5b68408aba6468340b3d7c68f9dd,
       type: 3}
   - themeId: 2
-    sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
-      type: 3}
-  - themeId: 3
-    sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
+    sprite: {fileID: 6326231466481203021, guid: 5e5d46932e81f164185171cd605bfee8,
       type: 3}

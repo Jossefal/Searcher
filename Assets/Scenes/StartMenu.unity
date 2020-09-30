@@ -218,8 +218,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
+  rigidbody: {fileID: 0}
   direction: {x: 0, y: 1, z: 0}
+  useTransformUpDirection: 0
   speed: 2
+  moveType: 0
 --- !u!1 &1519940654
 GameObject:
   m_ObjectHideFlags: 0

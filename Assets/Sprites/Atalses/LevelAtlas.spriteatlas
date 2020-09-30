@@ -57,10 +57,12 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 2fc1a9aa3a74ad2468d1c0dd4e4e77ec, type: 3}
     - {fileID: 2800000, guid: b1f09fd755c45b24e93dd7f12a171e9d, type: 3}
     - {fileID: 2800000, guid: 3cfe3d86fe5e5784a9473197003e0188, type: 3}
-    totalSpriteSurfaceArea: 1523356
+    - {fileID: 2800000, guid: c27b6a60260274c488a813d16f0ffdcf, type: 3}
+    totalSpriteSurfaceArea: 1711516
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: c27b6a60260274c488a813d16f0ffdcf, type: 3}
   - {fileID: 21300000, guid: 36abcc805211c0a4b8f9d7d036b0c61e, type: 3}
   - {fileID: 21300000, guid: 85405132dfb3a014da5821f2c42d8faf, type: 3}
   - {fileID: -1177934027866655137, guid: 5e5d46932e81f164185171cd605bfee8, type: 3}
@@ -82,6 +84,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 65a6633f1381df84fa16b8e88f16610d, type: 3}
   - {fileID: 21300000, guid: 0e03514f7c7b2ee4a8267f9d921f2ef7, type: 3}
   m_PackedSpriteNamesToIndex:
+  - rocket2
   - ray
   - meteor
   - stars_2

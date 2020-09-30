@@ -99,9 +99,7 @@ MonoBehaviour:
   - themeId: 1
     sprite: {fileID: 21300000, guid: 65a6633f1381df84fa16b8e88f16610d, type: 3}
   - themeId: 2
-    sprite: {fileID: 21300000, guid: 8e7c087138d47984f92ec1ccb6e17d09, type: 3}
-  - themeId: 3
-    sprite: {fileID: 21300000, guid: 83b655197157e7b44bf4caeeb7f63d4c, type: 3}
+    sprite: {fileID: 21300000, guid: 85405132dfb3a014da5821f2c42d8faf, type: 3}
 --- !u!1 &6409251157244215961
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,8 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede6ddc19108f54798691d0cd43cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   damage: 999
   deathAfterDealingDamage: 1
+  destroyAfterDeath: 0
 --- !u!114 &9022423212309751141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +239,4 @@ MonoBehaviour:
   - themeId: 1
     prefab: {fileID: 195166072334390375, guid: 7f1b12e2ff2bb96409808aef7023c9fc, type: 3}
   - themeId: 2
-    prefab: {fileID: 195166072334390375, guid: 244113e0a82493649aad8d364369b824, type: 3}
-  - themeId: 3
     prefab: {fileID: 195166072334390375, guid: 244113e0a82493649aad8d364369b824, type: 3}

@@ -122,8 +122,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: b1f09fd755c45b24e93dd7f12a171e9d, type: 3}
   - themeId: 2
     sprite: {fileID: 21300000, guid: e22a30db97e9d9942b1c451fd016e328, type: 3}
-  - themeId: 3
-    sprite: {fileID: 21300000, guid: e22a30db97e9d9942b1c451fd016e328, type: 3}
 --- !u!1 &2272343501606151962
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,9 +226,6 @@ MonoBehaviour:
   - themeId: 2
     sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
       type: 3}
-  - themeId: 3
-    sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
-      type: 3}
 --- !u!1 &5484798064350560116
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,9 +328,6 @@ MonoBehaviour:
     sprite: {fileID: -3712557355026288584, guid: 3cfe3d86fe5e5784a9473197003e0188,
       type: 3}
   - themeId: 2
-    sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
-      type: 3}
-  - themeId: 3
     sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
       type: 3}
 --- !u!1 &6692435511983111624

@@ -32,8 +32,19 @@ public class MovingController : MonoBehaviour
     private void FixedUpdate()
     {
         if (!shipStats.isStunned)
-            rb.velocity = transform.up * speed;
+            rb.velocity = CalculateVelocity();
         else
             rb.velocity = Vector2.zero;
+    }
+
+    private Vector2 CalculateVelocity()
+    {
+        float angleB = Vector3.Angle(Vector3.up, transform.up);
+        float angleA = 90f - angleB;
+        float a = speed;
+        float b = a * Mathf.Tan(angleB * Mathf.Deg2Rad);
+
+        float sign = Mathf.Sign(Vector3.SignedAngle(Vector3.up, transform.up, Vector3.forward));
+        return new Vector2(b * -sign, a);
     }
 }

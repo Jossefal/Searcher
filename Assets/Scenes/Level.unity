@@ -251,6 +251,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1624444667185135622, guid: a352c686f86514e45b064e3ecf722236,
+        type: 3}
+      propertyPath: directionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1624444667185135622, guid: a352c686f86514e45b064e3ecf722236,
+        type: 3}
+      propertyPath: startDelay
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1819979824013590793, guid: a352c686f86514e45b064e3ecf722236,
         type: 3}
       propertyPath: scoreManager
@@ -570,8 +580,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede6ddc19108f54798691d0cd43cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   damage: 999
   deathAfterDealingDamage: 0
+  destroyAfterDeath: 0
 --- !u!61 &234703668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -631,6 +643,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ed7af63b34bcb40b533d2ccd5cf190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &303287167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1624444667185135620, guid: a352c686f86514e45b064e3ecf722236,
+    type: 3}
+  m_PrefabInstance: {fileID: 75347481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &357237407 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3082615139283632744, guid: 1a6c2410418ceeb42adb3296b79d2c5e,
@@ -650,6 +668,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1539388145}
     m_Modifications:
+    - target: {fileID: 195979263213666212, guid: d7849cda0b00ccb48be70a5c60069b91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379005319257723980, guid: d7849cda0b00ccb48be70a5c60069b91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7504889239671408731, guid: d7849cda0b00ccb48be70a5c60069b91,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -714,6 +742,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148525772383950923, guid: d7849cda0b00ccb48be70a5c60069b91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7849cda0b00ccb48be70a5c60069b91, type: 3}
@@ -792,6 +825,7 @@ MonoBehaviour:
   xAxis: 0
   yAxis: 1
   offset: {x: 0, y: 4}
+  updateType: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -848,6 +882,7 @@ Transform:
   m_Children:
   - {fileID: 1674959987}
   - {fileID: 1995137306}
+  - {fileID: 1252005928}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1115,7 +1150,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   obstacleLayers:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 528384
   scoreManager: {fileID: 663224458}
   deathPanel: {fileID: 2080717948}
   interfaceManager: {fileID: 847979016}
@@ -1841,6 +1876,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ed7af63b34bcb40b533d2ccd5cf190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1252005927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252005928}
+  - component: {fileID: 1252005929}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1252005928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252005927}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1252005929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252005927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273ac53f679f3ef478b595dbffc856d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 3264875180265499852, guid: 96004acb4fd3a4c48a5d16088d48bbc3, type: 3}
+  timeBetween: 4
+  startDelay: 3
+  spawnRadius: {x: 0, y: 0}
+  enemyLifetime: 20
 --- !u!114 &1307653998 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7504889239671408729, guid: 387f75ab7d69bee42ba628975b5fb960,
@@ -2036,6 +2119,7 @@ GameObject:
   - component: {fileID: 1539388145}
   - component: {fileID: 1539388144}
   - component: {fileID: 1539388146}
+  - component: {fileID: 1539388147}
   m_Layer: 0
   m_Name: AreasManager
   m_TagString: AreasManager
@@ -2142,6 +2226,22 @@ MonoBehaviour:
     range:
       min: 1
       max: 1
+--- !u!114 &1539388147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539388143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eaf96bfe9bb5c84d87ca9667ab43b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 1252005927}
+  inactiveTime: 15
+  activeTime: 25
+  shipGun: {fileID: 303287167}
 --- !u!114 &1544919462 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7504889239671408729, guid: e4020eb01117bf643835fe07f2f47b64,
@@ -2577,8 +2677,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede6ddc19108f54798691d0cd43cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   damage: 999
   deathAfterDealingDamage: 0
+  destroyAfterDeath: 0
 --- !u!61 &1760202863
 BoxCollider2D:
   m_ObjectHideFlags: 0

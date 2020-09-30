@@ -13,6 +13,8 @@ public class AreasManager : MonoBehaviour
         }
     }
 
+    public bool isSkyforceMode { get; set; }
+
     [HideInInspector] public Vector3 currentScale;
 
     [SerializeField] private RespawnPanel _respawnPanel;

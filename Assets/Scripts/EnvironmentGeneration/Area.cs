@@ -59,15 +59,11 @@ public class Area : MonoBehaviour
 
     public void Respawn(Vector3 pos)
     {
-        for (int i = 0; i < obstacles.Length; i++)
-        {
-            obstacles[i].SetActive(true);
-        }
+        SetObstaclesActive(!areasManager.isSkyforceMode);
 
         for (int i = 0; i < scalebleObstacles.Length; i++)
         {
             scalebleObstacles[i].localScale = areasManager.currentScale;
-            scalebleObstacles[i].gameObject.SetActive(true);
         }
 
         transform.position = pos;
@@ -87,6 +83,14 @@ public class Area : MonoBehaviour
 
         nextIsSpawned = false;
         gameObject.SetActive(false);
+    }
+
+    private void SetObstaclesActive(bool active)
+    {
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            obstacles[i].SetActive(active);
+        }
     }
 
     private void OnDrawGizmos()

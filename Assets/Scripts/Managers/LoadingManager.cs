@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using GoogleMobileAds.Api;
 
 #pragma warning disable 649
@@ -20,32 +20,43 @@ public class LoadingManager : MonoBehaviour
     }
 
     [SerializeField] private AdsTargeter adsTargeter;
-    [SerializeField] private GameObject chooseDataPanel;
-    [SerializeField] private Text cloudRecordText;
-    [SerializeField] private Text cloudLivesText;
-    [SerializeField] private Text localRecordText;
-    [SerializeField] private Text localLivesText;
-    [SerializeField] private SafeInt cloudRecord;
-    [SerializeField] private SafeInt cloudLives;
 
     private bool adsIsReady;
     private bool purchasesIsReady;
     private bool firebaseIsReady;
+    private bool savesIsReady;
     private MaxAdContentRating _maxAdContentRating = MaxAdContentRating.G;
 
     public void Load()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        if (DataManager.isLocalTestMode)
+        if (DataManager.isLocalTestMode || Application.internetReachability == NetworkReachability.NotReachable)
         {
             DataManager.LocalLoad();
             LevelsManager.LoadStartMenuStatic();
             return;
         }
 
+        InitializeServices();
+
+        GooglePlayAuth((succes) =>
+        {
+            FirestoreAuth();
+
+            LoadSaves();
+        });
+
+        StartCoroutine(LoadStartMenu());
+    }
+
+    private void InitializeServices()
+    {
         GPGSManager.Initialize(false);
+
         FirestoreManager.Initialize();
+
+        IAPManager.Initialize((status) => purchasesIsReady = true);
 
         MobileAds.Initialize((status) =>
         {
@@ -57,87 +68,53 @@ public class LoadingManager : MonoBehaviour
 
             adsIsReady = true;
         });
+    }
 
-        IAPManager.Initialize((status) => purchasesIsReady = true);
+    private void GooglePlayAuth(Action<bool> onAuth)
+    {
+        GPGSManager.Auth(onAuth);
+    }
 
-        if (Application.internetReachability == NetworkReachability.NotReachable)
+    private void FirestoreAuth()
+    {
+        if (GPGSManager.isAuthenticated)
+        {
+            string authCode = GPGSManager.GetServerAuthCode();
+            FirestoreManager.Auth(authCode, task =>
+            {
+                firebaseIsReady = true;
+            });
+        }
+        else
+            firebaseIsReady = true;
+    }
+
+    private void LoadSaves()
+    {
+        if (GPGSManager.isAuthenticated && GPGSManager.isFirstAuth)
+        {
+            DataManager.CloudLoad((isExist) =>
+            {
+                if (!isExist)
+                    DataManager.LocalLoad();
+
+                savesIsReady = true;
+            });
+        }
+        else
         {
             DataManager.LocalLoad();
-            StartCoroutine(LoadStartMenu());
-            return;
+            savesIsReady = true;
         }
-
-        GPGSManager.Auth((success) =>
-        {
-            if (success)
-            {
-                string authCode = GPGSManager.GetServerAuthCode();
-                Debug.Log("DEBUG_LOG: ServerAuthCode=" + authCode);
-                System.Console.WriteLine("CONSOLE_WRITELINE: ServerAuthCode=" + authCode);
-                UnityEngine.Debug.Log("UNITYENGINE_DEBUG_LOG: ServerAuthCode=" + authCode);
-                FirestoreManager.Auth(authCode, task =>
-                {
-                    firebaseIsReady = true;
-                });
-            }
-            else
-                firebaseIsReady = true;
-
-            if (success && GPGSManager.isFirstAuth)
-            {
-                DataManager.CloudLoad((isExist) =>
-                {
-                    // GPGSManager.OpenSaveData();
-
-                    if (isExist && DataManager.isHaveLocalSaveData)
-                    {
-                        cloudRecord = DataManager.record;
-                        cloudLives = DataManager.livesCount;
-                        cloudRecordText.text = Converter.ConvertToString(cloudRecord.GetValue());
-                        cloudLivesText.text = Converter.ConvertToString(cloudLives.GetValue());
-                        DataManager.LocalLoad();
-                        localRecordText.text = Converter.ConvertToString(DataManager.record.GetValue());
-                        localLivesText.text = Converter.ConvertToString(DataManager.livesCount.GetValue());
-                        chooseDataPanel.SetActive(true);
-                    }
-                    else if (DataManager.isHaveLocalSaveData)
-                    {
-                        DataManager.LocalLoad();
-                        StartCoroutine(LoadStartMenu());
-                    }
-                    else
-                        StartCoroutine(LoadStartMenu());
-                });
-            }
-            else
-            {
-                // GPGSManager.OpenSaveData();
-                DataManager.LocalLoad();
-                StartCoroutine(LoadStartMenu());
-            }
-        });
     }
 
     private IEnumerator LoadStartMenu()
     {
-        while (!adsIsReady || !purchasesIsReady || !firebaseIsReady)
+        while (!adsIsReady || !purchasesIsReady || !firebaseIsReady || !savesIsReady)
         {
             yield return null;
         }
 
         LevelsManager.LoadStartMenuStatic();
-    }
-
-    public void ChooseCloud()
-    {
-        DataManager.record = cloudRecord;
-        DataManager.livesCount = cloudLives;
-
-        StartCoroutine(LoadStartMenu());
-    }
-
-    public void ChooseLocal()
-    {
-        StartCoroutine(LoadStartMenu());
     }
 }

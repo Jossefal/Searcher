@@ -11,6 +11,15 @@ public class FollowingController : MonoBehaviour
     [SerializeField] private bool yAxis = true;
     [SerializeField] private Vector2 offset = new Vector2(0, 0);
 
+    public enum UpdateType
+    {
+        Update,
+        LateUpdate,
+        FixedUpdate
+    }
+
+    [SerializeField] private UpdateType updateType;
+
     private Vector3 targetPos = new Vector3(0, 0, 0);
 
     private void Awake()
@@ -20,6 +29,24 @@ public class FollowingController : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (updateType == UpdateType.Update)
+            Move();
+    }
+
+    private void LateUpdate()
+    {
+        if (updateType == UpdateType.LateUpdate)
+            Move();
+    }
+
+    private void FixedUpdate()
+    {
+        if (updateType == UpdateType.FixedUpdate)
+            Move();
+    }
+
+    private void Move()
     {
         if (pursuedObject != null)
         {

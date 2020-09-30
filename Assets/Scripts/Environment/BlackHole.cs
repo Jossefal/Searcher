@@ -19,6 +19,9 @@ public class BlackHole : MonoBehaviour, IObstacle
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (!col.CompareTag("Ship"))
+            return;
+
         targetShip = col.gameObject.GetComponent<StatsController>();
 
         targetShip.Stun();

@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 #pragma warning disable 649
 
-public class StatsController : MonoBehaviour
+public class StatsController : MonoBehaviour, IStats
 {
     [HideInInspector] public bool isStunned { get; private set; }
 
