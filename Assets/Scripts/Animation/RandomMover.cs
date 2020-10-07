@@ -8,13 +8,16 @@ public class RandomMover : MonoBehaviour
 
     [SerializeField] private Vector2 radius;
     [SerializeField] private float speed;
+    [SerializeField] private float changePositionDelay;
     [SerializeField] private FollowingController.UpdateType updateType;
 
     private Vector3 destination;
+    private Timer timer = new Timer();
 
     private void Awake()
     {
         transform = GetComponent<Transform>();
+
         ChangeDestination();
     }
 
@@ -25,7 +28,7 @@ public class RandomMover : MonoBehaviour
 
         if (transform.localPosition != destination)
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, destination, speed * Time.deltaTime);
-        else
+        else if (!timer.Tick(changePositionDelay))
             ChangeDestination();
     }
 
@@ -36,7 +39,7 @@ public class RandomMover : MonoBehaviour
 
         if (transform.localPosition != destination)
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, destination, speed * Time.deltaTime);
-        else
+        else if (!timer.Tick(changePositionDelay))
             ChangeDestination();
     }
 
@@ -46,8 +49,8 @@ public class RandomMover : MonoBehaviour
             return;
 
         if (transform.localPosition != destination)
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, destination, speed * Time.fixedDeltaTime);
-        else
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, destination, speed * Time.deltaTime);
+        else if (!timer.Tick(changePositionDelay))
             ChangeDestination();
     }
 

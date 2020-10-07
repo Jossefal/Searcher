@@ -99,7 +99,8 @@ MonoBehaviour:
   - themeId: 1
     sprite: {fileID: 21300000, guid: 65a6633f1381df84fa16b8e88f16610d, type: 3}
   - themeId: 2
-    sprite: {fileID: 21300000, guid: 85405132dfb3a014da5821f2c42d8faf, type: 3}
+    sprite: {fileID: 7925070938566511520, guid: 6732d85d4fa478e4881832eaa80440de,
+      type: 3}
 --- !u!1 &6409251157244215961
 GameObject:
   m_ObjectHideFlags: 0

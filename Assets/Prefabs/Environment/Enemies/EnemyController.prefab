@@ -230,8 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  radius: {x: 4, y: 0}
+  radius: {x: 4, y: 2}
   speed: 3
+  changePositionDelay: 1
   updateType: 2
 --- !u!1 &3264875180265499852
 GameObject:
@@ -303,7 +304,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   direction: {x: 0, y: 1, z: 0}
   useTransformUpDirection: 0
-  speed: 5
+  speed: 4.5
   moveType: 0
   updateType: 2
 --- !u!1001 &419053517016960748
@@ -313,37 +314,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1214135266420353332}
     m_Modifications:
-    - target: {fileID: 1515953184280318562, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1509397273
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515953184280318562, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515953184280318562, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c05b2a0c8f9034d43838374522c59265,
-        type: 3}
-    - target: {fileID: 1515953184280318562, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515953184280318562, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515953184280318562, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1515953184280318564, guid: ef6c2a729efc84d4786671389ab257bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -399,40 +369,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 1515953184280318564, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.54967654
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515953184280318564, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.23642
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515953184280318564, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.23642
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515953184280318565, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: shootDelay
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515953184280318565, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: startDelay
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1515953184280318567, guid: ef6c2a729efc84d4786671389ab257bf,
         type: 3}
       propertyPath: m_Name
       value: Gun
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515953184479476011, guid: ef6c2a729efc84d4786671389ab257bf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6c2a729efc84d4786671389ab257bf, type: 3}

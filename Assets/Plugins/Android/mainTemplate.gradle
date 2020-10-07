@@ -64,6 +64,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.3' // Packages/com.google.firebase.firestore/Firebase/Editor/FirestoreDependencies.xml:13
     implementation 'com.google.firebase:firebase-firestore-unity:6.15.2' // Packages/com.google.firebase.firestore/Firebase/Editor/FirestoreDependencies.xml:20
     implementation 'com.google.games:gpgs-plugin-support:0.10.08' // Assets/GooglePlayGames/Editor/GooglePlayGamesPluginDependencies.xml:11
+    
+    implementation 'androidx.multidex:multidex:2.0.1'
 // Android Resolver Dependencies End
 **DEPS**}
 

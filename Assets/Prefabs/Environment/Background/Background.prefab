@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5331184396886732941}
-  - component: {fileID: 5331184396886732939}
+  - component: {fileID: 6669771728865953146}
   m_Layer: 0
   m_Name: StarsBlockLayer0 (1)
   m_TagString: Untagged
@@ -124,7 +124,7 @@ Transform:
   m_Father: {fileID: 5331184397782030827}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5331184396886732939
+--- !u!114 &6669771728865953146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5331184396886732940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850458cc6f56d2848884f671eaac3759, type: 3}
+  m_Script: {fileID: 11500000, guid: 422e39dced5ed9142a2dc45c03ffa7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
@@ -141,18 +141,8 @@ MonoBehaviour:
   translateMultiplier: 0.3
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  objects:
-  - {fileID: 8353669546605345052}
-  - {fileID: 5600028485573895997}
-  - {fileID: 6767335312014757020}
-  - {fileID: 7682432205598456378}
-  - {fileID: 6254372796605414714}
-  - {fileID: 8821383541826393074}
-  - {fileID: 7393585138478924606}
-  - {fileID: 1009877517324894281}
-  - {fileID: 8906576022603766642}
-  - {fileID: 1263956828120163905}
-  range: {x: 4.5, y: 9}
+  updateType: 2
+  range: {x: 4.5, y: 18}
 --- !u!1 &5331184397250127372
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5331184397250127370}
-  - component: {fileID: 5331184397250127371}
+  - component: {fileID: 31609623383699095}
   m_Layer: 0
   m_Name: StarsBlockLayer0
   m_TagString: Untagged
@@ -194,7 +184,7 @@ Transform:
   m_Father: {fileID: 5331184397782030827}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5331184397250127371
+--- !u!114 &31609623383699095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +193,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5331184397250127372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850458cc6f56d2848884f671eaac3759, type: 3}
+  m_Script: {fileID: 11500000, guid: 422e39dced5ed9142a2dc45c03ffa7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
@@ -211,18 +201,8 @@ MonoBehaviour:
   translateMultiplier: 0.3
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  objects:
-  - {fileID: 96633185183588092}
-  - {fileID: 6425847607559694941}
-  - {fileID: 3654163961285853349}
-  - {fileID: 6110250069249930938}
-  - {fileID: 3276473834629683447}
-  - {fileID: 5103261164465282115}
-  - {fileID: 3166734332563563288}
-  - {fileID: 3336670559111492848}
-  - {fileID: 6246850435402420682}
-  - {fileID: 7634448368940375445}
-  range: {x: 4.5, y: 9}
+  updateType: 2
+  range: {x: 4.5, y: 18}
 --- !u!1 &5331184397656527621
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5331184397656527618}
-  - component: {fileID: 5331184397656527619}
+  - component: {fileID: 4493987685584546572}
   m_Layer: 0
   m_Name: StarsBlockLayer2 (1)
   m_TagString: Untagged
@@ -264,7 +244,7 @@ Transform:
   m_Father: {fileID: 5331184397782030827}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5331184397656527619
+--- !u!114 &4493987685584546572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,7 +253,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5331184397656527621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850458cc6f56d2848884f671eaac3759, type: 3}
+  m_Script: {fileID: 11500000, guid: 422e39dced5ed9142a2dc45c03ffa7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
@@ -281,18 +261,8 @@ MonoBehaviour:
   translateMultiplier: 0.1
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  objects:
-  - {fileID: 3139836725517062378}
-  - {fileID: 333213049762472496}
-  - {fileID: 178743275554119288}
-  - {fileID: 8661369115948304404}
-  - {fileID: 971801944299447331}
-  - {fileID: 3996176342115068981}
-  - {fileID: 7892613866477340226}
-  - {fileID: 6826068102635064369}
-  - {fileID: 4452151838793472829}
-  - {fileID: 2600518332425420928}
-  range: {x: 4.5, y: 9}
+  updateType: 2
+  range: {x: 4.5, y: 18}
 --- !u!1 &5331184397782030829
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5331184397960323888}
-  - component: {fileID: 5331184397960323889}
+  - component: {fileID: 2732430712216615229}
   m_Layer: 0
   m_Name: StarsBlockLayer1
   m_TagString: Untagged
@@ -373,7 +343,7 @@ Transform:
   m_Father: {fileID: 5331184397782030827}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5331184397960323889
+--- !u!114 &2732430712216615229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,7 +352,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5331184397960323891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850458cc6f56d2848884f671eaac3759, type: 3}
+  m_Script: {fileID: 11500000, guid: 422e39dced5ed9142a2dc45c03ffa7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
@@ -390,18 +360,8 @@ MonoBehaviour:
   translateMultiplier: 0.2
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  objects:
-  - {fileID: 4040765973600488234}
-  - {fileID: 1493306677758850924}
-  - {fileID: 8329717499309232881}
-  - {fileID: 5965984831654375370}
-  - {fileID: 352158100153018080}
-  - {fileID: 6416423680880102277}
-  - {fileID: 7686182285793662480}
-  - {fileID: 3922033677486200801}
-  - {fileID: 5966183748825965767}
-  - {fileID: 1459919345216494618}
-  range: {x: 4.5, y: 9}
+  updateType: 2
+  range: {x: 4.5, y: 18}
 --- !u!1 &5331184398385449450
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5331184398385449451}
-  - component: {fileID: 5331184398385449448}
+  - component: {fileID: 8625302472191894844}
   m_Layer: 0
   m_Name: StarsBlockLayer2
   m_TagString: Untagged
@@ -443,7 +403,7 @@ Transform:
   m_Father: {fileID: 5331184397782030827}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5331184398385449448
+--- !u!114 &8625302472191894844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,7 +412,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5331184398385449450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850458cc6f56d2848884f671eaac3759, type: 3}
+  m_Script: {fileID: 11500000, guid: 422e39dced5ed9142a2dc45c03ffa7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
@@ -460,18 +420,8 @@ MonoBehaviour:
   translateMultiplier: 0.1
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  objects:
-  - {fileID: 6113536705755848939}
-  - {fileID: 1231778335028571702}
-  - {fileID: 274829216092718179}
-  - {fileID: 3654669627950128614}
-  - {fileID: 5084458541520772374}
-  - {fileID: 6161746589004076946}
-  - {fileID: 390141927081110215}
-  - {fileID: 2242645411598888753}
-  - {fileID: 3191707628917874903}
-  - {fileID: 2010933769292557986}
-  range: {x: 4.5, y: 9}
+  updateType: 2
+  range: {x: 4.5, y: 18}
 --- !u!1 &5331184398623704991
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5331184398623704988}
-  - component: {fileID: 5331184398623704989}
+  - component: {fileID: 6157690053418752507}
   m_Layer: 0
   m_Name: StarsBlockLayer1 (1)
   m_TagString: Untagged
@@ -513,7 +463,7 @@ Transform:
   m_Father: {fileID: 5331184397782030827}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5331184398623704989
+--- !u!114 &6157690053418752507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -522,7 +472,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5331184398623704991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850458cc6f56d2848884f671eaac3759, type: 3}
+  m_Script: {fileID: 11500000, guid: 422e39dced5ed9142a2dc45c03ffa7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
@@ -530,18 +480,8 @@ MonoBehaviour:
   translateMultiplier: 0.2
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  objects:
-  - {fileID: 1340478587189956865}
-  - {fileID: 8956647225438121384}
-  - {fileID: 6856960784132670446}
-  - {fileID: 1986214351966071754}
-  - {fileID: 8970309442235871720}
-  - {fileID: 5235383273027708079}
-  - {fileID: 4994226874143315138}
-  - {fileID: 4226447685643588339}
-  - {fileID: 6661389963839446843}
-  - {fileID: 900850607617705440}
-  range: {x: 4.5, y: 9}
+  updateType: 2
+  range: {x: 4.5, y: 18}
 --- !u!1 &5331184398672354182
 GameObject:
   m_ObjectHideFlags: 0

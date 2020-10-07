@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 1624444667185135623}
   - component: {fileID: 1624444667185135617}
   - component: {fileID: 1624444667185135622}
+  - component: {fileID: 7741567315247442170}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -128,10 +129,23 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7105169398116540228, guid: 6c3212b8042c70a459316c908cffb0b6,
     type: 3}
   startDelay: 0
-  shootDelay: 0.5
+  shootDelay: 0.8
   bulletLifetime: 1
   shootPoint: {fileID: 1624444666986031944}
-  directionType: 0
+  directionType: 1
+--- !u!114 &7741567315247442170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624444667185135620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d6560e25748b8469888e0cd5e90dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: {x: 0, y: 0, z: -90}
 --- !u!1 &4268646054140190695
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +638,8 @@ MonoBehaviour:
   - themeId: 1
     sprite: {fileID: 21300000, guid: 2fc1a9aa3a74ad2468d1c0dd4e4e77ec, type: 3}
   - themeId: 2
-    sprite: {fileID: 21300000, guid: c27b6a60260274c488a813d16f0ffdcf, type: 3}
+    sprite: {fileID: 4816925793831071307, guid: 6732d85d4fa478e4881832eaa80440de,
+      type: 3}
 --- !u!1 &8736432876988968983
 GameObject:
   m_ObjectHideFlags: 0

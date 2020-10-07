@@ -6,47 +6,49 @@ public class BackgroundBlock : MonoBehaviour
 {
     [HideInInspector] public new Transform transform;
 
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private float translateMultiplier;
-    [SerializeField] private Transform topPoint;
-    [SerializeField] private Transform bottomPoint;
-    [SerializeField] private Transform[] objects;
-    [SerializeField] private Vector2 range;  
+    [SerializeField] protected Transform cameraTransform;
+    [SerializeField] protected float translateMultiplier;
+    [SerializeField] protected Transform topPoint;
+    [SerializeField] protected Transform bottomPoint;
 
-    private Vector3 lastPos;
+    protected Vector3 lastPos;
 
-    private void Awake()
+    protected void Awake()
     {
         transform = base.transform;
     }
 
-    private void Start()
+    protected void Start()
     {
         lastPos = cameraTransform.position;
-        TranslateObjects();
+        OnStart();
+        OnTranslate();
     }
 
-    private void Update()
+    protected void Update()
     {
-        if(transform.position == bottomPoint.position)
+        Move();
+    }
+
+    private void Move()
+    {
+        if (transform.position == bottomPoint.position)
         {
             transform.position = topPoint.position;
-            TranslateObjects();
+            OnTranslate();
         }
 
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, bottomPoint.localPosition, (cameraTransform.position.y - lastPos.y) * translateMultiplier);
         lastPos = cameraTransform.position;
     }
 
-    public void TranslateObjects()
+    protected virtual void OnStart()
     {
-        for(int i = 0; i < objects.Length; i++)
-        {
-            Vector3 pos = transform.position;
-            pos.x += Random.Range(-range.x, range.x);
-            pos.y += Random.Range(-range.y, range.y);
 
-            objects[i].position = pos;
-        }
+    }
+
+    protected virtual void OnTranslate()
+    {
+
     }
 }
