@@ -26,7 +26,7 @@ public class RandomMover : MonoBehaviour
         if (updateType != FollowingController.UpdateType.Update)
             return;
 
-        if (transform.localPosition != destination)
+        if (Vector3.Distance(transform.localPosition, destination) > 0.05f)
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, destination, speed * Time.deltaTime);
         else if (!timer.Tick(changePositionDelay))
             ChangeDestination();
@@ -37,7 +37,7 @@ public class RandomMover : MonoBehaviour
         if (updateType != FollowingController.UpdateType.LateUpdate)
             return;
 
-        if (transform.localPosition != destination)
+        if (Vector3.Distance(transform.localPosition, destination) > 0.05f)
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, destination, speed * Time.deltaTime);
         else if (!timer.Tick(changePositionDelay))
             ChangeDestination();
@@ -48,7 +48,7 @@ public class RandomMover : MonoBehaviour
         if (updateType != FollowingController.UpdateType.FixedUpdate)
             return;
 
-        if (transform.localPosition != destination)
+        if (Vector3.Distance(transform.localPosition, destination) > 0.05f)
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, destination, speed * Time.deltaTime);
         else if (!timer.Tick(changePositionDelay))
             ChangeDestination();

@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  radius: {x: 4, y: 2}
+  radius: {x: 4, y: 1.5}
   speed: 3
   changePositionDelay: 1
   updateType: 2
@@ -304,7 +304,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   direction: {x: 0, y: 1, z: 0}
   useTransformUpDirection: 0
-  speed: 4.5
+  speed: 4.7
   moveType: 0
   updateType: 2
 --- !u!1001 &419053517016960748
