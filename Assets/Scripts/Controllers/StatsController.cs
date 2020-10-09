@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 #pragma warning disable 649
@@ -7,25 +8,31 @@ public class StatsController : MonoBehaviour, IStats
 {
     [HideInInspector] public bool isStunned { get; private set; }
 
-    [SerializeField] private float maxHp;
+    public event Action<int> onHPChanged;
+
+    [SerializeField] private int maxHp;
     [SerializeField] private bool isDamagable = true;
     [SerializeField] private UnityEvent onStunStart;
     [SerializeField] private UnityEvent onStunEnd;
+    [SerializeField] private UnityEvent onRecieveDamage;
     [SerializeField] private UnityEvent onDeath;
-
-    private float currentHp;
+    private int currentHp;
 
     private void Awake()
     {
         RestoreHP();
     }
 
-    public void ReceiveDamage(float damage)
+    public void ReceiveDamage(int damage)
     {
         if (!isDamagable)
             return;
 
         currentHp -= Mathf.Clamp(damage, 0, currentHp);
+
+        onRecieveDamage.Invoke();
+        onHPChanged?.Invoke(currentHp);
+
         if (currentHp == 0)
             Death();
     }

@@ -5,12 +5,23 @@ using UnityEngine;
 
 public class SkyforceModeManager : MonoBehaviour
 {
+    public int difficultyLevel
+    {
+        get
+        {
+            return (int)difficultyCurve.Evaluate(activationsCount);
+        }
+    }
+
     private AreasManager areasManager;
 
-    [SerializeField] private GameObject enemySpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private float inactiveTime;
     [SerializeField] private float activeTime;
+    [SerializeField] private AnimationCurve difficultyCurve;
     [SerializeField] private GameObject shipGun;
+
+    private int activationsCount;
 
     private void Awake()
     {
@@ -22,7 +33,6 @@ public class SkyforceModeManager : MonoBehaviour
     private IEnumerator Inactive()
     {
         areasManager.isSkyforceMode = false;
-        enemySpawner.SetActive(false);
 
         if (shipGun.activeInHierarchy)
             Invoke("SetActiveShipGun", 3.5f);
@@ -35,7 +45,8 @@ public class SkyforceModeManager : MonoBehaviour
     private IEnumerator Active()
     {
         areasManager.isSkyforceMode = true;
-        enemySpawner.SetActive(true);
+        activationsCount++;
+        enemySpawner.Activate(activeTime);
 
         if (!shipGun.activeInHierarchy)
             Invoke("SetActiveShipGun", 3.5f);

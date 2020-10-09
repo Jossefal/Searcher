@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede6ddc19108f54798691d0cd43cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 1
   damage: 999
   deathAfterDealingDamage: 1
   destroyAfterDeath: 0

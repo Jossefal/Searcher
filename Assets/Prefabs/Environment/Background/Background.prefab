@@ -141,8 +141,7 @@ MonoBehaviour:
   translateMultiplier: 0.3
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  updateType: 2
-  range: {x: 4.5, y: 18}
+  range: {x: 4.5, y: 9}
 --- !u!1 &5331184397250127372
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,8 +200,7 @@ MonoBehaviour:
   translateMultiplier: 0.3
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  updateType: 2
-  range: {x: 4.5, y: 18}
+  range: {x: 4.5, y: 9}
 --- !u!1 &5331184397656527621
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,8 +259,7 @@ MonoBehaviour:
   translateMultiplier: 0.1
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  updateType: 2
-  range: {x: 4.5, y: 18}
+  range: {x: 4.5, y: 9}
 --- !u!1 &5331184397782030829
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,8 +357,7 @@ MonoBehaviour:
   translateMultiplier: 0.2
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  updateType: 2
-  range: {x: 4.5, y: 18}
+  range: {x: 4.5, y: 9}
 --- !u!1 &5331184398385449450
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,8 +416,7 @@ MonoBehaviour:
   translateMultiplier: 0.1
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  updateType: 2
-  range: {x: 4.5, y: 18}
+  range: {x: 4.5, y: 9}
 --- !u!1 &5331184398623704991
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,8 +475,7 @@ MonoBehaviour:
   translateMultiplier: 0.2
   topPoint: {fileID: 5331184396842509918}
   bottomPoint: {fileID: 5331184398672354183}
-  updateType: 2
-  range: {x: 4.5, y: 18}
+  range: {x: 4.5, y: 9}
 --- !u!1 &5331184398672354182
 GameObject:
   m_ObjectHideFlags: 0

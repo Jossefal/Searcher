@@ -5,10 +5,10 @@
 public class Obstacle : MonoBehaviour, IObstacle, IStats
 {
     private EffectsController effectsController;
-    private float currentHp;
+    private int currentHp;
 
-    [SerializeField] private float hp;
-    [SerializeField] private float damage;
+    [SerializeField] private int hp;
+    [SerializeField] private int damage;
     [SerializeField] private bool deathAfterDealingDamage;
     [SerializeField] private bool destroyAfterDeath;
 
@@ -35,9 +35,9 @@ public class Obstacle : MonoBehaviour, IObstacle, IStats
         }
     }
 
-    public void ReceiveDamage(float damage)
+    public void ReceiveDamage(int damage)
     {
-        hp = Mathf.Clamp(hp - damage, 0f, hp);
+        hp = Mathf.Clamp(hp - damage, 0, hp);
 
         if (hp == 0)
             Death();

@@ -128,7 +128,7 @@ MonoBehaviour:
   transform: {fileID: 0}
   bulletPrefab: {fileID: 7105169398116540228, guid: 6c3212b8042c70a459316c908cffb0b6,
     type: 3}
-  startDelay: 240
+  startDelay: 2.5
   shootDelay: 0.8
   bulletLifetime: 1
   shootPoint: {fileID: 1624444666986031944}
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d63c7d68e4e28429c552192deffa90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1
+  maxHp: 3
   isDamagable: 1
   onStunStart:
     m_PersistentCalls:

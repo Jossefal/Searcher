@@ -1,4 +1,4 @@
 ﻿public interface IStats
 {
-    void ReceiveDamage(float damage);
+    void ReceiveDamage(int damage);
 }

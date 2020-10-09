@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Backgrounds
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: a8be0c00e4a25ec47b58ae91839555f8, type: 3}
+    - {fileID: 2800000, guid: 81344bbdc6b861844a61bd4e12816139, type: 3}
+    - {fileID: 2800000, guid: 66c23ef73a7929a47a5c0518ad819eed, type: 3}
+    - {fileID: 2800000, guid: 09bad92b72c4cc244aeb30d4c44a10e4, type: 3}
+    - {fileID: 2800000, guid: 84115ec55df407e4c99df953fa1ffc30, type: 3}
+    totalSpriteSurfaceArea: 5242880
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a8be0c00e4a25ec47b58ae91839555f8, type: 3}
+  - {fileID: 21300000, guid: 84115ec55df407e4c99df953fa1ffc30, type: 3}
+  - {fileID: 21300000, guid: 66c23ef73a7929a47a5c0518ad819eed, type: 3}
+  - {fileID: 21300000, guid: 09bad92b72c4cc244aeb30d4c44a10e4, type: 3}
+  - {fileID: 21300000, guid: 81344bbdc6b861844a61bd4e12816139, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - skin-kamo-background-1-Opacity
+  - skin-kamo-background-5-Opacity
+  - skin-kamo-background-3-Opacity
+  - skin-kamo-background-4-Opacity
+  - skin-kamo-background-2-Opacity
+  m_Tag: Backgrounds
+  m_IsVariant: 0

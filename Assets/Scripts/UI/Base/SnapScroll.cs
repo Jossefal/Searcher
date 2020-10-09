@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -30,6 +31,16 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     private Vector3 lastPos;
     private float pointerDownTime;
     private Transform nextHighlightedObject;
+
+    public int indexOfHighlightedObject
+    {
+        get
+        {
+            return objects.IndexOf(highlightedObject);
+        }
+    }
+
+    public event Action<int> onObjectHighlight;
 
     private void Start()
     {
@@ -66,7 +77,11 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         if (objects.Count == 0)
             return;
 
+        Transform lastHighlightedObject = highlightedObject;
         highlightedObject = axis == Axis.Vertical ? GetNearestObjectVertical() : GetNearestObjectHorizontal();
+
+        if (highlightedObject != lastHighlightedObject)
+            onObjectHighlight?.Invoke(indexOfHighlightedObject);
 
         if (pointer == null)
         {

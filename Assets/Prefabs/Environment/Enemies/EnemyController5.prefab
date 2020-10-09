@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1214135266420353335}
   - component: {fileID: 1214135266420353333}
   - component: {fileID: 2170671344901824893}
-  - component: {fileID: 7694771035786668087}
   - component: {fileID: 4513026779720302868}
   - component: {fileID: 2487853028197121639}
   - component: {fileID: 1619349211029649204}
@@ -158,28 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  damage: 999
+  damage: 3
   deathAfterDealingDamage: 1
-  destroyAfterDeath: 1
---- !u!95 &7694771035786668087
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214135266420353334}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 972b20cfd1e9e2141b1a43825a37c5d5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  destroyAfterDeath: 0
 --- !u!114 &4513026779720302868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  radius: {x: 4, y: 1.5}
+  radius: {x: 4, y: 1}
   speed: 3
   changePositionDelay: 1
   updateType: 2
@@ -245,8 +225,9 @@ GameObject:
   - component: {fileID: 3264875180265499855}
   - component: {fileID: 5755174025445061011}
   - component: {fileID: -3942214226744371238}
+  - component: {fileID: 5967680771026074640}
   m_Layer: 0
-  m_Name: EnemyController
+  m_Name: EnemyController5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,6 +288,19 @@ MonoBehaviour:
   speed: 4.7
   moveType: 0
   updateType: 2
+--- !u!114 &5967680771026074640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3264875180265499852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d7c3634371d2d41a54b61bdfe5484b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1214135266420353334}
 --- !u!1001 &419053517016960748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -368,6 +362,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515953184280318565, guid: ef6c2a729efc84d4786671389ab257bf,
+        type: 3}
+      propertyPath: shootDelay
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515953184280318565, guid: ef6c2a729efc84d4786671389ab257bf,
+        type: 3}
+      propertyPath: startDelay
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1515953184280318567, guid: ef6c2a729efc84d4786671389ab257bf,
         type: 3}

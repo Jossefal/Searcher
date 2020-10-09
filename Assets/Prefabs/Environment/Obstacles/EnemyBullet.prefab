@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede6ddc19108f54798691d0cd43cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  damage: 999
+  hp: 1
+  damage: 1
   deathAfterDealingDamage: 1
   destroyAfterDeath: 1
 --- !u!114 &3106673269743397682
@@ -153,6 +153,6 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   useTransformUpDirection: 1
-  speed: 1.5
+  speed: 0.7
   moveType: 1
   updateType: 2
