@@ -130,7 +130,7 @@ MonoBehaviour:
     type: 3}
   startDelay: 2.5
   shootDelay: 0.8
-  bulletLifetime: 1
+  bulletLifetime: 1.1
   shootPoint: {fileID: 1624444666986031944}
   directionType: 1
 --- !u!114 &7741567315247442170
@@ -365,6 +365,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  onRecieveDamage:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -448,10 +451,10 @@ MonoBehaviour:
     prefab: {fileID: 8911352027092857193, guid: 8a168f06f5693224784e89a181e1d4f7,
       type: 3}
   - themeId: 2
-    prefab: {fileID: 8911352027092857193, guid: 8a168f06f5693224784e89a181e1d4f7,
+    prefab: {fileID: 8911352027092857193, guid: d5bd15276ecd11b4ba339f28c9c36e78,
       type: 3}
   - themeId: 3
-    prefab: {fileID: 8911352027092857193, guid: 8a168f06f5693224784e89a181e1d4f7,
+    prefab: {fileID: 8911352027092857193, guid: d5bd15276ecd11b4ba339f28c9c36e78,
       type: 3}
 --- !u!1 &7475219822146783250
 GameObject:
@@ -640,6 +643,9 @@ MonoBehaviour:
   - themeId: 2
     sprite: {fileID: 4816925793831071307, guid: 6732d85d4fa478e4881832eaa80440de,
       type: 3}
+  - themeId: 3
+    sprite: {fileID: 4043783522544301178, guid: 340bfdad24d824c40b135524d07a1d7c,
+      type: 3}
 --- !u!1 &8736432876988968983
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +697,9 @@ MonoBehaviour:
     gameObject: {fileID: 606448550849616005, guid: fbd2dd4fb8051a94ca948b5b0ea6a0c8,
       type: 3}
   - themeId: 2
+    gameObject: {fileID: 606448550849616005, guid: 082fa87532918994aa94fb2b2d94f90b,
+      type: 3}
+  - themeId: 3
     gameObject: {fileID: 606448550849616005, guid: 082fa87532918994aa94fb2b2d94f90b,
       type: 3}
 --- !u!1 &9171017736844618025

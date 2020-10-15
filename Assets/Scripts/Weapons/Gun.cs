@@ -7,13 +7,13 @@ public class Gun : MonoBehaviour
 {
     [HideInInspector] public new Transform transform;
 
-    private float delayStartTime;
+    protected float delayStartTime;
 
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float startDelay;
-    [SerializeField] private float shootDelay;
-    [SerializeField] private float bulletLifetime;
-    [SerializeField] private Transform shootPoint;
+    [SerializeField] protected GameObject bulletPrefab;
+    [SerializeField] protected float startDelay;
+    [SerializeField] protected float shootDelay;
+    [SerializeField] protected float bulletLifetime;
+    [SerializeField] protected Transform shootPoint;
 
     public enum DirectionType
     {
@@ -22,19 +22,19 @@ public class Gun : MonoBehaviour
         Down
     }
 
-    [SerializeField] private DirectionType directionType;
+    [SerializeField] protected DirectionType directionType;
 
-    private void Awake()
+    protected void Awake()
     {
         transform = GetComponent<Transform>();
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         StartCoroutine(Fire());
     }
 
-    private IEnumerator Fire()
+    protected IEnumerator Fire()
     {
         yield return new WaitForSeconds(startDelay);
 
@@ -44,17 +44,9 @@ public class Gun : MonoBehaviour
         {
             if (Time.time > delayStartTime + shootDelay)
             {
-                GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+                GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
 
-                switch (directionType)
-                {
-                    case DirectionType.Up:
-                        bullet.transform.up = Vector3.up;
-                        break;
-                    case DirectionType.Down:
-                        bullet.transform.up = Vector3.down;
-                        break;
-                }
+                SetRotation(bullet.transform);
 
                 Destroy(bullet, bulletLifetime);
 
@@ -62,6 +54,25 @@ public class Gun : MonoBehaviour
             }
 
             yield return null;
+        }
+    }
+
+    protected virtual void SetRotation(Transform bulletTransform)
+    {
+        switch (directionType)
+        {
+            case DirectionType.ShootPointUp:
+                bulletTransform.up = shootPoint.up;
+                break;
+            case DirectionType.Up:
+                bulletTransform.up = Vector3.up;
+                break;
+            case DirectionType.Down:
+                bulletTransform.up = Vector3.down;
+                break;
+            default:
+                bulletTransform.up = Vector3.up;
+                break;
         }
     }
 }

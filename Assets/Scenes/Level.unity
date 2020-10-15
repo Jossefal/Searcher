@@ -1949,6 +1949,9 @@ MonoBehaviour:
   - themeId: 2
     gameObject: {fileID: 1647883018171747599, guid: 4bdb65ee329dc114cbfd40efd2f2667b,
       type: 3}
+  - themeId: 3
+    gameObject: {fileID: 1647883018171747599, guid: 9ecaa4b4f8197eb4b8231b2e30eb1aba,
+      type: 3}
 --- !u!1 &1252005927
 GameObject:
   m_ObjectHideFlags: 0
