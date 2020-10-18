@@ -605,7 +605,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede6ddc19108f54798691d0cd43cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  maxHp: 0
+  isDamagable: 1
+  onStunStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onStunEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onRecieveDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
   damage: 999
   deathAfterDealingDamage: 0
   destroyAfterDeath: 0
@@ -1977,7 +1990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252005927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 10}
+  m_LocalPosition: {x: 0, y: 6, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -1999,23 +2012,8 @@ MonoBehaviour:
   - difficultyLevel: 1
     prefab: {fileID: 3264875180265499852, guid: 96004acb4fd3a4c48a5d16088d48bbc3,
       type: 3}
-  - difficultyLevel: 2
-    prefab: {fileID: 3264875180265499852, guid: 0918165156ba6e74682b70e385e8208b,
-      type: 3}
-  - difficultyLevel: 3
-    prefab: {fileID: 3264875180265499852, guid: 08b215a5edd3ac849be7b97aea460599,
-      type: 3}
-  - difficultyLevel: 4
-    prefab: {fileID: 3264875180265499852, guid: 18d735f4cfaae644e92808c4c5344cba,
-      type: 3}
-  - difficultyLevel: 5
-    prefab: {fileID: 3264875180265499852, guid: acca9e31483db814085ed11e08a1b69c,
-      type: 3}
-  timeBetween: 4
-  startDelay: 3
-  spawnRadius: {x: 0, y: 0}
-  enemyLifetime: 20
   skyforceModeManager: {fileID: 1539388147}
+  spawnDelay: 5
 --- !u!114 &1307653998 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7504889239671408729, guid: 387f75ab7d69bee42ba628975b5fb960,
@@ -2331,33 +2329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 1252005929}
-  inactiveTime: 15
-  activeTime: 20
-  difficultyCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 5
-      value: 5
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  timeBetween: 15
   shipGun: {fileID: 303287167}
+  gunActivationDelay: 3
 --- !u!114 &1544919462 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7504889239671408729, guid: e4020eb01117bf643835fe07f2f47b64,
@@ -2793,7 +2767,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede6ddc19108f54798691d0cd43cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  maxHp: 0
+  isDamagable: 1
+  onStunStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onStunEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onRecieveDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
   damage: 999
   deathAfterDealingDamage: 0
   destroyAfterDeath: 0

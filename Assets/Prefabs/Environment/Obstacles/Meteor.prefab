@@ -85,7 +85,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ede6ddc19108f54798691d0cd43cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 1
+  isDamagable: 1
+  onStunStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onStunEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onRecieveDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1158699548258773196}
+        m_MethodName: SpawnDeathEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   damage: 999
   deathAfterDealingDamage: 1
   destroyAfterDeath: 0

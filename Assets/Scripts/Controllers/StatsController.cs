@@ -10,15 +10,16 @@ public class StatsController : MonoBehaviour, IStats
 
     public event Action<int> onHPChanged;
 
-    [SerializeField] private int maxHp;
-    [SerializeField] private bool isDamagable = true;
-    [SerializeField] private UnityEvent onStunStart;
-    [SerializeField] private UnityEvent onStunEnd;
-    [SerializeField] private UnityEvent onRecieveDamage;
-    [SerializeField] private UnityEvent onDeath;
-    private int currentHp;
+    [SerializeField] protected int maxHp;
+    [SerializeField] protected bool isDamagable = true;
+    [SerializeField] protected UnityEvent onStunStart;
+    [SerializeField] protected UnityEvent onStunEnd;
+    [SerializeField] protected UnityEvent onRecieveDamage;
+    public UnityEvent onDeath;
 
-    private void Awake()
+    protected int currentHp;
+
+    protected void Awake()
     {
         RestoreHP();
     }
@@ -37,7 +38,7 @@ public class StatsController : MonoBehaviour, IStats
             Death();
     }
 
-    private void Death()
+    protected virtual void Death()
     {
         gameObject.SetActive(false);
         onDeath.Invoke();

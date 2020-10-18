@@ -5,55 +5,40 @@ using UnityEngine;
 
 public class SkyforceModeManager : MonoBehaviour
 {
-    public int difficultyLevel
-    {
-        get
-        {
-            return (int)difficultyCurve.Evaluate(activationsCount);
-        }
-    }
+    public int difficultyLevel { get; private set; }
 
     private AreasManager areasManager;
 
     [SerializeField] private EnemySpawner enemySpawner;
-    [SerializeField] private float inactiveTime;
-    [SerializeField] private float activeTime;
-    [SerializeField] private AnimationCurve difficultyCurve;
+    [SerializeField] private float timeBetween;
     [SerializeField] private GameObject shipGun;
-
-    private int activationsCount;
+    [SerializeField] private float gunActivationDelay = 3f;
 
     private void Awake()
     {
         areasManager = GetComponent<AreasManager>();
 
-        StartCoroutine(Inactive());
+        StartCoroutine(ModeActivation());
     }
 
-    private IEnumerator Inactive()
+    private IEnumerator ModeActivation()
     {
-        areasManager.isSkyforceMode = false;
+        yield return new WaitForSeconds(timeBetween);
 
-        if (shipGun.activeInHierarchy)
-            Invoke("SetActiveShipGun", 3.5f);
-
-        yield return new WaitForSeconds(inactiveTime);
-
-        StartCoroutine(Active());
-    }
-
-    private IEnumerator Active()
-    {
         areasManager.isSkyforceMode = true;
-        activationsCount++;
-        enemySpawner.Activate(activeTime);
+        difficultyLevel++;
+        enemySpawner.SpawnEnemy(DeactivateMode);
 
         if (!shipGun.activeInHierarchy)
-            Invoke("SetActiveShipGun", 3.5f);
+            Invoke("SetActiveShipGun", 3f);
+    }
 
-        yield return new WaitForSeconds(activeTime);
+    public void DeactivateMode()
+    {
+        areasManager.isSkyforceMode = false;
+        shipGun.SetActive(false);
 
-        StartCoroutine(Inactive());
+        StartCoroutine(ModeActivation());
     }
 
     private void SetActiveShipGun()

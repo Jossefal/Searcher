@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 #pragma warning disable 649
@@ -15,62 +16,65 @@ public class EnemySpawner : MonoBehaviour
     }
 
     [SerializeField] private EnemyType[] enemyTypes;
-    [SerializeField] private float timeBetween;
-    [SerializeField] private float startDelay;
-    [SerializeField] private Vector2 spawnRadius;
-    [SerializeField] private float enemyLifetime = 20f;
     [SerializeField] private SkyforceModeManager skyforceModeManager;
+    [SerializeField] private float spawnDelay = 5f;
 
-    private float activateTime;
-    private float activeTime;
+    private GameObject enemyController;
 
     private void Awake()
     {
         transform = GetComponent<Transform>();
-    }
 
-    public void Activate(float activeTime)
-    {
-        activateTime = Time.time;
-        this.activeTime = activeTime;
-        StartCoroutine(Spawning());
-        Invoke("Deactivate", activeTime);
-    }
-
-    private void Deactivate()
-    {
-        StopAllCoroutines();
-    }
-
-    private IEnumerator Spawning()
-    {
-        yield return new WaitForSeconds(startDelay);
-
-        EnemyType enemyType = GetEnemyType();
-
-        while (true)
+        Array.Sort<EnemyType>(enemyTypes, (x, y) =>
         {
-            Vector3 spawnPos = new Vector3();
-            spawnPos.x = Random.Range(transform.position.x - spawnRadius.x, transform.position.x + spawnRadius.x);
-            spawnPos.y = Random.Range(transform.position.y - spawnRadius.y, transform.position.y + spawnRadius.y);
-
-            EnemyController newEnemy = Instantiate(enemyType.prefab, spawnPos, Quaternion.identity).GetComponent<EnemyController>();
-            newEnemy.SetLifetime(activateTime + activeTime - Time.time);
-
-            Destroy(newEnemy.gameObject, enemyLifetime);
-
-            yield return new WaitForSeconds(timeBetween);
-        }
+            if (x.difficultyLevel < y.difficultyLevel)
+                return -1;
+            else if (x.difficultyLevel > y.difficultyLevel)
+                return 1;
+            else
+                return 0;
+        });
     }
 
     private EnemyType GetEnemyType()
     {
-        for (int i = 0; i < enemyTypes.Length; i++)
+        if (enemyTypes.Length == 0)
+            return null;
+
+        int returnedObject = 0;
+
+        for (int i = 1; i < enemyTypes.Length; i++)
         {
-            if (enemyTypes[i].difficultyLevel == skyforceModeManager.difficultyLevel)
-                return enemyTypes[i];
+            if (enemyTypes[i].difficultyLevel > skyforceModeManager.difficultyLevel)
+                break;
+
+            if (enemyTypes[i].difficultyLevel > enemyTypes[returnedObject].difficultyLevel)
+                returnedObject = i;
         }
 
-        return null;
+        return enemyTypes[returnedObject];
+    }
+
+    public void SpawnEnemy(Action onEnemyDeath)
+    {
+        StartCoroutine(EnemySpawning(onEnemyDeath));
+    }
+
+    private IEnumerator EnemySpawning(Action onEnemyDeath)
+    {
+        yield return new WaitForSeconds(spawnDelay);
+
+        EnemyType enemyType = GetEnemyType();
+
+        enemyController = Instantiate(enemyType.prefab, transform.position, Quaternion.identity, transform);
+        Obstacle newEnemy = enemyController.GetComponentInChildren<Obstacle>();
+
+        newEnemy.onDeath.AddListener(new UnityEngine.Events.UnityAction(onEnemyDeath));
+        newEnemy.onDeath.AddListener(new UnityEngine.Events.UnityAction(DestroyEnemyController));
+    }
+
+    private void DestroyEnemyController()
+    {
+        Destroy(enemyController);
     }
 }

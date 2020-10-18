@@ -2,25 +2,11 @@
 
 #pragma warning disable 649
 
-public class Obstacle : MonoBehaviour, IObstacle, IStats
+public class Obstacle : StatsController, IObstacle
 {
-    private EffectsController effectsController;
-    private int currentHp;
-
-    [SerializeField] private int hp;
     [SerializeField] private int damage;
     [SerializeField] private bool deathAfterDealingDamage;
     [SerializeField] private bool destroyAfterDeath;
-
-    private void Start()
-    {
-        effectsController = GetComponent<EffectsController>();
-    }
-
-    private void OnEnable()
-    {
-        currentHp = hp;
-    }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
@@ -35,23 +21,17 @@ public class Obstacle : MonoBehaviour, IObstacle, IStats
         }
     }
 
-    public void ReceiveDamage(int damage)
+    protected void OnEnable()
     {
-        hp = Mathf.Clamp(hp - damage, 0, hp);
-
-        if (hp == 0)
-            Death();
+        RestoreHP();
     }
 
-    private void Death()
+    protected override void Death()
     {
-        if (effectsController != null)
-            effectsController.SpawnDeathEffect();
+        base.Death();
 
         if (destroyAfterDeath)
             Destroy(gameObject);
-        else
-            gameObject.SetActive(false);
     }
 
     public void Kill()

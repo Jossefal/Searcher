@@ -8,11 +8,7 @@ public static class DataManager
     private static SafeInt _record;
     private static SafeInt _livesCount;
     private static SafeInt _diamondsCount;
-    private static SafeInt _currentEnvironmentSkinId;
-    private static SafeInt _currentShipSkinId;
     private static SafeInt _currentThemeId;
-    internal static List<int> environmentSkinIds { get; } = new List<int>();
-    internal static List<int> shipSkinIds { get; } = new List<int>();
     internal static List<int> themesIds { get; } = new List<int>();
 
     internal static SafeInt record
@@ -41,26 +37,6 @@ public static class DataManager
         set
         {
             _diamondsCount = value;
-            onDataChanged?.Invoke();
-        }
-    }
-
-    internal static SafeInt currentEnvironmentSkinId
-    {
-        get => _currentEnvironmentSkinId;
-        set
-        {
-            _currentEnvironmentSkinId = value;
-            onDataChanged?.Invoke();
-        }
-    }
-
-    internal static SafeInt currentShipSkinId
-    {
-        get => _currentShipSkinId;
-        set
-        {
-            _currentShipSkinId = value;
             onDataChanged?.Invoke();
         }
     }
@@ -119,11 +95,7 @@ public static class DataManager
         record = new SafeInt(0);
         livesCount = new SafeInt(15);
         diamondsCount = new SafeInt(1000);
-        currentEnvironmentSkinId = new SafeInt(0);
-        currentShipSkinId = new SafeInt(0);
         currentThemeId = new SafeInt(0);
-        environmentSkinIds.Add(0);
-        shipSkinIds.Add(0);
         themesIds.Add(0);
     }
 
@@ -182,11 +154,7 @@ public static class DataManager
         saveData.record = record.GetValue();
         saveData.livesCount = livesCount.GetValue();
         saveData.diamondsCount = diamondsCount.GetValue();
-        saveData.currentEnvironmentSkinId = currentEnvironmentSkinId.GetValue();
-        saveData.currentShipSkinId = currentShipSkinId.GetValue();
         saveData.currentThemeId = currentThemeId.GetValue();
-        saveData.environmentSkinIds = environmentSkinIds.ToArray();
-        saveData.shipSkinIds = shipSkinIds.ToArray();
         saveData.themesIds = themesIds.ToArray();
 
         return saveData;
@@ -206,19 +174,7 @@ public static class DataManager
         livesCount = new SafeInt(saveData.livesCount);
 
         diamondsCount = saveDataJson.Contains("diamondsCount") ? new SafeInt(saveData.diamondsCount) : new SafeInt(5);
-        currentEnvironmentSkinId = saveDataJson.Contains("currentEnvironmentSkinId") ? new SafeInt(saveData.currentEnvironmentSkinId) : new SafeInt(0);
-        currentShipSkinId = saveDataJson.Contains("currentShipSkinId") ? new SafeInt(saveData.currentShipSkinId) : new SafeInt(0);
         currentThemeId = saveDataJson.Contains("currentThemeId") ? new SafeInt(saveData.currentThemeId) : new SafeInt(0);
-
-        if (saveDataJson.Contains("environmentSkinIds"))
-            environmentSkinIds.AddRange(saveData.environmentSkinIds);
-        else
-            environmentSkinIds.Add(0);
-
-        if (saveDataJson.Contains("shipSkinIds"))
-            shipSkinIds.AddRange(saveData.shipSkinIds);
-        else
-            shipSkinIds.Add(0);
 
         if (saveDataJson.Contains("themesIds"))
             themesIds.AddRange(saveData.themesIds);

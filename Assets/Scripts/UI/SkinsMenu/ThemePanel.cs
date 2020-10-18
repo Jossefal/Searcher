@@ -37,6 +37,7 @@ public class ThemePanel : MonoBehaviour
         if (DataManager.diamondsCount.GetValue() >= price)
         {
             DataManager.diamondsCount -= price;
+            DataManager.themesIds.Add(themeId);
             SetCurrentSkin();
         }
     }
