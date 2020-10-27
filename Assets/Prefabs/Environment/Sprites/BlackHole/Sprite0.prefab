@@ -97,6 +97,6 @@ MonoBehaviour:
   speed: {x: 0, y: 0, z: 10}
   rndRadius: {x: 0, y: 0, z: 0}
   isRndSpeed: 0
-  isRndRotation: 1
+  isRndRotation: 0
   isRndDirection: 0
   rotatingTypeSelection: 1

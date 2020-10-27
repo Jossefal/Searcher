@@ -20,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float spawnDelay = 5f;
 
     private GameObject enemyController;
+    private Obstacle enemy;
 
     private void Awake()
     {
@@ -60,6 +61,11 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(EnemySpawning(onEnemyDeath));
     }
 
+    public void KillEnemy()
+    {
+        enemy?.Kill();
+    }
+
     private IEnumerator EnemySpawning(Action onEnemyDeath)
     {
         yield return new WaitForSeconds(spawnDelay);
@@ -67,14 +73,16 @@ public class EnemySpawner : MonoBehaviour
         EnemyType enemyType = GetEnemyType();
 
         enemyController = Instantiate(enemyType.prefab, transform.position, Quaternion.identity, transform);
-        Obstacle newEnemy = enemyController.GetComponentInChildren<Obstacle>();
 
-        newEnemy.onDeath.AddListener(new UnityEngine.Events.UnityAction(onEnemyDeath));
-        newEnemy.onDeath.AddListener(new UnityEngine.Events.UnityAction(DestroyEnemyController));
+        enemy = enemyController.GetComponentInChildren<Obstacle>();
+
+        enemy.onDeath.AddListener(new UnityEngine.Events.UnityAction(onEnemyDeath));
+        enemy.onDeath.AddListener(new UnityEngine.Events.UnityAction(DestroyEnemyController));
     }
 
     private void DestroyEnemyController()
     {
-        Destroy(enemyController);
+        if (enemyController != null)
+            Destroy(enemyController);
     }
 }

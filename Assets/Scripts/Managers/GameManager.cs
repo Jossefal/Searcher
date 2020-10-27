@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DeathPanel deathPanel;
     [SerializeField] private InterfaceManager interfaceManager;
     [SerializeField] private LevelIntersitialAdUI levelIntersitialAdUI;
+    [SerializeField] private EnemySpawner enemySpawner;
 
     private void Start()
     {
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
         interfaceManager.HideObjects();
         deathPanel.gameObject.SetActive(true);
         deathPanel.Open();
+        enemySpawner.KillEnemy();
 
         if (DataManager.leftToShowAd == 0 && levelIntersitialAdUI.adIsLoaded)
         {

@@ -28,4 +28,9 @@ public class BackgroundObjects : BackgroundBlock
             objects[i].position = pos;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(GetComponent<Transform>().position, range * 2);
+    }
 }
