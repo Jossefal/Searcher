@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1619349211029649204}
   - component: {fileID: 3986416262668240663}
   - component: {fileID: 5752107767631733926}
+  - component: {fileID: 5973070007220240608}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -275,6 +276,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5973070007220240608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214135266420353334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4a6d2d923451946ab5cc4ea27d46b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themeSkins:
+  - themeId: 0
+    sprite: {fileID: 8426044916725905135, guid: 5f60c527032c58c4f844b6df8c2b87bb,
+      type: 3}
+  - themeId: 1
+    sprite: {fileID: 7897747911244460320, guid: 52185d713186f944dbbbc3b545ee7ab6,
+      type: 3}
+  - themeId: 2
+    sprite: {fileID: 8426044916725905135, guid: 5f60c527032c58c4f844b6df8c2b87bb,
+      type: 3}
+  - themeId: 3
+    sprite: {fileID: 8426044916725905135, guid: 5f60c527032c58c4f844b6df8c2b87bb,
+      type: 3}
 --- !u!1 &2955527865944903060
 GameObject:
   m_ObjectHideFlags: 0
