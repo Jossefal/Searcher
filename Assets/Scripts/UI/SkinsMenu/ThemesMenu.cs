@@ -4,23 +4,21 @@
 
 public class ThemesMenu : MonoBehaviour
 {
-    [SerializeField] private ThemePanel[] themePanels;
     [SerializeField] private SnapScroll snapScroll;
 
-    private ThemePanel selectedThemePanel;
+    private GameObject selectedThemePanel;
 
     private void OnEnable()
     {
         if (selectedThemePanel != null)
-            snapScroll.SetHighlightedObject(selectedThemePanel.transform);
+            snapScroll?.SetHighlightedObject(selectedThemePanel.transform);
     }
 
-    public void SetSelectedPanel(ThemePanel newSelectedPanel)
+    public void SetSelectedPanel(GameObject newSelectedPanel)
     {
-        if (selectedThemePanel != null)
-            selectedThemePanel.SetUnlockedState();
+        if (selectedThemePanel != null && selectedThemePanel != newSelectedPanel)
+            selectedThemePanel.GetComponent<IThemePanel>().SetUnlockedState();
 
         selectedThemePanel = newSelectedPanel;
-        snapScroll.SetHighlightedObject(selectedThemePanel.transform);
     }
 }

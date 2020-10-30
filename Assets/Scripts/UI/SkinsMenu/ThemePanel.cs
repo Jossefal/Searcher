@@ -4,47 +4,53 @@ using UnityEngine.UI;
 
 #pragma warning disable 649
 
-public class ThemePanel : MonoBehaviour
+public class ThemePanel : MonoBehaviour, IThemePanel
 {
-    [SerializeField] private ThemesMenu themesMenu;
-    [SerializeField] private int themeId;
-    [SerializeField] private int price;
-    [SerializeField] private Text priceText;
-    [SerializeField] private Button buyBtn;
-    [SerializeField] private Button selectBtn;
-    [SerializeField] private GameObject selectedIndicator;
+    [SerializeField] protected ThemesMenu themesMenu;
+    [SerializeField] protected ThemeData themeData;
+    [SerializeField] protected Button buyBtn;
+    [SerializeField] protected Button selectBtn;
+    [SerializeField] protected GameObject selectedIndicator;
 
     private void Awake()
     {
         Initialize();
     }
 
+    private void OnEnable()
+    {
+        SetState();
+    }
+
     public void Initialize()
     {
         selectBtn.onClick.AddListener(new UnityAction(SetCurrentSkin));
-        buyBtn.onClick.AddListener(new UnityAction(BuySkin));
+        buyBtn?.onClick.AddListener(new UnityAction(BuyTheme));
+    }
 
-        if (DataManager.currentThemeId.GetValue() == themeId)
+    public void SetState()
+    {
+        if (DataManager.currentThemeId.GetValue() == themeData.Id)
             SetSelectedState();
-        else if (DataManager.themesIds.Contains(themeId))
+        else if (themeData.Price == 0 || DataManager.themesIds.Contains(themeData.Id))
             SetUnlockedState();
         else
             SetLockedState();
     }
 
-    public void BuySkin()
+    public void BuyTheme()
     {
-        if (DataManager.diamondsCount.GetValue() >= price)
+        if (DataManager.CheckValueCount(ValueVariant.DiamondsCount, themeData.Price))
         {
-            DataManager.diamondsCount -= price;
-            DataManager.themesIds.Add(themeId);
+            DataManager.diamondsCount -= themeData.Price;
+            DataManager.themesIds.Add(themeData.Id);
             SetCurrentSkin();
         }
     }
 
     public void SetCurrentSkin()
     {
-        DataManager.currentThemeId = new SafeInt(themeId);
+        DataManager.currentThemeId = new SafeInt(themeData.Id);
 
         SetSelectedState();
     }
@@ -53,25 +59,28 @@ public class ThemePanel : MonoBehaviour
     {
         selectBtn.gameObject.SetActive(false);
         selectedIndicator.SetActive(false);
-        priceText.text = Converter.ConvertToString(price);
-        priceText.gameObject.SetActive(true);
-        buyBtn.gameObject.SetActive(true);
+
+        if (buyBtn != null)
+            buyBtn.gameObject.SetActive(true);
     }
 
     public void SetUnlockedState()
     {
         selectBtn.gameObject.SetActive(true);
         selectedIndicator.SetActive(false);
-        priceText.gameObject.SetActive(false);
-        buyBtn.gameObject.SetActive(false);
+
+        if (buyBtn != null)
+            buyBtn.gameObject.SetActive(false);
     }
 
     public void SetSelectedState()
     {
         selectBtn.gameObject.SetActive(false);
         selectedIndicator.SetActive(true);
-        priceText.gameObject.SetActive(false);
-        buyBtn.gameObject.SetActive(false);
-        themesMenu.SetSelectedPanel(this);
+
+        if (buyBtn != null)
+            buyBtn.gameObject.SetActive(false);
+
+        themesMenu.SetSelectedPanel(gameObject);
     }
 }

@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 0ecf5b68408aba6468340b3d7c68f9dd
+guid: e8b9043501a3a6c43a305ca4df76f82e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3414963050774899787
-    second: stars1_0
+      213: -8550007671991764829
+    second: halloween-beta_0
   - first:
-      213: 2549312558091399486
-    second: stars1_1
+      213: -6981386099815815225
+    second: rocket1001
   - first:
-      213: -7542546070418757605
-    second: stars1_2
+      213: 2367763412469346373
+    second: rocket1002
+  - first:
+      213: -7699532892691756679
+    second: rocket1003
+  - first:
+      213: -2778983138445651490
+    second: rocket1004
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -54,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 240
+  spritePixelsToUnits: 524
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +75,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -81,7 +87,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -93,7 +99,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -107,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stars1_0
+      name: halloween-beta_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 415
-        width: 173
-        height: 173
+        x: 8
+        y: 48
+        width: 620
+        height: 1143
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fa09c4152f91694d8f8ce263cf8f4b2
-      internalID: -3414963050774899787
+      spriteID: f2a69dcc7c544c6489eec5ce75e9f02c
+      internalID: -8550007671991764829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stars1_1
+      name: rocket1001
       rect:
         serializedVersion: 2
-        x: 43
-        y: 308
-        width: 86
-        height: 86
+        x: 664
+        y: 9
+        width: 631
+        height: 1178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17ec984c6d4120045aace82ae11782e9
-      internalID: 2549312558091399486
+      spriteID: 367d7b38a02d2b34e8a8ce8101708dae
+      internalID: -6981386099815815225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stars1_2
+      name: rocket1002
       rect:
         serializedVersion: 2
-        x: 59
-        y: 214
-        width: 54
-        height: 54
+        x: 1361
+        y: 30
+        width: 624
+        height: 1155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,8 +169,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2c9240cc945afa458c8d03b9ba2d183
-      internalID: -7542546070418757605
+      spriteID: eed0f45a7eb953e4384f2e6ce596823c
+      internalID: 2367763412469346373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rocket1003
+      rect:
+        serializedVersion: 2
+        x: 2076
+        y: 44
+        width: 635
+        height: 1143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7472ed34e5fdc4c40b09ab5e0fec2e76
+      internalID: -7699532892691756679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rocket1004
+      rect:
+        serializedVersion: 2
+        x: 2892
+        y: 48
+        width: 618
+        height: 1140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df1a1b73e969a7447a9d8dd953dc943d
+      internalID: -2778983138445651490
       vertices: []
       indices: 
       edges: []

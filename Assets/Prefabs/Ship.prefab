@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 3359886654563027149}
   - component: {fileID: 5100866904108833936}
   - component: {fileID: 9041677799245956225}
-  - component: {fileID: 7059306709727084978}
+  - component: {fileID: 3990314027207836607}
   m_Layer: 9
   m_Name: Ship
   m_TagString: Ship
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26cb471362bacec48a29be36208307e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7059306709727084978
+--- !u!114 &3990314027207836607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -391,22 +391,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5100866904108833943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b346fefb4ea7a4db3d3aa0f82eb1ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d2947d1279e95e41868c662ff14b6e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffects:
-  - themeId: 0
-    prefab: {fileID: 8911352027092857193, guid: d5bd15276ecd11b4ba339f28c9c36e78,
-      type: 3}
-  - themeId: 1
-    prefab: {fileID: 8911352027092857193, guid: 8a168f06f5693224784e89a181e1d4f7,
-      type: 3}
-  - themeId: 2
-    prefab: {fileID: 8911352027092857193, guid: d5bd15276ecd11b4ba339f28c9c36e78,
-      type: 3}
-  - themeId: 3
-    prefab: {fileID: 8911352027092857193, guid: d5bd15276ecd11b4ba339f28c9c36e78,
-      type: 3}
+  themeDataContainer: {fileID: 11400000, guid: 84b4184081fef2f4384bfb13630b6e64, type: 2}
+  sprite: {fileID: 1031921382536922823}
+  effectsController: {fileID: 9041677799245956225}
+  trailParent: {fileID: 3047343423297437830}
+  gunSprite: {fileID: 678900509272874648}
+  gun: {fileID: 1624444667185135622}
 --- !u!1 &5938067169961517653
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +577,6 @@ GameObject:
   m_Component:
   - component: {fileID: 742294197942394085}
   - component: {fileID: 1031921382536922823}
-  - component: {fileID: 1424608065176515056}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
@@ -656,31 +648,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1424608065176515056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7591309434365955011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4a6d2d923451946ab5cc4ea27d46b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  themeSkins:
-  - themeId: 0
-    sprite: {fileID: 4498882926605208115, guid: 5f60c527032c58c4f844b6df8c2b87bb,
-      type: 3}
-  - themeId: 1
-    sprite: {fileID: -8837941760010411067, guid: 52185d713186f944dbbbc3b545ee7ab6,
-      type: 3}
-  - themeId: 2
-    sprite: {fileID: 4816925793831071307, guid: 6732d85d4fa478e4881832eaa80440de,
-      type: 3}
-  - themeId: 3
-    sprite: {fileID: 4043783522544301178, guid: 340bfdad24d824c40b135524d07a1d7c,
-      type: 3}
 --- !u!1 &8736432876988968983
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,7 +657,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3047343423297437830}
-  - component: {fileID: 1247208198287382398}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -712,31 +678,6 @@ Transform:
   m_Father: {fileID: 5100866904108833948}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1247208198287382398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8736432876988968983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51d43578bd2a41543a75ece016a059b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  themeObjects:
-  - themeId: 0
-    gameObject: {fileID: 606448550849616005, guid: 082fa87532918994aa94fb2b2d94f90b,
-      type: 3}
-  - themeId: 1
-    gameObject: {fileID: 606448550849616005, guid: fbd2dd4fb8051a94ca948b5b0ea6a0c8,
-      type: 3}
-  - themeId: 2
-    gameObject: {fileID: 606448550849616005, guid: 082fa87532918994aa94fb2b2d94f90b,
-      type: 3}
-  - themeId: 3
-    gameObject: {fileID: 606448550849616005, guid: 082fa87532918994aa94fb2b2d94f90b,
-      type: 3}
 --- !u!1 &9171017736844618025
 GameObject:
   m_ObjectHideFlags: 0

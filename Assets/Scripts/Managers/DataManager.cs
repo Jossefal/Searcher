@@ -185,7 +185,7 @@ public static class DataManager
 
 public enum ValueVariant
 {
-    Record,
+    DiamondsCount,
     LivesCount,
-    DiamondsCount
+    Record
 }

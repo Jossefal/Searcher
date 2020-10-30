@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a357ca0d3e9d4244ae4ebdfcd4f03fd, type: 3}
+  m_Name: Theme1
+  m_EditorClassIdentifier: 
+  id: 1
+  price: 150
+  priceCurrency: 0
+  rocketSprite: {fileID: -8837941760010411067, guid: 52185d713186f944dbbbc3b545ee7ab6,
+    type: 3}
+  rocketTrail: {fileID: 606448550849616005, guid: fbd2dd4fb8051a94ca948b5b0ea6a0c8,
+    type: 3}
+  rocketDeathEffect: {fileID: 8911352027092857193, guid: 8a168f06f5693224784e89a181e1d4f7,
+    type: 3}
+  rocketGunSprite: {fileID: 7570646592956179104, guid: 5f60c527032c58c4f844b6df8c2b87bb,
+    type: 3}
+  rocketBulletPrefab: {fileID: 7105169398116540228, guid: 6c3212b8042c70a459316c908cffb0b6,
+    type: 3}
+  meteorSprite: {fileID: 3082848957282643518, guid: f9be48290c451b14aa072afbeed0c7bf,
+    type: 3}
+  meteorDeathEffect: {fileID: 195166072334390375, guid: 7f1b12e2ff2bb96409808aef7023c9fc,
+    type: 3}
+  blackHoleSprite: {fileID: 9200218270507670186, guid: a1d3f0022d521104d8b217d6ac263df6,
+    type: 3}
+  spacemanBodySprite: {fileID: 21300000, guid: b1f09fd755c45b24e93dd7f12a171e9d, type: 3}
+  spacemanHandSprite: {fileID: -3712557355026288584, guid: 3cfe3d86fe5e5784a9473197003e0188,
+    type: 3}
+  ufoSprite: {fileID: 7897747911244460320, guid: 52185d713186f944dbbbc3b545ee7ab6,
+    type: 3}
+  ufoBulletPrefab: {fileID: 7105169398116540228, guid: 786319366eb04c84f9546cd344d17251,
+    type: 3}
+  ufoTrail: {fileID: 8229657281750359365, guid: aab1cd3c82299b7479b8dfb6cf3f505f,
+    type: 3}
+  backgroundPrefab: {fileID: 5331184397782030829, guid: 0276e93947ee3e048b89088f303e2621,
+    type: 3}

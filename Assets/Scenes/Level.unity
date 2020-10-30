@@ -251,37 +251,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 678900509272874648, guid: a352c686f86514e45b064e3ecf722236,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 827186191
-      objectReference: {fileID: 0}
-    - target: {fileID: 678900509272874648, guid: a352c686f86514e45b064e3ecf722236,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1031921382536922823, guid: a352c686f86514e45b064e3ecf722236,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 4498882926605208115, guid: 5f60c527032c58c4f844b6df8c2b87bb,
         type: 3}
-    - target: {fileID: 1624444666986031944, guid: a352c686f86514e45b064e3ecf722236,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1624444666986031944, guid: a352c686f86514e45b064e3ecf722236,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1624444666986031944, guid: a352c686f86514e45b064e3ecf722236,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1819979824013590793, guid: a352c686f86514e45b064e3ecf722236,
         type: 3}
       propertyPath: scoreManager
@@ -1213,6 +1188,7 @@ MonoBehaviour:
   interfaceManager: {fileID: 847979016}
   levelIntersitialAdUI: {fileID: 5065609456623368199}
   enemySpawner: {fileID: 1252005929}
+  themeDataContainer: {fileID: 11400000, guid: 84b4184081fef2f4384bfb13630b6e64, type: 2}
 --- !u!114 &663224458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,22 +1957,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1247265978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51d43578bd2a41543a75ece016a059b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0be1f04968ecc1f468973f43cab43669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  themeObjects:
-  - themeId: 0
-    gameObject: {fileID: 5331184397782030829, guid: b08da494ea8fd4d48a18aa9af922dd2f,
-      type: 3}
-  - themeId: 1
-    gameObject: {fileID: 5331184397782030829, guid: b08da494ea8fd4d48a18aa9af922dd2f,
-      type: 3}
-  - themeId: 2
-    gameObject: {fileID: 1647883018171747599, guid: 4bdb65ee329dc114cbfd40efd2f2667b,
-      type: 3}
-  - themeId: 3
-    gameObject: {fileID: 5331184397782030829, guid: e0f4b19569056814a8bdf05e639336e4,
-      type: 3}
+  themeDataContainer: {fileID: 11400000, guid: 84b4184081fef2f4384bfb13630b6e64, type: 2}
+  parent: {fileID: 1247265979}
 --- !u!1 &1252005927
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,19 @@ public class Gun : MonoBehaviour
     protected float delayStartTime;
 
     [SerializeField] protected GameObject bulletPrefab;
+    public GameObject BulletPrefab
+    {
+        get
+        {
+            return bulletPrefab;
+        }
+
+        set
+        {
+            bulletPrefab = value;
+        }
+    }
+
     [SerializeField] protected float startDelay;
     [SerializeField] protected float shootDelay;
     [SerializeField] protected float bulletLifetime;

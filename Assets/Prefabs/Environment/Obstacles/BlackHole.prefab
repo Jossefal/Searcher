@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 56386504321735732}
   - component: {fileID: 2896508418214784384}
   - component: {fileID: 6943048450435344985}
-  - component: {fileID: 4616865063912623547}
+  - component: {fileID: 5053023066275352554}
   m_Layer: 12
   m_Name: BlackHole
   m_TagString: Asteroid
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullSpeed: 0.05
---- !u!114 &4616865063912623547
+--- !u!114 &5053023066275352554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,19 +93,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6943048450435344984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51d43578bd2a41543a75ece016a059b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bb1f90c23389004cb3f11892d60e28d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  themeObjects:
-  - themeId: 0
-    gameObject: {fileID: 9200218270507670186, guid: 670f4a370a5491c459fd856d1167c585,
-      type: 3}
-  - themeId: 1
-    gameObject: {fileID: 9200218270507670186, guid: a1d3f0022d521104d8b217d6ac263df6,
-      type: 3}
-  - themeId: 2
-    gameObject: {fileID: 9200218270507670186, guid: 12ac1c0d197c86d4894e423a5111832e,
-      type: 3}
-  - themeId: 3
-    gameObject: {fileID: 9200218270507670186, guid: 45d192411b64525418b4cf8eeaad7e1f,
-      type: 3}
+  themeDataContainer: {fileID: 11400000, guid: 84b4184081fef2f4384bfb13630b6e64, type: 2}
+  blackHole: {fileID: 2106438218146622862}
