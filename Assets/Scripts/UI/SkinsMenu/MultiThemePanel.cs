@@ -7,12 +7,13 @@ using UnityEngine.Events;
 public class MultiThemePanel : MonoBehaviour, IThemePanel
 {
     [SerializeField] private MultiThemeData themeData;
-    [SerializeField] private GameObject multiThemeChange;
+    [SerializeField] private ThemesMenu childThemesMenu;
     [SerializeField] protected ThemesMenu themesMenu;
     [SerializeField] protected Button buyBtn;
     [SerializeField] protected Button selectBtn;
     [SerializeField] private Button changeBtn;
     [SerializeField] protected GameObject selectedIndicator;
+    [SerializeField] protected GameObject shopOpener;
 
     private void Awake()
     {
@@ -22,13 +23,16 @@ public class MultiThemePanel : MonoBehaviour, IThemePanel
     private void OnEnable()
     {
         SetState();
+        childThemesMenu.gameObject.SetActive(false);
     }
 
     public void Initialize()
     {
-        selectBtn.onClick.AddListener(new UnityAction(SetCurrentSkin));
+        selectBtn.onClick.AddListener(new UnityAction(() => childThemesMenu.gameObject.SetActive(true)));
         buyBtn?.onClick.AddListener(new UnityAction(BuyTheme));
-        changeBtn.onClick.AddListener(new UnityAction(() => multiThemeChange.gameObject.SetActive(true)));
+        changeBtn.onClick.AddListener(new UnityAction(() => childThemesMenu.gameObject.SetActive(true)));
+
+        childThemesMenu.onThemeChanged += SetState;
     }
 
     public void SetState()
@@ -60,22 +64,28 @@ public class MultiThemePanel : MonoBehaviour, IThemePanel
         {
             DataManager.diamondsCount -= themeData.Price;
 
+            DataManager.themesIds.Add(themeData.Id);
+
             for (int i = 0; i < themeData.ThemesCount; i++)
             {
                 DataManager.themesIds.Add(themeData.GetChildTheme(i).Id);
             }
 
-            SetCurrentSkin();
+            SetUnlockedState();
         }
+        else
+            shopOpener.SetActive(true);
+
+        DataManager.LocalAndCloudSave(null);
     }
 
-    public void SetCurrentSkin()
-    {
-        DataManager.currentThemeId = new SafeInt(themeData.GetChildTheme(0).Id);
-        Debug.Log(themeData.GetChildTheme(0).Id + "==" + DataManager.currentThemeId);
+    // public void SetCurrentSkin()
+    // {
+    //     DataManager.currentThemeId = new SafeInt(themeData.GetChildTheme(0).Id);
+    //     Debug.Log(themeData.GetChildTheme(0).Id + "==" + DataManager.currentThemeId);
 
-        SetSelectedState();
-    }
+    //     SetSelectedState();
+    // }
 
     public void SetLockedState()
     {

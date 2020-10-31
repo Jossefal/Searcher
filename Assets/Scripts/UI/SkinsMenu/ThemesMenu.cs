@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 #pragma warning disable 649
 
 public class ThemesMenu : MonoBehaviour
 {
+    public event Action onThemeChanged;
+
     [SerializeField] private SnapScroll snapScroll;
 
     private GameObject selectedThemePanel;
@@ -20,5 +23,7 @@ public class ThemesMenu : MonoBehaviour
             selectedThemePanel.GetComponent<IThemePanel>().SetUnlockedState();
 
         selectedThemePanel = newSelectedPanel;
+
+        onThemeChanged?.Invoke();
     }
 }

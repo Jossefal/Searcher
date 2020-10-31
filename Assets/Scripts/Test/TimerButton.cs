@@ -7,14 +7,24 @@ public class TimerButton : MonoBehaviour
 {
     private static DateTime lastClickTime = new DateTime(2000, 1, 1);
     private static TimeSpan timeLeft;
-    private TimeSpan timeBetweenClicks = new TimeSpan(0, 2, 0);
+    private TimeSpan timeBetweenClicks = new TimeSpan(0, 10, 0);
 
     private static WaitForSeconds waitForOneSecond = new WaitForSeconds(1f);
 
+    [SerializeField] private string id;
     [SerializeField] private Text text;
+    [SerializeField] private GameObject normalStateObject;
     [SerializeField] private GameObject hidePanel;
 
     private Button button;
+
+    private string timesSavePref
+    {
+        get
+        {
+            return "TIMER_BUTTON_TIMES_" + id;
+        }
+    }
 
     private void Awake()
     {
@@ -77,12 +87,17 @@ public class TimerButton : MonoBehaviour
 
     private void AllowClick()
     {
-        text.text = "Click!";
+        text.gameObject.SetActive(false);
+        normalStateObject.SetActive(true);
+
         button.interactable = true;
     }
 
     private void DisallowClick()
     {
+        text.gameObject.SetActive(true);
+        normalStateObject.SetActive(false);
+
         button.interactable = false;
     }
 
@@ -106,25 +121,21 @@ public class TimerButton : MonoBehaviour
 
     public void Save()
     {
-        SafePrefs.Save("Save", lastClickTime.ToString());
+        SafePrefs.Save(timesSavePref, lastClickTime.ToString());
     }
 
     private void Load()
     {
-        string str = SafePrefs.Load("Save");
+        string timesStr = SafePrefs.Load(timesSavePref);
 
-        if (str != "")
-            lastClickTime = DateTime.Parse(str);
+        if (timesStr != "")
+            lastClickTime = DateTime.Parse(timesStr);
         else
             lastClickTime = new DateTime(2000, 1, 1);
     }
 
-    private void OnApplicationPause(bool pauseStatus)
+    private void OnDestroy()
     {
-	if(pauseStatus)
-	{
-	    Save();
-            Debug.Log("SAVE");
-	}
+        Save();
     }
 }

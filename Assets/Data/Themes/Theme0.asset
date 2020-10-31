@@ -40,5 +40,7 @@ MonoBehaviour:
     type: 3}
   ufoTrail: {fileID: 8229657281750359365, guid: aab1cd3c82299b7479b8dfb6cf3f505f,
     type: 3}
+  ufoDeathEffect: {fileID: 8911352027092857193, guid: 649688b83909cef408938eb8daea92ad,
+    type: 3}
   backgroundPrefab: {fileID: 5331184397782030829, guid: b08da494ea8fd4d48a18aa9af922dd2f,
     type: 3}

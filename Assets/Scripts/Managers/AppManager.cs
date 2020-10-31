@@ -48,8 +48,6 @@ public class AppManager : MonoBehaviour
             if (!isPaused)
                 onApplicationPause.Invoke();
         }
-        // else
-        //     GPGSManager.OpenSaveData();
     }
 
     private void OnDestroy()

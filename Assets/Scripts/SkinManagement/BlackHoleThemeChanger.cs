@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class BlackHoleThemeChanger : MonoBehaviour
 {
     [SerializeField] private ThemeDataContainer themeDataContainer;

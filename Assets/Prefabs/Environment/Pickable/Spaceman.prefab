@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 3372509657809994497}
   - component: {fileID: 5181715792101823874}
   - component: {fileID: 4099184559809062684}
+  - component: {fileID: 7220788793398998886}
   m_Layer: 17
   m_Name: Spaceman
   m_TagString: Untagged
@@ -420,3 +421,20 @@ MonoBehaviour:
   isRndRotation: 1
   isRndDirection: 1
   rotatingTypeSelection: 1
+--- !u!114 &7220788793398998886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692435511983111624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb09262a46f76749943f1a381df5480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themeDataContainer: {fileID: 11400000, guid: 84b4184081fef2f4384bfb13630b6e64, type: 2}
+  bodySprite: {fileID: 6639475710558565023}
+  handSprites:
+  - {fileID: 7230545323670072201}
+  - {fileID: 5284840442849556070}

@@ -8,6 +8,15 @@ public class IAPShop : MonoBehaviour
     [SerializeField] private PurchasesContainer purchasesContainer;
     [SerializeField] private GameObject initializationFailedIndicator;
 
+    [System.Serializable]
+    public class PurchaseResultPanel
+    {
+        public string purchase_id;
+        public GameObject gameObject;
+    }
+
+    [SerializeField] private PurchaseResultPanel[] resultPanels;
+
     private void Awake()
     {
         if (!IAPManager.isInitialized)
@@ -39,6 +48,15 @@ public class IAPShop : MonoBehaviour
                         DataManager.diamondsCount += ((CurrencyPurchaseData)purchase).count;
                     }
                     break;
+            }
+        }
+
+        for (int i = 0; i < resultPanels.Length; i++)
+        {
+            if (resultPanels[i].purchase_id == product.definition.id)
+            {
+                resultPanels[i].gameObject.SetActive(true);
+                break;
             }
         }
 

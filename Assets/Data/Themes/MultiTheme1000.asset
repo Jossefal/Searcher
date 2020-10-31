@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MultiTheme1000
   m_EditorClassIdentifier: 
   id: 1000
-  price: 150
+  price: 0
   priceCurrency: 0
   themes:
   - {fileID: 11400000, guid: bdae3e5a609b73f4fa0c47fae15ce299, type: 2}

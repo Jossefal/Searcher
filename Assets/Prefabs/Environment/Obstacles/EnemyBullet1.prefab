@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5771033723428579509}
   - component: {fileID: 7557312168046483783}
-  - component: {fileID: 6531315392732685914}
+  - component: {fileID: 1820472458187520785}
   - component: {fileID: 2452299695039994739}
   - component: {fileID: 7010612729840493307}
   - component: {fileID: 3106673269743397682}
-  m_Layer: 10
-  m_Name: AllyBullet
+  m_Layer: 19
+  m_Name: EnemyBullet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7105169398116540228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.588, y: -9.586882, z: -1.4854113}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,8 +56,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &6531315392732685914
-CapsuleCollider2D:
+--- !u!58 &1820472458187520785
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -66,12 +66,12 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.236, y: 0.366}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.188
 --- !u!212 &2452299695039994739
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -110,9 +110,9 @@ SpriteRenderer:
   m_SortingLayerID: 1475438659
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7283040410875088913, guid: 5f60c527032c58c4f844b6df8c2b87bb,
+  m_Sprite: {fileID: 7843130585057271973, guid: 5f60c527032c58c4f844b6df8c2b87bb,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,6 +167,6 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   useTransformUpDirection: 1
-  speed: 20
+  speed: 2
   moveType: 1
   updateType: 2

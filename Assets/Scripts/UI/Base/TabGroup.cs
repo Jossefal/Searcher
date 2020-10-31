@@ -62,4 +62,9 @@ public class TabGroup : MonoBehaviour
                 tabs[i].Disable();
         }
     }
+
+    public void OpenTab(int index)
+    {
+        tabs[index].Enable();
+    }
 }

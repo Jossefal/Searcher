@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class BackgroundThemeChanger : MonoBehaviour
 {
     [SerializeField] private ThemeDataContainer themeDataContainer;

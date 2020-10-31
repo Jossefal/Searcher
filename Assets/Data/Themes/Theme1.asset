@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Theme1
   m_EditorClassIdentifier: 
   id: 1
-  price: 150
+  price: 100
   priceCurrency: 0
   rocketSprite: {fileID: -8837941760010411067, guid: 52185d713186f944dbbbc3b545ee7ab6,
     type: 3}
@@ -21,9 +21,9 @@ MonoBehaviour:
     type: 3}
   rocketDeathEffect: {fileID: 8911352027092857193, guid: 8a168f06f5693224784e89a181e1d4f7,
     type: 3}
-  rocketGunSprite: {fileID: 7570646592956179104, guid: 5f60c527032c58c4f844b6df8c2b87bb,
+  rocketGunSprite: {fileID: 7362661061344524757, guid: 61bb073b4a7a36c4dbd2a1b4e5bc4f13,
     type: 3}
-  rocketBulletPrefab: {fileID: 7105169398116540228, guid: 6c3212b8042c70a459316c908cffb0b6,
+  rocketBulletPrefab: {fileID: 7105169398116540228, guid: 08f1e58c35e460748b7f262d6d7a9cad,
     type: 3}
   meteorSprite: {fileID: 3082848957282643518, guid: f9be48290c451b14aa072afbeed0c7bf,
     type: 3}
@@ -36,9 +36,11 @@ MonoBehaviour:
     type: 3}
   ufoSprite: {fileID: 7897747911244460320, guid: 52185d713186f944dbbbc3b545ee7ab6,
     type: 3}
-  ufoBulletPrefab: {fileID: 7105169398116540228, guid: 786319366eb04c84f9546cd344d17251,
+  ufoBulletPrefab: {fileID: 7105169398116540228, guid: a3450608fbc6ee64aaee853b366eddf5,
     type: 3}
   ufoTrail: {fileID: 8229657281750359365, guid: aab1cd3c82299b7479b8dfb6cf3f505f,
+    type: 3}
+  ufoDeathEffect: {fileID: 8911352027092857193, guid: 8a168f06f5693224784e89a181e1d4f7,
     type: 3}
   backgroundPrefab: {fileID: 5331184397782030829, guid: 0276e93947ee3e048b89088f303e2621,
     type: 3}

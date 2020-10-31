@@ -69,6 +69,9 @@ public class ThemeData : ScriptableObject
     [SerializeField] private GameObject ufoTrail;
     public GameObject UfoTrail { get => ufoTrail; }
 
+    [SerializeField] private GameObject ufoDeathEffect;
+    public GameObject UfoDeathEffect { get => ufoDeathEffect; }
+
 
     [Space]
     [Header("Background")]

@@ -11,6 +11,7 @@ public class ThemePanel : MonoBehaviour, IThemePanel
     [SerializeField] protected Button buyBtn;
     [SerializeField] protected Button selectBtn;
     [SerializeField] protected GameObject selectedIndicator;
+    [SerializeField] protected GameObject shopOpener;
 
     private void Awake()
     {
@@ -46,6 +47,10 @@ public class ThemePanel : MonoBehaviour, IThemePanel
             DataManager.themesIds.Add(themeData.Id);
             SetCurrentSkin();
         }
+        else
+            shopOpener.SetActive(true);
+        
+        DataManager.LocalAndCloudSave(null);
     }
 
     public void SetCurrentSkin()

@@ -27,6 +27,7 @@ public class Gun : MonoBehaviour
     [SerializeField] protected float shootDelay;
     [SerializeField] protected float bulletLifetime;
     [SerializeField] protected Transform shootPoint;
+    [SerializeField] protected Transform bulletParent;
 
     public enum DirectionType
     {
@@ -57,7 +58,12 @@ public class Gun : MonoBehaviour
         {
             if (Time.time > delayStartTime + shootDelay)
             {
-                GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+                GameObject bullet = null;
+
+                if (bulletParent == null)
+                    bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+                else
+                    bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity, bulletParent);
 
                 SetRotation(bullet.transform);
 

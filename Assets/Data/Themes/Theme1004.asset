@@ -13,32 +13,34 @@ MonoBehaviour:
   m_Name: Theme1004
   m_EditorClassIdentifier: 
   id: 1004
-  price: 0
+  price: 75
   priceCurrency: 0
-  rocketSprite: {fileID: -2778983138445651490, guid: e8b9043501a3a6c43a305ca4df76f82e,
+  rocketSprite: {fileID: -2778983138445651490, guid: 4f0d0b8e6928d564383e6b8ba1fea477,
     type: 3}
-  rocketTrail: {fileID: 5916763322299920291, guid: 627df36dcfc94424480c3b321cc2c9e0,
+  rocketTrail: {fileID: 5916763322299920291, guid: 8f2b978fd7fe1ef4e9cdb4d4dcfa1b7c,
     type: 3}
   rocketDeathEffect: {fileID: 8911352027092857193, guid: d5bd15276ecd11b4ba339f28c9c36e78,
     type: 3}
-  rocketGunSprite: {fileID: 7570646592956179104, guid: 5f60c527032c58c4f844b6df8c2b87bb,
+  rocketGunSprite: {fileID: -8418488038174322532, guid: 61bb073b4a7a36c4dbd2a1b4e5bc4f13,
     type: 3}
   rocketBulletPrefab: {fileID: 7105169398116540228, guid: 6c3212b8042c70a459316c908cffb0b6,
     type: 3}
-  meteorSprite: {fileID: 3082848957282643518, guid: abe82325032191f46973c6519f7bf582,
+  meteorSprite: {fileID: 3082848957282643518, guid: b69e68c28e2c7ea47851bc65a3502168,
     type: 3}
-  meteorDeathEffect: {fileID: 195166072334390375, guid: 244113e0a82493649aad8d364369b824,
+  meteorDeathEffect: {fileID: 195166072334390375, guid: 433d4462d8bad1d438a29c0e3edc6eed,
     type: 3}
-  blackHoleSprite: {fileID: 9200218270507670186, guid: 670f4a370a5491c459fd856d1167c585,
+  blackHoleSprite: {fileID: 9200218270507670186, guid: 0482509251c32cc4dad49d0529bff59a,
     type: 3}
-  spacemanBodySprite: {fileID: 21300000, guid: e22a30db97e9d9942b1c451fd016e328, type: 3}
-  spacemanHandSprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
+  spacemanBodySprite: {fileID: -4169900757547577136, guid: 4f0d0b8e6928d564383e6b8ba1fea477,
     type: 3}
-  ufoSprite: {fileID: 8426044916725905135, guid: 5f60c527032c58c4f844b6df8c2b87bb,
+  spacemanHandSprite: {fileID: 0}
+  ufoSprite: {fileID: -1733594349832183907, guid: 4f0d0b8e6928d564383e6b8ba1fea477,
     type: 3}
-  ufoBulletPrefab: {fileID: 7105169398116540228, guid: 786319366eb04c84f9546cd344d17251,
+  ufoBulletPrefab: {fileID: 7105169398116540228, guid: dfa29eec302c83541b65ca7b8a1420df,
     type: 3}
-  ufoTrail: {fileID: 8229657281750359365, guid: aab1cd3c82299b7479b8dfb6cf3f505f,
+  ufoTrail: {fileID: 8229657281750359365, guid: b988bdb29cb290d44b58efd16d439ffe,
+    type: 3}
+  ufoDeathEffect: {fileID: 8911352027092857193, guid: 5081a126ff9db6d4cbe33dcb7d97d219,
     type: 3}
   backgroundPrefab: {fileID: 5331184397782030829, guid: b98871c14816de74f981b4e9eceac98a,
     type: 3}

@@ -17,6 +17,24 @@ TextureImporter:
   - first:
       213: 7570646592956179104
     second: gun0
+  - first:
+      213: 5240296554848578539
+    second: enemy_bullet0
+  - first:
+      213: 7843130585057271973
+    second: enemy_bullet1
+  - first:
+      213: 466677076928948976
+    second: ally_bullet0
+  - first:
+      213: -3946043364956465464
+    second: ally_bullet1
+  - first:
+      213: 60214423550349857
+    second: enemy_bullet1000
+  - first:
+      213: 6243437509465964484
+    second: ufo0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -113,22 +131,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rocket0
+      name: enemy_bullet0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 594
-        height: 1086
+        x: 48
+        y: 1186
+        width: 188
+        height: 186
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f81f818c4a58cb948ae6e5396714ae4c
-      internalID: 4498882926605208115
+      spriteID: db514c8d8fd6cf140bcf3425adac6f3e
+      internalID: 5240296554848578539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_bullet1
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1194
+        width: 186
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c5d4f432cd3a442b220166f2615fb9
+      internalID: 7843130585057271973
       vertices: []
       indices: 
       edges: []
@@ -142,35 +181,98 @@ TextureImporter:
         width: 730
         height: 725
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dcd79ad00f48f64e9791e272b0a6778
+      spriteID: 2eef7f8fcbb6cba46a8b29e0e8a08dbb
       internalID: 7977738919726192409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bullet0
+      name: ally_bullet0
       rect:
         serializedVersion: 2
-        x: 1590
-        y: 1089
+        x: 1535
+        y: 1216
         width: 118
         height: 183
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eaca781c5d6c2d040802ec7cb6a7a130
-      internalID: 7283040410875088913
+      spriteID: 2027d42f47a696447aa36fdf22864d50
+      internalID: 466677076928948976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ally_bullet1
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1216
+        width: 118
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dcf963c6a66de448a1990312299ff08
+      internalID: -3946043364956465464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rocket0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 594
+        height: 1086
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8c3d87d85f5c04096c6d11dfa7de12
+      internalID: 4498882926605208115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_bullet1000
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1020
+        width: 186
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c911d8ea44127a40892f66c6287994b
+      internalID: 60214423550349857
       vertices: []
       indices: 
       edges: []
@@ -179,18 +281,18 @@ TextureImporter:
       name: gun0
       rect:
         serializedVersion: 2
-        x: 1588
-        y: 638
-        width: 127
+        x: 1540
+        y: 652
+        width: 126
         height: 351
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f532db7c2331a14e91c7b44a5a54ff5
+      spriteID: ab6afab3ed110a94a901615317cd2944
       internalID: 7570646592956179104
       vertices: []
       indices: 
@@ -201,18 +303,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 726
-        y: 32
+        y: 29
         width: 1106
-        height: 557
+        height: 560
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e42aeff677a735243a3b161c6a8a21f5
-      internalID: 8426044916725905135
+      spriteID: d2027be94f5fcdd4e9dd33e493c71e7c
+      internalID: 6243437509465964484
       vertices: []
       indices: 
       edges: []
