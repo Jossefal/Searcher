@@ -7,25 +7,28 @@ using GoogleMobileAds.Api;
 
 public class LoadingManager : MonoBehaviour
 {
-    public MaxAdContentRating maxAdContentRating
-    {
-        get
-        {
-            return _maxAdContentRating;
-        }
-        set
-        {
-            _maxAdContentRating = value;
-        }
-    }
-
-    [SerializeField] private AdsTargeter adsTargeter;
+    // public MaxAdContentRating maxAdContentRating
+    // {
+    //     get
+    //     {
+    //         return _maxAdContentRating;
+    //     }
+    //     set
+    //     {
+    //         _maxAdContentRating = value;
+    //     }
+    // }
 
     private bool adsIsReady;
     private bool purchasesIsReady;
     private bool firebaseIsReady;
     private bool savesIsReady;
-    private MaxAdContentRating _maxAdContentRating = MaxAdContentRating.G;
+    private MaxAdContentRating _maxAdContentRating = MaxAdContentRating.T;
+
+    private void Start()
+    {
+        Load();
+    }
 
     public void Load()
     {

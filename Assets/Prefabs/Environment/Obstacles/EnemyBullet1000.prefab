@@ -166,6 +166,6 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   useTransformUpDirection: 1
-  speed: 2
-  moveType: 1
+  speed: 5.5
+  moveType: 0
   updateType: 2

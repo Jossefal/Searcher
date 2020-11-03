@@ -98,7 +98,6 @@ public static class DataManager
         livesCount = new SafeInt(15);
         diamondsCount = new SafeInt(1000);
         currentThemeId = new SafeInt(0);
-        themesIds.Add(0);
     }
 
     internal static void CloudSave(Action<bool> callback)
@@ -175,13 +174,8 @@ public static class DataManager
         record = new SafeInt(saveData.record);
         livesCount = new SafeInt(saveData.livesCount);
 
-        diamondsCount = saveDataJson.Contains("diamondsCount") ? new SafeInt(saveData.diamondsCount) : new SafeInt(5);
+        diamondsCount = saveDataJson.Contains("diamondsCount") ? new SafeInt(saveData.diamondsCount) : new SafeInt(1000);
         currentThemeId = saveDataJson.Contains("currentThemeId") ? new SafeInt(saveData.currentThemeId) : new SafeInt(0);
-
-        if (saveDataJson.Contains("themesIds"))
-            themesIds.AddRange(saveData.themesIds);
-        else
-            themesIds.Add(0);
     }
 }
 

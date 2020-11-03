@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class TimerButton : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class TimerButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
+        button.onClick.AddListener(new UnityAction(Click));
         Load();
     }
 

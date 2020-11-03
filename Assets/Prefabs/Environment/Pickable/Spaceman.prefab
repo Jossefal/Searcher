@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5556345142132379139}
   - component: {fileID: 6639475710558565023}
   - component: {fileID: 8834879256018430360}
-  - component: {fileID: 2837327845123509173}
   m_Layer: 17
   m_Name: BodySprite
   m_TagString: Untagged
@@ -103,25 +102,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2837327845123509173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045147093412697437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4a6d2d923451946ab5cc4ea27d46b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  themeSkins:
-  - themeId: 0
-    sprite: {fileID: 21300000, guid: e22a30db97e9d9942b1c451fd016e328, type: 3}
-  - themeId: 1
-    sprite: {fileID: 21300000, guid: b1f09fd755c45b24e93dd7f12a171e9d, type: 3}
-  - themeId: 2
-    sprite: {fileID: 21300000, guid: e22a30db97e9d9942b1c451fd016e328, type: 3}
 --- !u!1 &2272343501606151962
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +112,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7082941404059800513}
   - component: {fileID: 5284840442849556070}
-  - component: {fileID: 5309105408246131970}
   m_Layer: 0
   m_Name: spaceman-left-hand
   m_TagString: Untagged
@@ -204,28 +183,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5309105408246131970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2272343501606151962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4a6d2d923451946ab5cc4ea27d46b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  themeSkins:
-  - themeId: 0
-    sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
-      type: 3}
-  - themeId: 1
-    sprite: {fileID: -3712557355026288584, guid: 3cfe3d86fe5e5784a9473197003e0188,
-      type: 3}
-  - themeId: 2
-    sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
-      type: 3}
 --- !u!1 &5484798064350560116
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +193,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4690092646917508954}
   - component: {fileID: 7230545323670072201}
-  - component: {fileID: 4862707270816722382}
   m_Layer: 0
   m_Name: spaceman-right-hand
   m_TagString: Untagged
@@ -308,28 +264,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4862707270816722382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5484798064350560116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4a6d2d923451946ab5cc4ea27d46b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  themeSkins:
-  - themeId: 0
-    sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
-      type: 3}
-  - themeId: 1
-    sprite: {fileID: -3712557355026288584, guid: 3cfe3d86fe5e5784a9473197003e0188,
-      type: 3}
-  - themeId: 2
-    sprite: {fileID: -8943287749612884506, guid: e0643719e23c70e46b68e53aee8ad116,
-      type: 3}
 --- !u!1 &6692435511983111624
 GameObject:
   m_ObjectHideFlags: 0

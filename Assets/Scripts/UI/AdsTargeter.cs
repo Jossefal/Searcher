@@ -15,7 +15,7 @@ public class AdsTargeter : MonoBehaviour
 
     private void Start()
     {
-        CheckTargetAge();
+        // CheckTargetAge();
     }
 
     public void CheckTargetAge()
@@ -55,7 +55,7 @@ public class AdsTargeter : MonoBehaviour
         else
             maxAdContentRating = MaxAdContentRating.MA;
 
-        loadingManager.maxAdContentRating = maxAdContentRating;
+        // loadingManager.maxAdContentRating = maxAdContentRating;
         loadingManager.Load();
     }
 

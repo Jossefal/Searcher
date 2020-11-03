@@ -1187,7 +1187,6 @@ MonoBehaviour:
   deathPanel: {fileID: 2080717948}
   interfaceManager: {fileID: 847979016}
   levelIntersitialAdUI: {fileID: 5065609456623368199}
-  enemySpawner: {fileID: 1252005929}
   themeDataContainer: {fileID: 11400000, guid: 84b4184081fef2f4384bfb13630b6e64, type: 2}
 --- !u!114 &663224458
 MonoBehaviour:
@@ -2326,7 +2325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 1252005929}
-  timeBetween: 10
+  timeBetween: 15
   shipGun: {fileID: 303287167}
   gunActivationDelay: 3
 --- !u!114 &1544919462 stripped
