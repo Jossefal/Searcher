@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 4624352275155638904}
-  valueVariant: 0
+  valueVariant: 2
 --- !u!1 &1835801049886308497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,7 +2233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5065609455899413888}
-  valueVariant: 0
+  valueVariant: 2
 --- !u!1 &5065609456331776673
 GameObject:
   m_ObjectHideFlags: 0

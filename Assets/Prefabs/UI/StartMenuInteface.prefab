@@ -1420,13 +1420,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3402639147536643651}
-  m_Father: {fileID: 2813552217053228374}
-  m_RootOrder: 3
+  m_Father: {fileID: 5878514957697219567}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 227.55557}
-  m_SizeDelta: {x: 0, y: -455.11108}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2902548772979568900
 CanvasRenderer:
@@ -1678,6 +1678,7 @@ RectTransform:
   - {fileID: 8481760913323352261}
   - {fileID: 1445401040640630081}
   - {fileID: 5177789429712335007}
+  - {fileID: 7529798421574261976}
   m_Father: {fileID: 2813552217053228374}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4559,7 +4560,7 @@ RectTransform:
   - {fileID: 745707579562572277}
   - {fileID: 795966508639268332}
   m_Father: {fileID: 2813552217053228374}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2}
   m_AnchorMax: {x: 1, y: 1}
@@ -9605,7 +9606,6 @@ RectTransform:
   - {fileID: 5910244237735173922}
   - {fileID: 131113494256704625}
   - {fileID: 5878514957697219567}
-  - {fileID: 7529798421574261976}
   - {fileID: 9076227279389167666}
   - {fileID: 258130612661665205}
   m_Father: {fileID: 4573423894674038207}
@@ -15432,7 +15432,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 2
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -15448,7 +15448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15a2847d14713c4cbbc822c4d4b2e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: diamonds
+  id: lives
+  secondsBetweenClicks: 600
   text: {fileID: 460828114865952905}
   normalStateObject: {fileID: 8309613632588710131}
   hidePanel: {fileID: 1702549893932807155}
@@ -19984,7 +19985,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 2
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -20001,6 +20002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: diamonds
+  secondsBetweenClicks: 600
   text: {fileID: 5756977168483601108}
   normalStateObject: {fileID: 6305312863197227875}
   hidePanel: {fileID: 8939007183637364404}
@@ -20637,7 +20639,7 @@ RectTransform:
   - {fileID: 4343735626031247813}
   - {fileID: 3550073587718630673}
   m_Father: {fileID: 2813552217053228374}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

@@ -6,13 +6,14 @@ using UnityEngine.Events;
 
 public class TimerButton : MonoBehaviour
 {
-    private static DateTime lastClickTime = new DateTime(2000, 1, 1);
-    private static TimeSpan timeLeft;
-    private TimeSpan timeBetweenClicks = new TimeSpan(0, 10, 0);
+    private DateTime lastClickTime = new DateTime(2000, 1, 1);
+    private TimeSpan timeLeft;
+    private TimeSpan timeBetweenClicks;
 
-    private static WaitForSeconds waitForOneSecond = new WaitForSeconds(1f);
+    private WaitForSeconds waitForOneSecond = new WaitForSeconds(1f);
 
     [SerializeField] private string id;
+    [SerializeField] private uint secondsBetweenClicks;
     [SerializeField] private Text text;
     [SerializeField] private GameObject normalStateObject;
     [SerializeField] private GameObject hidePanel;
@@ -31,6 +32,9 @@ public class TimerButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(new UnityAction(Click));
+
+        timeBetweenClicks = new TimeSpan(0, 0, (int)secondsBetweenClicks);
+
         Load();
     }
 
