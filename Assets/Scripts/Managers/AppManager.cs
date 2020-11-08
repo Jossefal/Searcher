@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class AppManager : MonoBehaviour
 {
     public static bool isPaused { get; private set; }
+    
     public static bool isFirstLaunch
     {
         get
@@ -43,7 +44,8 @@ public class AppManager : MonoBehaviour
     {
         if (pauseStatus)
         {
-            DataManager.LocalAndCloudSave(null);
+            // Debug.Log("Start LocalAndCloudSave");
+            // DataManager.LocalAndCloudSave(null);
 
             if (!isPaused)
                 onApplicationPause.Invoke();
@@ -52,17 +54,15 @@ public class AppManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        DataManager.LocalSave();
+        // DataManager.LocalSave();
+
+        Debug.Log("Start LocalAndCloudSave");      
+        DataManager.LocalAndCloudSave(null);
     }
 
     private void OnApplicationQuit()
     {
         DataManager.LocalAndCloudSave(null);
-    }
-
-    public void ReportScore()
-    {
-        GPGSManager.ReportScore(DataManager.record.GetValue());
     }
 
     public void ShowLeaderBoardUI()

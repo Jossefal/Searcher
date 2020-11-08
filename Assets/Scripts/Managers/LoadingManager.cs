@@ -94,6 +94,8 @@ public class LoadingManager : MonoBehaviour
 
     private void LoadSaves()
     {
+        Debug.Log("LoadingManager - LoadSaves");
+
         if (GPGSManager.isAuthenticated && GPGSManager.isFirstAuth)
         {
             DataManager.CloudLoad((isExist) =>

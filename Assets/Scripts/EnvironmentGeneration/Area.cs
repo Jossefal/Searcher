@@ -8,7 +8,6 @@ public class Area : MonoBehaviour
 
     [SerializeField] private Transform nextAreaSpawnPoint;
     [SerializeField] private GameObject[] obstacles;
-    [SerializeField] private Transform[] scalebleObstacles;
     [SerializeField] private Transform spawnPointsParent;
     [SerializeField] private bool isEasy;
 
@@ -60,12 +59,7 @@ public class Area : MonoBehaviour
     public void Respawn(Vector3 pos)
     {
         SetObstaclesActive(!areasManager.isSkyforceMode);
-
-        for (int i = 0; i < scalebleObstacles.Length; i++)
-        {
-            scalebleObstacles[i].localScale = areasManager.currentScale;
-        }
-
+        
         transform.position = pos;
 
         gameObject.SetActive(true);

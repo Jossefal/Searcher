@@ -27,6 +27,8 @@ public static class FirestoreManager
 
         db = FirebaseFirestore.DefaultInstance;
 
+        UnityEngine.Debug.Log("Firebase - defaultInstance is " + (db == null ? "null" : "not null"));
+
         isInitialized = true;
     }
 
@@ -34,16 +36,20 @@ public static class FirestoreManager
     {
         auth = FirebaseAuth.DefaultInstance;
 
+        UnityEngine.Debug.Log("Firebase - authCode is " + (authCode == "" ? "empty" : "not empty"));
+
         Credential credential = PlayGamesAuthProvider.GetCredential(authCode);
+
+        UnityEngine.Debug.Log("Firebase - play games credential is " + (credential == null ? "null" : "not null"));
 
         auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
         {
             if (task.IsCanceled)
-                Console.WriteLine("SignInWithCredentialAsync was canceled!");
+                UnityEngine.Debug.LogError("Firebase - SignInWithCredentialAsync was canceled!");
             else if (task.IsFaulted)
-                Console.WriteLine("SignInWithCredentialAsync was faulted!");
+                UnityEngine.Debug.LogError("Firebase - SignInWithCredentialAsync was failed with error: " + task.Exception);
             else
-                Console.WriteLine("SignInWithCredentialAsync was completed!");
+                UnityEngine.Debug.Log("Firebase - SignInWithCredentialAsync was completed!");
 
             callback?.Invoke(task);
         });
@@ -53,18 +59,20 @@ public static class FirestoreManager
     {
         CollectionReference collectionRef = db.Collection(leaderboardId);
 
+        UnityEngine.Debug.Log("Firebase - start load scores from leaderboard");
+
         Query query = collectionRef.OrderByDescending(UserScoreData.USER_SCORE_PROPERTY_NAME).Limit(limit);
 
         query.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
             if (!task.IsCompleted)
-                Console.WriteLine("query.GetSnapshotAsync was completed!");
+                UnityEngine.Debug.Log("Firebase - query.GetSnapshotAsync was completed!");
             else
             {
                 if (task.IsCanceled)
-                    Console.WriteLine("query.GetSnapshotAsync was canceled!");
+                    UnityEngine.Debug.LogError("Firebase - query.GetSnapshotAsync was canceled with error - " + task.Exception);
                 else if (task.IsFaulted)
-                    Console.WriteLine("query.GetSnapshotAsync was faulted!");
+                    UnityEngine.Debug.LogError("Firebase - query.GetSnapshotAsync was faulted with error - " + task.Exception);
 
                 callback?.Invoke(task, null);
                 return;
@@ -89,18 +97,20 @@ public static class FirestoreManager
         if (!isAuthenticated || userScoreData == null)
             return;
 
+        UnityEngine.Debug.Log("Firebase - start load userDocRef");
+
         DocumentReference userDocRef = db.Collection(leaderboardId).Document(auth.CurrentUser.UserId);
 
         userDocRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
             if (!task.IsCompleted)
-                Console.WriteLine("userDocRef.GetSnapshotAsync was completed!");
+                UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was completed!");
             else
             {
                 if (task.IsCanceled)
-                    Console.WriteLine("userDocRef.GetSnapshotAsync was canceled!");
+                    UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was canceled!");
                 else if (task.IsFaulted)
-                    Console.WriteLine("userDocRef.GetSnapshotAsync was faulted!");
+                    UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was faulted!");
 
                 callback?.Invoke(task);
                 return;
@@ -117,14 +127,16 @@ public static class FirestoreManager
                 }
             }
 
+            UnityEngine.Debug.Log("Firebase - start write userDocRef");
+
             userDocRef.SetAsync(userScoreData).ContinueWithOnMainThread(secondTask =>
             {
                 if (secondTask.IsCanceled)
-                    Console.WriteLine("userDocRef.SetAsync was canceled!");
+                    UnityEngine.Debug.Log("Firebase - userDocRef.SetAsync was canceled!");
                 else if (secondTask.IsFaulted)
-                    Console.WriteLine("userDocRef.SetAsync was faulted!");
+                    UnityEngine.Debug.Log("Firebase - userDocRef.SetAsync was faulted!");
                 else
-                    Console.WriteLine("userDocRef.SetAsync was completed!");
+                    UnityEngine.Debug.Log("Firebase - userDocRef.SetAsync was completed!");
 
                 callback?.Invoke(secondTask);
             });

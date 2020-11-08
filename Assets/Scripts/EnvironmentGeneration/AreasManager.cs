@@ -15,8 +15,6 @@ public class AreasManager : MonoBehaviour
 
     public bool isSkyforceMode { get; set; }
 
-    [HideInInspector] public Vector3 currentScale;
-
     [SerializeField] private RespawnPanel _respawnPanel;
     [SerializeField] private List<Area> unusedEasyAreas;
     [SerializeField] private List<Area> unusedNormalAreas;
@@ -26,10 +24,6 @@ public class AreasManager : MonoBehaviour
     [SerializeField] private float startEasyChance;
     [SerializeField] private float easyChanceDecreaseStep;
     [SerializeField] private float finalEasyChance;
-    [SerializeField] private float startScale;
-    [SerializeField] private uint areasToScale;
-    [SerializeField] private float scaleStep;
-    [SerializeField] private float finalScale;
 
     private float easyAreaChance;
     private PickableManager pickableManager;
@@ -40,7 +34,6 @@ public class AreasManager : MonoBehaviour
         pickableManager.Initialize();
 
         easyAreaChance = startEasyChance;
-        currentScale = new Vector3(startScale, startScale, startScale);
 
         InitializeAreas();
     }
@@ -74,11 +67,6 @@ public class AreasManager : MonoBehaviour
         }
 
         easyAreaChance = Mathf.Clamp(easyAreaChance - easyChanceDecreaseStep, finalEasyChance, 1f);
-
-        if (areasToScale != 0)
-            areasToScale--;
-        else if (currentScale.x < finalScale)
-            currentScale.x = currentScale.y = Mathf.Clamp(currentScale.x + scaleStep, 1, finalScale);
 
         pickableManager.Evaluate(nextArea);
 

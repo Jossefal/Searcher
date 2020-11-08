@@ -19,7 +19,7 @@ public class IAPShop : MonoBehaviour
 
     private void Awake()
     {
-        if (!IAPManager.isInitialized)
+        if (!IAPManager.isInitialized || !GPGSManager.isAuthenticated)
         {
             if (initializationFailedIndicator != null)
                 initializationFailedIndicator.SetActive(true);

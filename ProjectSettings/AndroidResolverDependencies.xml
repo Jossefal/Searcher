@@ -1,22 +1,23 @@
 <dependencies>
   <packages>
     <package>com.google.android.gms:play-services-ads:19.1.0</package>
-    <package>com.google.firebase:firebase-analytics:17.4.1</package>
-    <package>com.google.firebase:firebase-app-unity:6.15.2</package>
-    <package>com.google.firebase:firebase-auth:19.3.1</package>
-    <package>com.google.firebase:firebase-auth-unity:6.15.2</package>
-    <package>com.google.firebase:firebase-common:19.3.0</package>
-    <package>com.google.firebase:firebase-firestore:21.4.3</package>
-    <package>com.google.firebase:firebase-firestore-unity:6.15.2</package>
+    <package>com.google.android.gms:play-services-base:17.4.0</package>
+    <package>com.google.firebase:firebase-analytics:17.5.0</package>
+    <package>com.google.firebase:firebase-app-unity:6.16.1</package>
+    <package>com.google.firebase:firebase-auth:19.3.2</package>
+    <package>com.google.firebase:firebase-auth-unity:6.16.1</package>
+    <package>com.google.firebase:firebase-common:19.3.1</package>
+    <package>com.google.firebase:firebase-firestore:21.6.0</package>
+    <package>com.google.firebase:firebase-firestore-unity:6.16.1</package>
     <package>com.google.games:gpgs-plugin-support:0.10.08</package>
   </packages>
   <files>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/6.15.2/firebase-app-unity-6.15.2.aar</file>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/6.15.2/firebase-app-unity-6.15.2.pom</file>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-auth-unity/6.15.2/firebase-auth-unity-6.15.2.aar</file>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-auth-unity/6.15.2/firebase-auth-unity-6.15.2.pom</file>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-firestore-unity/6.15.2/firebase-firestore-unity-6.15.2.aar</file>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-firestore-unity/6.15.2/firebase-firestore-unity-6.15.2.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/6.16.1/firebase-app-unity-6.16.1.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/6.16.1/firebase-app-unity-6.16.1.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-auth-unity/6.16.1/firebase-auth-unity-6.16.1.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-auth-unity/6.16.1/firebase-auth-unity-6.16.1.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-firestore-unity/6.16.1/firebase-firestore-unity-6.16.1.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-firestore-unity/6.16.1/firebase-firestore-unity-6.16.1.pom</file>
     <file>Assets/GeneratedLocalRepo/GooglePlayGames/Editor/m2repository/com/google/games/gpgs-plugin-support/0.10.08/gpgs-plugin-support-0.10.08.aar</file>
     <file>Assets/GeneratedLocalRepo/GooglePlayGames/Editor/m2repository/com/google/games/gpgs-plugin-support/0.10.08/gpgs-plugin-support-0.10.08.pom</file>
   </files>

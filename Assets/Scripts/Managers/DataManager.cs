@@ -62,7 +62,7 @@ public static class DataManager
     internal static event Action onDataChanged;
 
     internal static bool isDataLoaded { get; private set; }
-    internal static bool isTestMode { get; private set; } = false;
+    internal static bool isTestMode { get; private set; } = true;
     internal static bool isLocalTestMode { get; private set; } = false;
 
     private static int saveQueue;
@@ -81,7 +81,7 @@ public static class DataManager
 
     internal static void LocalLoad()
     {
-        if (PlayerPrefs.HasKey(Prefs.SAVE_DATA_PREF))
+        if (!AppManager.isFirstLaunch)
         {
             string saveDataJson = SafePrefs.Load(Prefs.SAVE_DATA_PREF);
             ParseJsonSaveData(saveDataJson);
@@ -113,7 +113,7 @@ public static class DataManager
         {
             if (status == GooglePlayGames.BasicApi.SavedGame.SavedGameRequestStatus.Success && data.Length > 0)
             {
-                string saveDataJson = SafePrefs.Load(Encoding.UTF8.GetString(data));
+                string saveDataJson = Encoding.UTF8.GetString(data);
                 ParseJsonSaveData(saveDataJson);
             }
             else

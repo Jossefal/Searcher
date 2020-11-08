@@ -26,7 +26,9 @@ public class IAPManager : IStoreListener
     private static Action<bool> initializationCallback;
     private static ProductDefinition[] productDefinitions = new ProductDefinition[]
     {
-        new ProductDefinition("lives_25", ProductType.Consumable)
+        new ProductDefinition("diamonds_25", ProductType.Consumable),
+        new ProductDefinition("diamonds_50", ProductType.Consumable),
+        new ProductDefinition("diamonds_100", ProductType.Consumable)
     };
 
     public event Action<Product> onSuccessConsumable;

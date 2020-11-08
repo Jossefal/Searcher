@@ -28,20 +28,32 @@ public static class GPGSManager
     public const string FIRST_GPG_AUTH_CHECK_PREF = "FIRST_GPG_AUTH_CHECK";
 
     private static ISavedGameClient savedGameClient;
-    // private static ISavedGameMetadata currentSavedGameMetadata;
 
     public static void Initialize(bool debug)
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().RequestServerAuthCode(false).Build();
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.DebugLogEnabled = debug;
-        PlayGamesPlatform.Activate();
+        // PlayGamesPlatform.Activate();
     }
 
     public static void Auth(Action<bool> onAuth)
     {
-        Social.localUser.Authenticate((success =>
+        // Social.localUser.Authenticate((success =>
+        // {
+        //     if (success)
+        //         savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+
+        //     onAuth(success);
+
+        //     if (success)
+        //         PlayerPrefs.SetInt(FIRST_GPG_AUTH_CHECK_PREF, 1);
+        // }));
+
+        PlayGamesPlatform.Instance.Authenticate((success =>
         {
+            Debug.Log("PlayGamesAuth - succes==" + success);
+
             if (success)
                 savedGameClient = PlayGamesPlatform.Instance.SavedGame;
 
@@ -98,7 +110,7 @@ public static class GPGSManager
                 SavedGameMetadataUpdate updatedMetadata = builder.Build();
                 savedGameClient.CommitUpdate(metadata, updatedMetadata, data, (commitStatus, newMetadata) =>
                 {
-                    Debug.Log("Commit saved game request status: " + commitStatus);
+                    Debug.Log("\nCommit saved game request status: " + commitStatus + "\n");
                     if (commitStatus == SavedGameRequestStatus.Success)
                         callback?.Invoke(true);
                     else

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1061959181629-t9tqc8i2ekcee50m7928tkmqv8il98pk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sivercompany.masta",
+            "certificate_hash": "bd43cd6fb0ab5918c165b9d9a7fca73c161be1bd"
+          }
+        },
+        {
           "client_id": "1061959181629-6mmr09h9tlp2bc6oagjkc23pitn9cvuu.apps.googleusercontent.com",
           "client_type": 3
         }
