@@ -23,7 +23,7 @@ public class DiamondsRewardedAdUI : AdUI
 
     public void LoadAndShowAd()
     {
-        if (DataManager.isTestMode)
+        if (DataManager.isLocalTestMode)
         {
             HandleUserEarnedReward();
             HandleAdClosed();

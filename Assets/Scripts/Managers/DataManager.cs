@@ -84,7 +84,6 @@ public static class DataManager
         if (!AppManager.isFirstLaunch)
         {
             string saveDataJson = SafePrefs.Load(Prefs.SAVE_DATA_PREF);
-            Debug.Log(saveDataJson);
             ParseJsonSaveData(saveDataJson);
         }
         else

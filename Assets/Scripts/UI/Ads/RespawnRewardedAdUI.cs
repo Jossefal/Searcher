@@ -22,7 +22,7 @@ public class RespawnRewardedAdUI : AdUI
 
     public void LoadAndShowAd()
     {
-        if (DataManager.isTestMode)
+        if (DataManager.isLocalTestMode)
         {
             HandleUserEarnedReward();
             HandleAdClosed();

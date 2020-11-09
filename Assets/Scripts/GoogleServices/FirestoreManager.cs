@@ -68,18 +68,18 @@ public static class FirestoreManager
 
         query.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
-            if (!task.IsCompleted)
-                UnityEngine.Debug.Log("Firebase - query.GetSnapshotAsync was completed!");
-            else
+            if (task.IsCanceled)
             {
-                if (task.IsCanceled)
-                    UnityEngine.Debug.LogError("Firebase - query.GetSnapshotAsync was canceled with error - " + task.Exception);
-                else if (task.IsFaulted)
-                    UnityEngine.Debug.LogError("Firebase - query.GetSnapshotAsync was faulted with error - " + task.Exception);
-
-                callback?.Invoke(task, null);
+                UnityEngine.Debug.Log("Firebase - query.GetSnapshotAsync was canceled!");
                 return;
             }
+            else if (task.IsFaulted)
+            {
+                UnityEngine.Debug.Log("Firebase - query.GetSnapshotAsync was faulted!");
+                return;
+            }
+            else
+                UnityEngine.Debug.Log("Firebase - query.GetSnapshotAsync was completed!");
 
             QuerySnapshot querySnapshot = task.Result;
             LeaderboardData leaderboardData = new LeaderboardData();
@@ -106,18 +106,18 @@ public static class FirestoreManager
 
         userDocRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
-            if (!task.IsCompleted)
-                UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was completed!");
-            else
+            if (task.IsCanceled)
             {
-                if (task.IsCanceled)
-                    UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was canceled!");
-                else if (task.IsFaulted)
-                    UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was faulted!");
-
-                callback?.Invoke(task);
+                UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was canceled!");
                 return;
             }
+            else if (task.IsFaulted)
+            {
+                UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was faulted!");
+                return;
+            }
+            else
+                UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was completed!");
 
             if (task.Result.Exists)
             {

@@ -24,12 +24,22 @@ public class LevelIntersitialAdUI : AdUI
 
     public void ShowAd(Action onClosedAd)
     {
+        if(DataManager.isLocalTestMode)
+        {
+            onClosedAd?.Invoke();
+        }
+
         this.onClosedAd = onClosedAd;
         InterstitialAdManager.ShowAd();
     }
 
     public void ShowAd(float delay, Action onClosedAd)
     {
+        if(DataManager.isLocalTestMode)
+        {
+            onClosedAd?.Invoke();
+        }
+
         this.onClosedAd = onClosedAd;
         statusPanel.SetActive(true);
 
