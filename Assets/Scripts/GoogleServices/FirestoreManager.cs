@@ -8,7 +8,8 @@ public static class FirestoreManager
 {
     private static FirebaseFirestore db;
     private static FirebaseAuth auth;
-    private static string leaderboardId = "Leaderboard";
+
+    private const string leaderboardId = "Leaderboard";
 
     public static bool isInitialized { get; private set; }
 
@@ -57,11 +58,13 @@ public static class FirestoreManager
 
     public static void LoadLeaderboardData(int limit, Action<Task, LeaderboardData> callback)
     {
-        CollectionReference collectionRef = db.Collection(leaderboardId);
-
         UnityEngine.Debug.Log("Firebase - start load scores from leaderboard");
 
+        CollectionReference collectionRef = db.Collection(leaderboardId);
+
         Query query = collectionRef.OrderByDescending(UserScoreData.USER_SCORE_PROPERTY_NAME).Limit(limit);
+
+        UnityEngine.Debug.Log("Firebase - start load leaderboard snapshot async");
 
         query.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {

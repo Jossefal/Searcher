@@ -84,6 +84,7 @@ public static class DataManager
         if (!AppManager.isFirstLaunch)
         {
             string saveDataJson = SafePrefs.Load(Prefs.SAVE_DATA_PREF);
+            Debug.Log(saveDataJson);
             ParseJsonSaveData(saveDataJson);
         }
         else
@@ -129,6 +130,8 @@ public static class DataManager
         SaveData saveData = CreateSaveData();
 
         string stringSaveData = JsonUtility.ToJson(saveData);
+
+        Debug.Log(stringSaveData);
 
         SafePrefs.Save(Prefs.SAVE_DATA_PREF, stringSaveData);
         GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(stringSaveData), cloudSaveCallback);
@@ -176,6 +179,9 @@ public static class DataManager
 
         diamondsCount = saveDataJson.Contains("diamondsCount") ? new SafeInt(saveData.diamondsCount) : new SafeInt(1000);
         currentThemeId = saveDataJson.Contains("currentThemeId") ? new SafeInt(saveData.currentThemeId) : new SafeInt(0);
+
+        if (saveData.themesIds != null)
+            themesIds.AddRange(saveData.themesIds);
     }
 }
 
