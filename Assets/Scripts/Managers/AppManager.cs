@@ -44,21 +44,23 @@ public class AppManager : MonoBehaviour
     {
         if (pauseStatus)
         {
-            // Debug.Log("Start LocalAndCloudSave");
-            // DataManager.LocalAndCloudSave(null);
+            Debug.Log("Start LocalAndCloudSave");
+            DataManager.LocalAndCloudSave(null);
 
             if (!isPaused)
                 onApplicationPause.Invoke();
         }
+        else
+            GPGSManager.OpenSaveData();
     }
 
-    private void OnDestroy()
-    {
-        // DataManager.LocalSave();
+    // private void OnDestroy()
+    // {
+    //     // DataManager.LocalSave();
 
-        Debug.Log("Start LocalAndCloudSave");      
-        DataManager.LocalAndCloudSave(null);
-    }
+    //     Debug.Log("Start LocalAndCloudSave");      
+    //     DataManager.LocalAndCloudSave(null);
+    // }
 
     private void OnApplicationQuit()
     {

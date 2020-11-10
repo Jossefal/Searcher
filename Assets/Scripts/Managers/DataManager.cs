@@ -81,7 +81,7 @@ public static class DataManager
 
     internal static void LocalLoad()
     {
-        if (!AppManager.isFirstLaunch)
+        if (PlayerPrefs.HasKey(Prefs.SAVE_DATA_PREF))
         {
             string saveDataJson = SafePrefs.Load(Prefs.SAVE_DATA_PREF);
             ParseJsonSaveData(saveDataJson);
@@ -129,8 +129,6 @@ public static class DataManager
         SaveData saveData = CreateSaveData();
 
         string stringSaveData = JsonUtility.ToJson(saveData);
-
-        Debug.Log(stringSaveData);
 
         SafePrefs.Save(Prefs.SAVE_DATA_PREF, stringSaveData);
         GPGSManager.WriteSaveData(GPGSManager.SAVE_FILE_NAME, Encoding.UTF8.GetBytes(stringSaveData), cloudSaveCallback);

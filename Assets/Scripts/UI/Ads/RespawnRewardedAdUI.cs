@@ -51,7 +51,7 @@ public class RespawnRewardedAdUI : AdUI
 
     public void LoadAndShowAd(float delay)
     {
-        if (DataManager.isTestMode)
+        if (DataManager.isLocalTestMode)
         {
             HandleUserEarnedReward();
             HandleAdClosed();
@@ -122,7 +122,8 @@ public class RespawnRewardedAdUI : AdUI
 
     private void HandleUserEarnedReward()
     {
-        respawnPanel.RespawnAfterCooldown(5f);
+        if (adInProcces)
+            respawnPanel.RespawnAfterCooldown(5f);
     }
 
     public void Close()

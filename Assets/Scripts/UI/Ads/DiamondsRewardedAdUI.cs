@@ -51,7 +51,7 @@ public class DiamondsRewardedAdUI : AdUI
 
     public void LoadAndShowAd(float delay)
     {
-        if (DataManager.isTestMode)
+        if (DataManager.isLocalTestMode)
         {
             HandleUserEarnedReward();
             HandleAdClosed();
@@ -123,8 +123,11 @@ public class DiamondsRewardedAdUI : AdUI
 
     public void HandleUserEarnedReward()
     {
-        rewardPanel.SetActive(true);
-        DataManager.diamondsCount += (int)rewardDiamondsCount;
+        if (adInProcces)
+        {
+            rewardPanel.SetActive(true);
+            DataManager.diamondsCount += (int)rewardDiamondsCount;
+        }
     }
 
     public void Close()

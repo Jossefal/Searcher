@@ -122,6 +122,8 @@ public class TimerButton : MonoBehaviour
 
             StartTimer();
             hidePanel.SetActive(false);
+
+            Save();
         });
     }
 
@@ -138,10 +140,5 @@ public class TimerButton : MonoBehaviour
             lastClickTime = DateTime.Parse(timesStr);
         else
             lastClickTime = new DateTime(2000, 1, 1);
-    }
-
-    private void OnDestroy()
-    {
-        Save();
     }
 }

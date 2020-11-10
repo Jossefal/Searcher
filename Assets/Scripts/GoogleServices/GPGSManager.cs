@@ -28,6 +28,7 @@ public static class GPGSManager
     public const string FIRST_GPG_AUTH_CHECK_PREF = "FIRST_GPG_AUTH_CHECK";
 
     private static ISavedGameClient savedGameClient;
+    private static ISavedGameMetadata currentSavedGameMetadata;
 
     public static void Initialize(bool debug)
     {
@@ -55,7 +56,10 @@ public static class GPGSManager
             Debug.Log("PlayGamesAuth - succes==" + success);
 
             if (success)
+            {
                 savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+                OpenSaveData();
+            }
 
             onAuth(success);
 
@@ -64,10 +68,10 @@ public static class GPGSManager
         }));
     }
 
-    // public static void OpenSaveData()
-    // {
-    //     OpenSaveData(SAVE_FILE_NAME, (status, metadata) => currentSavedGameMetadata = metadata);
-    // }
+    public static void OpenSaveData()
+    {
+        OpenSaveData(SAVE_FILE_NAME, (status, metadata) => currentSavedGameMetadata = metadata);
+    }
 
     private static void OpenSaveData(string fileName, Action<SavedGameRequestStatus, ISavedGameMetadata> onDataOpen)
     {
@@ -102,22 +106,50 @@ public static class GPGSManager
         if (!isAuthenticated || data == null || data.Length == 0)
             return;
 
-        OpenSaveData(fileName, (openStatus, metadata) =>
+        if (currentSavedGameMetadata != null && currentSavedGameMetadata.IsOpen)
         {
-            if (openStatus == SavedGameRequestStatus.Success)
+            Debug.Log("GPGSManager - start commit update saved game");
+
+            SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
+            SavedGameMetadataUpdate updatedMetadata = builder.Build();
+            savedGameClient.CommitUpdate(currentSavedGameMetadata, updatedMetadata, data, (commitStatus, newMetadata) =>
             {
-                SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
-                SavedGameMetadataUpdate updatedMetadata = builder.Build();
-                savedGameClient.CommitUpdate(metadata, updatedMetadata, data, (commitStatus, newMetadata) =>
+                Debug.Log("GPGSManager - commit saved game request status: " + commitStatus);
+                if (commitStatus == SavedGameRequestStatus.Success)
+                    callback?.Invoke(true);
+                else
+                    callback?.Invoke(false);
+
+                OpenSaveData();
+            });
+        }
+        else
+        {
+            Debug.Log("GPGSManager - start open savedGameMetadata");
+
+            OpenSaveData(fileName, (openStatus, metadata) =>
+            {
+                if (openStatus == SavedGameRequestStatus.Success)
                 {
-                    Debug.Log("\nCommit saved game request status: " + commitStatus + "\n");
-                    if (commitStatus == SavedGameRequestStatus.Success)
-                        callback?.Invoke(true);
-                    else
-                        callback?.Invoke(false);
-                });
-            }
-        });
+                    Debug.Log("GPGSManager - start commit update saved game");
+
+                    SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
+                    SavedGameMetadataUpdate updatedMetadata = builder.Build();
+                    savedGameClient.CommitUpdate(metadata, updatedMetadata, data, (commitStatus, newMetadata) =>
+                    {
+                        Debug.Log("GPGSManager - commit saved game request status: " + commitStatus);
+                        if (commitStatus == SavedGameRequestStatus.Success)
+                            callback?.Invoke(true);
+                        else
+                            callback?.Invoke(false);
+
+                        OpenSaveData();
+                    });
+                }
+                else
+                    Debug.Log("GPGSManager - open savedGameMetada is failed");
+            });
+        }
     }
 
     public static void ReportScore(int score)

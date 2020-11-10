@@ -51,7 +51,7 @@ public class LivesRewardedAdUI : AdUI
 
     public void LoadAndShowAd(float delay)
     {
-        if (DataManager.isTestMode)
+        if (DataManager.isLocalTestMode)
         {
             HandleUserEarnedReward();
             HandleAdClosed();
@@ -123,8 +123,11 @@ public class LivesRewardedAdUI : AdUI
 
     public void HandleUserEarnedReward()
     {
-        rewardPanel.SetActive(true);
-        DataManager.livesCount = new SafeInt(DataManager.livesCount.GetValue() + (int)rewardLivesCount);
+        if (adInProcces)
+        {
+            rewardPanel.SetActive(true);
+            DataManager.livesCount = new SafeInt(DataManager.livesCount.GetValue() + (int)rewardLivesCount);
+        }
     }
 
     public void Close()

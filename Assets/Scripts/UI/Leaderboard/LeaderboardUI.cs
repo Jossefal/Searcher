@@ -48,7 +48,7 @@ public class LeaderboardUI : MonoBehaviour
                 if (i < leaderboardData.scores.Count)
                 {
                     playersScorePanels[i].score = Converter.ConvertToString(leaderboardData.scores[i].userScore);
-                    playersScorePanels[i].playerName = (i + 1) + " " + leaderboardData.scores[i].userName;
+                    playersScorePanels[i].playerName = (i + 1) + ". " + leaderboardData.scores[i].userName;
                     playersScorePanels[i].gameObject.SetActive(true);
                 }
                 else

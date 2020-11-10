@@ -76,7 +76,7 @@ public class MultiThemePanel : MonoBehaviour, IThemePanel
         else
             shopOpener.SetActive(true);
 
-        DataManager.LocalAndCloudSave(null);
+        DataManager.LocalSave();
     }
 
     // public void SetCurrentSkin()
