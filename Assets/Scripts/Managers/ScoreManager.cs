@@ -31,8 +31,11 @@ public class ScoreManager : MonoBehaviour
         {
             DataManager.record = safeCurrentScore;
 
+            // if (GPGSManager.isAuthenticated)
+            //     FirestoreManager.SendScore(new UserScoreData(GPGSManager.GetUserName(), safeCurrentScore.GetValue()), null);
+
             if (GPGSManager.isAuthenticated)
-                FirestoreManager.SendScore(new UserScoreData(GPGSManager.GetUserName(), safeCurrentScore.GetValue()), null);
+                FirestoreManager.SendRecord(null);
         }
     }
 }

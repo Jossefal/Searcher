@@ -28,8 +28,6 @@ public static class FirestoreManager
 
         db = FirebaseFirestore.DefaultInstance;
 
-        UnityEngine.Debug.Log("Firebase - defaultInstance is " + (db == null ? "null" : "not null"));
-
         isInitialized = true;
     }
 
@@ -37,11 +35,7 @@ public static class FirestoreManager
     {
         auth = FirebaseAuth.DefaultInstance;
 
-        UnityEngine.Debug.Log("Firebase - authCode is " + (authCode == "" ? "empty" : "not empty"));
-
         Credential credential = PlayGamesAuthProvider.GetCredential(authCode);
-
-        UnityEngine.Debug.Log("Firebase - play games credential is " + (credential == null ? "null" : "not null"));
 
         auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
         {
@@ -58,28 +52,14 @@ public static class FirestoreManager
 
     public static void LoadLeaderboardData(int limit, Action<Task, LeaderboardData> callback)
     {
-        UnityEngine.Debug.Log("Firebase - start load scores from leaderboard");
-
         CollectionReference collectionRef = db.Collection(leaderboardId);
 
         Query query = collectionRef.OrderByDescending(UserScoreData.USER_SCORE_PROPERTY_NAME).Limit(limit);
 
-        UnityEngine.Debug.Log("Firebase - start load leaderboard snapshot async");
-
         query.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
-            if (task.IsCanceled)
-            {
-                UnityEngine.Debug.Log("Firebase - query.GetSnapshotAsync was canceled!");
+            if (!task.IsCompleted)
                 return;
-            }
-            else if (task.IsFaulted)
-            {
-                UnityEngine.Debug.Log("Firebase - query.GetSnapshotAsync was faulted!");
-                return;
-            }
-            else
-                UnityEngine.Debug.Log("Firebase - query.GetSnapshotAsync was completed!");
 
             QuerySnapshot querySnapshot = task.Result;
             LeaderboardData leaderboardData = new LeaderboardData();
@@ -100,24 +80,12 @@ public static class FirestoreManager
         if (!isAuthenticated || userScoreData == null)
             return;
 
-        UnityEngine.Debug.Log("Firebase - start load userDocRef");
-
         DocumentReference userDocRef = db.Collection(leaderboardId).Document(auth.CurrentUser.UserId);
 
         userDocRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
-            if (task.IsCanceled)
-            {
-                UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was canceled!");
+            if (!task.IsCompleted)
                 return;
-            }
-            else if (task.IsFaulted)
-            {
-                UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was faulted!");
-                return;
-            }
-            else
-                UnityEngine.Debug.Log("Firebase - userDocRef.GetSnapshotAsync was completed!");
 
             if (task.Result.Exists)
             {
@@ -130,19 +98,22 @@ public static class FirestoreManager
                 }
             }
 
-            UnityEngine.Debug.Log("Firebase - start write userDocRef");
-
             userDocRef.SetAsync(userScoreData).ContinueWithOnMainThread(secondTask =>
             {
-                if (secondTask.IsCanceled)
-                    UnityEngine.Debug.Log("Firebase - userDocRef.SetAsync was canceled!");
-                else if (secondTask.IsFaulted)
-                    UnityEngine.Debug.Log("Firebase - userDocRef.SetAsync was faulted!");
-                else
-                    UnityEngine.Debug.Log("Firebase - userDocRef.SetAsync was completed!");
-
                 callback?.Invoke(secondTask);
             });
+        });
+    }
+
+    public static void SendRecord(Action<Task> callback)
+    {
+        UserScoreData userScoreData = new UserScoreData(GPGSManager.GetUserName(), DataManager.record.GetValue());
+
+        DocumentReference userDocRef = db.Collection(leaderboardId).Document(auth.CurrentUser.UserId);
+
+        userDocRef.SetAsync(userScoreData).ContinueWithOnMainThread(secondTask =>
+        {
+            callback?.Invoke(secondTask);
         });
     }
 }

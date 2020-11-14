@@ -62,7 +62,7 @@ public static class DataManager
     internal static event Action onDataChanged;
 
     internal static bool isDataLoaded { get; private set; }
-    internal static bool isTestMode { get; private set; } = true;
+    internal static bool isTestMode { get; private set; } = false;
     internal static bool isLocalTestMode { get; private set; } = false;
 
     private static int saveQueue;
@@ -96,7 +96,7 @@ public static class DataManager
     {
         record = new SafeInt(0);
         livesCount = new SafeInt(15);
-        diamondsCount = new SafeInt(1000);
+        diamondsCount = new SafeInt(100);
         currentThemeId = new SafeInt(0);
     }
 
@@ -174,7 +174,7 @@ public static class DataManager
         record = new SafeInt(saveData.record);
         livesCount = new SafeInt(saveData.livesCount);
 
-        diamondsCount = saveDataJson.Contains("diamondsCount") ? new SafeInt(saveData.diamondsCount) : new SafeInt(1000);
+        diamondsCount = saveDataJson.Contains("diamondsCount") ? new SafeInt(saveData.diamondsCount) : new SafeInt(100);
         currentThemeId = saveDataJson.Contains("currentThemeId") ? new SafeInt(saveData.currentThemeId) : new SafeInt(0);
 
         if (saveData.themesIds != null)

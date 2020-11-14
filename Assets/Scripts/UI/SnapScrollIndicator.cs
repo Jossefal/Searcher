@@ -13,6 +13,10 @@ public class SnapScrollIndicator : MonoBehaviour
     private void Start()
     {
         snapScroll.onObjectHighlight += UpdateImagesState;
+    }
+
+    private void OnEnable()
+    {
         UpdateImagesState(snapScroll.indexOfHighlightedObject);
     }
 

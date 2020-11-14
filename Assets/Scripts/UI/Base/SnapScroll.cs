@@ -9,7 +9,6 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 {
     [SerializeField] private List<Transform> objects = new List<Transform>();
     [SerializeField] private Transform content;
-    private RectTransform contentRect;
     [SerializeField] private Transform center;
 
     private enum Axis
@@ -44,8 +43,6 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     private void Start()
     {
-        contentRect = (RectTransform)content;
-
         objects.Sort((a, b) =>
         {
             if (axis == Axis.Horizontal)
@@ -107,6 +104,7 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         {
             nextHighlightedObject = null;
             highlightedObject = newHighlightedObject;
+            Debug.Log(content.position);
             content.position = content.position + (center.position - highlightedObject.position);
         }
     }

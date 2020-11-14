@@ -27,14 +27,21 @@ public class LeaderboardUI : MonoBehaviour
 
         if (!FirestoreManager.isAuthenticated)
         {
-            statusText.text = "Trouble to loading leaderboard";
+            statusText.text = "Failed to load leaderboard";
             return;
         }
 
         isLoading = true;
         statusText.text = "Loading...";
 
+        FirestoreManager.SendRecord(task =>
+        {
+            LoadLeaderboard();
+        });
+    }
 
+    private void LoadLeaderboard()
+    {
         FirestoreManager.LoadLeaderboardData(limit, (task, leaderboardData) =>
         {
             if (!task.IsCompleted)

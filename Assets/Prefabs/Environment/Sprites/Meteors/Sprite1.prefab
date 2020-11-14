@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1914120087783446889}
   - component: {fileID: 4641458109922734977}
   - component: {fileID: 9048343453396620949}
+  - component: {fileID: 1162388937178669059}
   m_Layer: 12
   m_Name: Sprite1
   m_TagString: Untagged
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -1887420613
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6185707098359948907, guid: 52185d713186f944dbbbc3b545ee7ab6,
+  m_Sprite: {fileID: -5143608304557885421, guid: b3a80ecbbd8d8cf4ab2bc33c0843c959,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,3 +102,19 @@ MonoBehaviour:
   isRndRotation: 1
   isRndDirection: 1
   rotatingTypeSelection: 1
+--- !u!114 &1162388937178669059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082848957282643518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa76e4c319ce6554baf49c838c4b03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -1457443651727290451, guid: b3a80ecbbd8d8cf4ab2bc33c0843c959, type: 3}
+  - {fileID: 82948491456228549, guid: b3a80ecbbd8d8cf4ab2bc33c0843c959, type: 3}
+  - {fileID: -5143608304557885421, guid: b3a80ecbbd8d8cf4ab2bc33c0843c959, type: 3}

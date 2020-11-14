@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using GoogleMobileAds.Api;
 
@@ -45,7 +46,11 @@ public class LoadingManager : MonoBehaviour
 
         GooglePlayAuth((succes) =>
         {
-            FirestoreAuth();
+            FirestoreAuth(task =>
+            {
+                if (task.IsCompleted)
+                    FirestoreManager.SendRecord(null);
+            });
 
             LoadSaves();
         });
@@ -78,7 +83,7 @@ public class LoadingManager : MonoBehaviour
         GPGSManager.Auth(onAuth);
     }
 
-    private void FirestoreAuth()
+    private void FirestoreAuth(Action<Task> callback)
     {
         if (GPGSManager.isAuthenticated)
         {
@@ -86,6 +91,8 @@ public class LoadingManager : MonoBehaviour
             FirestoreManager.Auth(authCode, task =>
             {
                 firebaseIsReady = true;
+
+                callback?.Invoke(task);
             });
         }
         else
