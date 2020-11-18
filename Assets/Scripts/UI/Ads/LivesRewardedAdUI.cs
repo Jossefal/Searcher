@@ -9,6 +9,7 @@ public class LivesRewardedAdUI : AdUI
 
     [SerializeField] private uint rewardLivesCount;
     [SerializeField] private GameObject rewardPanel;
+    [SerializeField] private TimerButton timerButton;
 
     private bool isNeedToShow;
 
@@ -116,6 +117,11 @@ public class LivesRewardedAdUI : AdUI
 
     public void HandleAdClosed()
     {
+        if (adInProcces)
+        {
+            timerButton.ApplyTimer();
+        }
+
         isNeedToShow = false;
         statusPanel.SetActive(false);
         adInProcces = false;

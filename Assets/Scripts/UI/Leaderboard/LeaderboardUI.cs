@@ -25,7 +25,7 @@ public class LeaderboardUI : MonoBehaviour
         playerScoresContainer.SetActive(false);
         statusText.gameObject.SetActive(true);
 
-        if (!FirestoreManager.isAuthenticated)
+        if (!FirestoreManager.isInitialized)
         {
             statusText.text = "Failed to load leaderboard";
             return;
@@ -34,10 +34,15 @@ public class LeaderboardUI : MonoBehaviour
         isLoading = true;
         statusText.text = "Loading...";
 
-        FirestoreManager.SendRecord(task =>
+        if (FirestoreManager.isAuthenticated)
         {
+            FirestoreManager.SendRecord(task =>
+            {
+                LoadLeaderboard();
+            });
+        }
+        else
             LoadLeaderboard();
-        });
     }
 
     private void LoadLeaderboard()
@@ -46,7 +51,7 @@ public class LeaderboardUI : MonoBehaviour
         {
             if (!task.IsCompleted)
             {
-                statusText.gameObject.SetActive(false);
+                statusText.text = "Failed to load leaderboard";
                 return;
             }
 

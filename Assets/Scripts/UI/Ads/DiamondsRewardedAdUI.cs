@@ -9,6 +9,7 @@ public class DiamondsRewardedAdUI : AdUI
 
     [SerializeField] private uint rewardDiamondsCount;
     [SerializeField] private GameObject rewardPanel;
+    [SerializeField] private TimerButton timerButton;
 
     private bool isNeedToShow;
 
@@ -116,6 +117,11 @@ public class DiamondsRewardedAdUI : AdUI
 
     public void HandleAdClosed()
     {
+        if (adInProcces)
+        {
+            timerButton.ApplyTimer();
+        }
+
         isNeedToShow = false;
         statusPanel.SetActive(false);
         adInProcces = false;

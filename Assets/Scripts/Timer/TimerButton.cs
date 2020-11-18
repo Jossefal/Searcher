@@ -14,6 +14,7 @@ public class TimerButton : MonoBehaviour
 
     [SerializeField] private string id;
     [SerializeField] private uint secondsBetweenClicks;
+    [SerializeField] private bool applyTimerOnClick;
     [SerializeField] private Text text;
     [SerializeField] private GameObject normalStateObject;
     [SerializeField] private GameObject hidePanel;
@@ -108,6 +109,12 @@ public class TimerButton : MonoBehaviour
     }
 
     public void Click()
+    {
+        if (applyTimerOnClick)
+            ApplyTimer();
+    }
+
+    public void ApplyTimer()
     {
         DisallowClick();
         hidePanel.SetActive(true);

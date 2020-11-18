@@ -47,6 +47,8 @@ public class StatsController : MonoBehaviour, IStats
     public void RestoreHP()
     {
         currentHp = maxHp;
+
+        onHPChanged?.Invoke(currentHp);
     }
 
     public void Stun()

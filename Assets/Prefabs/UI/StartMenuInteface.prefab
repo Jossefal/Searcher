@@ -15206,6 +15206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: lives
   secondsBetweenClicks: 600
+  applyTimerOnClick: 0
   text: {fileID: 460828114865952905}
   normalStateObject: {fileID: 8309613632588710131}
   hidePanel: {fileID: 1702549893932807155}
@@ -17609,6 +17610,7 @@ MonoBehaviour:
   statusText: {fileID: 8971817114341325520}
   rewardDiamondsCount: 3
   rewardPanel: {fileID: 2779441116605604385}
+  timerButton: {fileID: 7801676189840849535}
 --- !u!1 &6604111178072282378
 GameObject:
   m_ObjectHideFlags: 0
@@ -19685,6 +19687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: diamonds
   secondsBetweenClicks: 600
+  applyTimerOnClick: 0
   text: {fileID: 5756977168483601108}
   normalStateObject: {fileID: 6305312863197227875}
   hidePanel: {fileID: 8939007183637364404}
@@ -20287,6 +20290,7 @@ MonoBehaviour:
   statusText: {fileID: 1809789695115337631}
   rewardLivesCount: 3
   rewardPanel: {fileID: 527608003814595125}
+  timerButton: {fileID: 4717046409568450157}
 --- !u!1 &7718977544211088929
 GameObject:
   m_ObjectHideFlags: 0

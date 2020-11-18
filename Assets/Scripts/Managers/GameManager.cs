@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         shipStats.transform.position = new Vector3(0f, shipStats.transform.position.y, 0f);
         shipStats.transform.rotation = new Quaternion(0, 0, 0, 0);
         shipStats.transform.localScale = new Vector3(1f, 1f, 1f);
+        shipStats.RestoreHP();
         shipStats.StopStun();
 
         interfaceManager.ShowObjects();
