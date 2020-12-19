@@ -62,7 +62,7 @@ public static class DataManager
     internal static event Action onDataChanged;
 
     internal static bool isDataLoaded { get; private set; }
-    internal static bool isTestMode { get; private set; } = false;
+    internal static bool isTestMode { get; private set; } = true;
     internal static bool isLocalTestMode { get; private set; } = false;
 
     private static int saveQueue;

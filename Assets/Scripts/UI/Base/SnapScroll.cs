@@ -104,7 +104,6 @@ public class SnapScroll : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         {
             nextHighlightedObject = null;
             highlightedObject = newHighlightedObject;
-            Debug.Log(content.position);
             content.position = content.position + (center.position - highlightedObject.position);
         }
     }
