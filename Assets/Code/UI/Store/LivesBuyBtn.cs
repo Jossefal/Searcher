@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+#pragma warning disable 649
+
 public class LivesBuyBtn : MonoBehaviour
 {
     [SerializeField] private int livesCount;

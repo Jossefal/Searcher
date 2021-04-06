@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 [RequireComponent(typeof(RandomMover))]
 public class AngleMover : MonoBehaviour
 {

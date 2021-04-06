@@ -47,7 +47,6 @@ public static class InternetTime
 
         ulong milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
 
-        //**UTC** time
         DateTime internetDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
 
         callback?.Invoke(true, internetDateTime);

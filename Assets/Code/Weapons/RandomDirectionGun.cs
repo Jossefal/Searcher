@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 649
+
 public class RandomDirectionGun : Gun
 {
     [SerializeField] private float angleVariation;
