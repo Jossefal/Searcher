@@ -8,7 +8,7 @@ public class MovingController : MonoBehaviour
     [HideInInspector] public new Transform transform;
 
     [SerializeField] private InterfaceManager interfaceManager;
-    [SerializeField] private ControlController controlController;
+    [SerializeField] private InputController controlController;
 
     private Rigidbody2D rb;
     private StatsController shipStats;

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 #pragma warning disable 649
 
-public class ControlController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class InputController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public float maxOffsetX = 1f;
 
