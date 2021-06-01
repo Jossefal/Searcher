@@ -11,14 +11,16 @@ public class Area : MonoBehaviour
     [SerializeField] private Transform spawnPointsParent;
     [SerializeField] private bool isEasy;
 
+    public bool IsEasy => isEasy;
+
     private AreasManager areasManager;
     private GameObject spawnedObject;
     private bool nextIsSpawned;
     private Transform[] spawnPoints;
 
-    public void Initialize(AreasManager areasManager)
+    public void Initialize(AreasManager manager)
     {
-        this.areasManager = areasManager;
+        this.areasManager = manager;
         transform = GetComponent<Transform>();
 
         if (spawnPointsParent.childCount != 0)
@@ -44,7 +46,7 @@ public class Area : MonoBehaviour
         if (coll.CompareTag("SpawnTrigger") && !nextIsSpawned)
             SpawnNextArea();
         else if (coll.CompareTag("UnuseTrigger"))
-            Unuse();
+            Decommission();
     }
 
     public void SpawnObject(GameObject prefab)
@@ -52,7 +54,8 @@ public class Area : MonoBehaviour
         if (spawnedObject == null)
         {
             int pointIndex = Random.Range(0, spawnPoints.Length);
-            spawnedObject = Instantiate(prefab, spawnPoints[pointIndex].position, Quaternion.identity, transform);
+            Vector3 position = spawnPoints[pointIndex].position;
+            spawnedObject = Instantiate(prefab, position, Quaternion.identity, transform);
         }
     }
 
@@ -65,12 +68,9 @@ public class Area : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void Unuse()
+    public void Decommission()
     {
-        if (isEasy)
-            areasManager.UnuseEasyArea(this);
-        else
-            areasManager.UnuseNormalArea(this);
+        areasManager.ReturnToPool(this);
 
         if (spawnedObject != null)
             Destroy(spawnedObject);

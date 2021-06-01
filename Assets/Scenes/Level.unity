@@ -1150,6 +1150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c2fa348530a4c45b35ffa443fbecb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: d550941cae4e0ef4f99c494ecfb47131, type: 2}
   shipStats: {fileID: 75347484}
   shipMovingController: {fileID: 75347483}
   startSpeed: 7
@@ -2008,7 +2009,6 @@ MonoBehaviour:
   - difficultyLevel: 1
     prefab: {fileID: 3264875180265499852, guid: 96004acb4fd3a4c48a5d16088d48bbc3,
       type: 3}
-  skyforceModeManager: {fileID: 1539388147}
   spawnDelay: 5
 --- !u!114 &1307653998 stripped
 MonoBehaviour:
@@ -2225,7 +2225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0c9cb9f09e0e24cbea43119b575373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScale: {x: 0, y: 0, z: 0}
   _respawnPanel: {fileID: 5065609456623368198}
   unusedEasyAreas:
   - {fileID: 439473997}
@@ -2251,13 +2250,10 @@ MonoBehaviour:
   - {fileID: 1544919462}
   - {fileID: 798125510}
   - {fileID: 597676358}
+  gameData: {fileID: 11400000, guid: d550941cae4e0ef4f99c494ecfb47131, type: 2}
   startEasyChance: 1
   easyChanceDecreaseStep: 0.025
   finalEasyChance: 0.2
-  startScale: 1
-  areasToScale: 80
-  scaleStep: 0.005
-  finalScale: 1.11
 --- !u!4 &1539388145
 Transform:
   m_ObjectHideFlags: 0
@@ -2324,6 +2320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaf96bfe9bb5c84d87ca9667ab43b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: d550941cae4e0ef4f99c494ecfb47131, type: 2}
   enemySpawner: {fileID: 1252005929}
   timeBetween: 15
   shipGun: {fileID: 303287167}
@@ -3350,7 +3347,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f714fca707fc82b4faf4f860f9d70298, type: 3}
+  m_Script: {fileID: 11500000, guid: 8371f156608d3bc4e9379ada8ce60887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2089836773 stripped

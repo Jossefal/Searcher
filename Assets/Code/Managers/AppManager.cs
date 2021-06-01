@@ -54,14 +54,6 @@ public class AppManager : MonoBehaviour
             GPGSManager.OpenSaveData();
     }
 
-    // private void OnDestroy()
-    // {
-    //     // DataManager.LocalSave();
-
-    //     Debug.Log("Start LocalAndCloudSave");      
-    //     DataManager.LocalAndCloudSave(null);
-    // }
-
     private void OnApplicationQuit()
     {
         DataManager.LocalAndCloudSave(null);

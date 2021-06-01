@@ -26,6 +26,11 @@ public class RotatingObject : MonoBehaviour
         transform = base.transform;
         rb = GetComponent<Rigidbody2D>();
 
+        ResetParameters();
+    }
+
+    private void ResetParameters()
+    {
         if (isRndSpeed)
         {
             speed.x += Random.Range(-rndRadius.x, rndRadius.x);

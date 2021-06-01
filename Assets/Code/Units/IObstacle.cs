@@ -1,4 +1,4 @@
 ﻿public interface IObstacle
 {
-    void Kill();
+    void Demolish();
 }

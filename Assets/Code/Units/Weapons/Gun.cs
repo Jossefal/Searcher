@@ -76,21 +76,21 @@ public class Gun : MonoBehaviour
         }
     }
 
-    protected virtual void SetRotation(Transform bulletTransform)
+    protected virtual void SetRotation(Transform bullet)
     {
         switch (directionType)
         {
             case DirectionType.ShootPointUp:
-                bulletTransform.up = shootPoint.up;
+                bullet.up = shootPoint.up;
                 break;
             case DirectionType.Up:
-                bulletTransform.up = Vector3.up;
+                bullet.up = Vector3.up;
                 break;
             case DirectionType.Down:
-                bulletTransform.up = Vector3.down;
+                bullet.up = Vector3.down;
                 break;
             default:
-                bulletTransform.up = Vector3.up;
+                bullet.up = Vector3.up;
                 break;
         }
     }

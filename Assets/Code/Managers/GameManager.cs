@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameData gameData;
     [SerializeField] private StatsController shipStats;
     [SerializeField] private MovingController shipMovingController;
     [SerializeField] private float startSpeed = 7f;
@@ -22,6 +23,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         themeDataContainer.Initialize();
+
+        startSpeed = gameData.StartSpeed;
+        speedIncrease = gameData.SpeedIncrease;
+        timeToIncrease = gameData.TimeToIncrease;
+        increaseTime = gameData.IncreaseTime;
     }
 
     private void Start()
@@ -39,7 +45,7 @@ public class GameManager : MonoBehaviour
 
         foreach (Collider2D item in collider2Ds)
         {
-            item.GetComponent<IObstacle>().Kill();
+            item.GetComponent<IObstacle>().Demolish();
         }
 
         shipStats.gameObject.SetActive(true);

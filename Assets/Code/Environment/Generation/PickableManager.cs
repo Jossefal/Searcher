@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 #pragma warning disable 649
 
@@ -26,9 +27,14 @@ public class PickableManager : MonoBehaviour
             }
         }
 
+        public void ProccesCounter()
+        {
+            counter--;
+        }
+
         public bool CheckCounter()
         {
-            return counter-- <= 0;
+            return counter <= 0;
         }
 
         public void RestartCounter()
@@ -39,6 +45,8 @@ public class PickableManager : MonoBehaviour
 
     [SerializeField] private PickableSpawnData[] pickables;
 
+    private Queue<GameObject> spawnQueue = new Queue<GameObject>();
+
     public void Initialize()
     {
         for (int i = 0; i < pickables.Length; i++)
@@ -47,18 +55,25 @@ public class PickableManager : MonoBehaviour
         }
     }
 
-    public void Evaluate(Area area)
+    public void ProccesCounters()
     {
-        bool objectIsSpawned = false;
-
         for (int i = 0; i < pickables.Length; i++)
         {
-            if (pickables[i].CheckCounter() && !objectIsSpawned)
+            if (pickables[i].CheckCounter())
             {
-                area.SpawnObject(pickables[i].prefab);
-                objectIsSpawned = true;
                 pickables[i].RestartCounter();
+                spawnQueue.Enqueue(pickables[i].prefab);
             }
         }
+    }
+
+    public bool QueryNotEmpty()
+    {
+        return spawnQueue.Count > 0;
+    }
+
+    public GameObject GetPickable()
+    {
+        return spawnQueue.Dequeue();
     }
 }

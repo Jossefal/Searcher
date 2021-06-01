@@ -40,17 +40,6 @@ public static class GPGSManager
 
     public static void Auth(Action<bool> onAuth)
     {
-        // Social.localUser.Authenticate((success =>
-        // {
-        //     if (success)
-        //         savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-
-        //     onAuth(success);
-
-        //     if (success)
-        //         PlayerPrefs.SetInt(FIRST_GPG_AUTH_CHECK_PREF, 1);
-        // }));
-
         PlayGamesPlatform.Instance.Authenticate((success =>
         {
             Debug.Log("PlayGamesAuth - succes==" + success);

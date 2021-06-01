@@ -19,6 +19,8 @@ public class AreasManager : MonoBehaviour
     [SerializeField] private List<Area> unusedEasyAreas;
     [SerializeField] private List<Area> unusedNormalAreas;
 
+    [SerializeField] private GameData gameData;
+
     [Space]
     [Header("Difficulty oprions")]
     [SerializeField] private float startEasyChance;
@@ -30,6 +32,10 @@ public class AreasManager : MonoBehaviour
 
     private void Awake()
     {
+        startEasyChance = gameData.StartEasyChance;
+        easyChanceDecreaseStep = gameData.EasyChanceDecreaseStep;
+        finalEasyChance = gameData.FinalEasyChance;
+
         pickableManager = GetComponent<PickableManager>();
         pickableManager.Initialize();
 
@@ -68,18 +74,19 @@ public class AreasManager : MonoBehaviour
 
         easyAreaChance = Mathf.Clamp(easyAreaChance - easyChanceDecreaseStep, finalEasyChance, 1f);
 
-        pickableManager.Evaluate(nextArea);
+        pickableManager.ProccesCounters();
+
+        if(pickableManager.QueryNotEmpty())
+            nextArea.SpawnObject(pickableManager.GetPickable());
 
         return nextArea;
     }
 
-    public void UnuseEasyArea(Area area)
+    public void ReturnToPool(Area area)
     {
-        unusedEasyAreas.Add(area);
-    }
-
-    public void UnuseNormalArea(Area area)
-    {
-        unusedNormalAreas.Add(area);
+        if(area.IsEasy)
+            unusedEasyAreas.Add(area);
+        else
+            unusedNormalAreas.Add(area);
     }
 }

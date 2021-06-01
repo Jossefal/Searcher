@@ -39,7 +39,8 @@ public class Magnet : MonoBehaviour
     {
         while(target != null)
         {
-            scale.x = scale.y = scale.z = Mathf.Clamp(Vector3.Distance(transform.position, target.position) / startDistance, 0f, 1f);
+            float scaleValue = Vector3.Distance(transform.position, target.position) / startDistance;
+            scale.x = scale.y = scale.z = Mathf.Clamp(scaleValue, 0f, 1f);
             target.localScale = ray.transform.localScale = scale;
 
             target.position = Vector3.Lerp(target.position, transform.position, pullSpeed);

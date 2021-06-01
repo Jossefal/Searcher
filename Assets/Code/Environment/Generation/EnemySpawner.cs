@@ -15,8 +15,9 @@ public class EnemySpawner : MonoBehaviour
         public GameObject prefab;
     }
 
+    public int difficultyLevel { get; set;}
+
     [SerializeField] private EnemyType[] enemyTypes;
-    [SerializeField] private SkyforceModeManager skyforceModeManager;
     [SerializeField] private float spawnDelay = 5f;
 
     private GameObject enemyController;
@@ -46,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 1; i < enemyTypes.Length; i++)
         {
-            if (enemyTypes[i].difficultyLevel > skyforceModeManager.difficultyLevel)
+            if (enemyTypes[i].difficultyLevel > difficultyLevel)
                 break;
 
             if (enemyTypes[i].difficultyLevel > enemyTypes[returnedObject].difficultyLevel)

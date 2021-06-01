@@ -11,7 +11,8 @@ public static class InternetTime
     {
         byte[] ntpData = new byte[48];
 
-        ntpData[0] = 0b00011011; //LI = 0 (no warning), VN = 3 (IPv4 only), Mode = 3 (Client Mode)
+        /*LI = 0 (no warning), VN = 3 (IPv4 only), Mode = 3 (Client Mode)*/
+        ntpData[0] = 0b00011011;
 
         IPHostEntry hostEntry = Dns.GetHostEntry(ntpServer);
 

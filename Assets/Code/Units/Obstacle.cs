@@ -34,7 +34,7 @@ public class Obstacle : StatsController, IObstacle
             Destroy(gameObject);
     }
 
-    public void Kill()
+    public void Demolish()
     {
         Death();
     }

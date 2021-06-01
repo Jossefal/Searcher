@@ -39,7 +39,8 @@ public class BlackHole : MonoBehaviour, IObstacle
         {
             if (targetShip != null)
             {
-                distancePercent = Vector3.Distance(transform.position, targetShip.transform.position) / startDistance;
+                float currentDistance = Vector3.Distance(transform.position, targetShip.transform.position);
+                distancePercent = currentDistance / startDistance;
 
                 if (distancePercent > 0.05f)
                 {
@@ -59,7 +60,7 @@ public class BlackHole : MonoBehaviour, IObstacle
         targetShip = null;
     }
 
-    public void Kill()
+    public void Demolish()
     {
         gameObject.SetActive(false);
     }

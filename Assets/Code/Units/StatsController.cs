@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class StatsController : MonoBehaviour, IStats
 {
-    [HideInInspector] public bool isStunned { get; private set; }
+    public bool isStunned { get; private set; }
 
     public event Action<int> onHPChanged;
 
@@ -36,6 +36,11 @@ public class StatsController : MonoBehaviour, IStats
 
         if (currentHp == 0)
             Death();
+    }
+
+    public virtual void Kill()
+    {
+        ReceiveDamage(currentHp);
     }
 
     protected virtual void Death()

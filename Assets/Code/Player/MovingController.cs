@@ -26,10 +26,21 @@ public class MovingController : MonoBehaviour
     private void Update()
     {
         if (!shipStats.isStunned && !AppManager.isPaused)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, MAX_ANGLE * controlController.Horizontal()), ROTATION_SPEED);
+            DetermineRotation();
     }
 
     private void FixedUpdate()
+    {
+        DoMovement();
+    }
+
+    private void DetermineRotation()
+    {
+        Quaternion targetRotation = Quaternion.Euler(0, 0, MAX_ANGLE * controlController.Horizontal());
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, ROTATION_SPEED);
+    }
+
+    private void DoMovement()
     {
         if (!shipStats.isStunned)
             rb.velocity = CalculateVelocity();

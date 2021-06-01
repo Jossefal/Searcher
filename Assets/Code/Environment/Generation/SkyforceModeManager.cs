@@ -9,6 +9,7 @@ public class SkyforceModeManager : MonoBehaviour
 
     private AreasManager areasManager;
 
+    [SerializeField] private GameData gameData;
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private float timeBetween;
     [SerializeField] private GameObject shipGun;
@@ -16,6 +17,8 @@ public class SkyforceModeManager : MonoBehaviour
 
     private void Awake()
     {
+        timeBetween = gameData.TimeBetweenSkyforce;
+
         areasManager = GetComponent<AreasManager>();
 
         StartCoroutine(ModeActivation());
